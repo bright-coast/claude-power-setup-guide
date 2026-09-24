@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does Claude Code actually do on my computer?</title>
+<meta name="description" content="A nine step picture guide to what Claude Code does on your computer, when it asks first, and what it cannot do.">
+<meta name="generator" content="Explain Like I'm Non-Technical, a Bright Coast AI skill">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --teal: #4AB5A5;
+    --teal-tint: #E4F5F2;
+    --sand: #D4A574;
+    --sand-tint: #F6E9DA;
+    --sand-ink: #7A4A05;
+    --page: #F5F3F0;
+    --card: #FFFFFF;
+    --well: #FBF9F5;
+    --line: #E0DDD9;
+    --ink-2: #4A4538;
+    --muted: #6E6656;
+    --head: 'Montserrat', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Jost', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+  body { margin: 0; background: var(--page); color: var(--ink-2); font: 400 1.25rem/1.5 var(--body); }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px 56px; }
+
+  .brand { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; margin-bottom: 30px; border-bottom: 2px solid var(--navy); }
+  .brand svg { width: 40px; height: 40px; flex: none; }
+  .brand span { font: 700 0.85rem/1 var(--head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); }
+
+  h1 { margin: 0 0 12px; font: 700 clamp(1.9rem, 5.2vw, 2.7rem)/1.15 var(--head); color: var(--navy); text-wrap: balance; }
+  .lede { margin: 0 0 16px; font-size: 1.3rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+  .chip { padding: 6px 13px; border: 1.5px solid var(--navy); border-radius: 999px; background: var(--teal-tint); color: var(--navy); font: 600 0.85rem/1.2 var(--head); }
+
+  .cards { margin: 0; padding: 0; list-style: none; }
+  .card { margin: 0 0 24px; padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; break-inside: avoid; page-break-inside: avoid; }
+  .card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .num { flex: none; display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 2.5px solid var(--navy); border-radius: 50%; background: var(--teal-tint); color: var(--navy); font: 700 1.15rem/1 var(--head); }
+  .ttl { min-width: 0; }
+  h2 { margin: 0; font: 700 clamp(1.5rem, 3.8vw, 1.95rem)/1.2 var(--head); color: var(--navy); text-wrap: balance; break-after: avoid; }
+  .tag { display: inline-block; margin: 0 0 6px; padding: 3px 10px; border: 1.5px solid var(--sand); border-radius: 6px; background: var(--sand-tint); color: var(--sand-ink); font: 700 0.78rem/1.3 var(--head); letter-spacing: 0.05em; text-transform: uppercase; }
+  .visual { margin: 0 0 16px; padding: 12px; background: var(--well); border: 1px solid var(--line); border-radius: 10px; }
+  .visual svg { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; }
+  .cap { margin: 0; font-size: 1.25rem; color: var(--ink-2); }
+  .from { margin: 10px 0 0; font-size: 0.95rem; color: var(--muted); }
+
+  svg text { font-family: var(--head); fill: var(--navy); }
+  .lbl { font-size: 24px; font-weight: 600; text-anchor: middle; }
+  .txt { font-size: 23px; font-weight: 600; }
+  .bold { font-weight: 700; }
+  .mid { text-anchor: middle; }
+  .arr { fill: none; stroke: var(--navy); stroke-width: 4; stroke-linecap: butt; }
+  symbol { fill: none; stroke: var(--navy); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+
+  .note { margin: 40px 0 16px; padding: 14px 16px; border-left: 5px solid var(--sand); border-radius: 0 10px 10px 0; background: var(--sand-tint); color: var(--navy); font-size: 1.05rem; }
+  .foot { padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.95rem; color: var(--muted); }
+  .foot p { margin: 0 0 4px; }
+  .foot a { color: var(--navy); }
+
+  @media (max-width: 520px) {
+    .card { padding: 14px; }
+    .visual { padding: 6px; }
+    .card-top { gap: 10px; }
+    .num { width: 40px; height: 40px; }
+  }
+  @page { margin: 14mm; }
+  @media print {
+    body { background: #fff; font-size: 12pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .wrap { max-width: none; padding: 0; }
+    .card { margin-bottom: 12px; padding: 14px; }
+    .visual { padding: 6px; margin-bottom: 10px; }
+    .visual svg { max-width: 400px; }
+    .brand { margin-bottom: 18px; }
+    .chips { margin-bottom: 20px; }
+    .note { margin-top: 22px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="head" viewBox="0 0 14 14" refX="2" refY="7" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L14 7 L0 14 Z" fill="#1B3A5C"/>
+    </marker>
+    <symbol id="i-person" viewBox="0 0 96 96"><circle cx="48" cy="30" r="17" fill="#FFFFFF"/><path d="M14 90c0-20 15-34 34-34s34 14 34 34z" fill="#E4F5F2"/></symbol>
+    <symbol id="i-magnifier" viewBox="0 0 96 96"><circle cx="40" cy="40" r="26" fill="#FFFFFF"/><path d="M59 59l26 26" stroke-width="9"/><path d="M29 41l8 8 15-16" stroke-width="4.5"/></symbol>
+    <symbol id="i-yes" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#4AB5A5" stroke-width="3"/><path d="M14 25l7 7 13-14" stroke-width="4"/></symbol>
+    <symbol id="i-no" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#F6E9DA" stroke-width="3"/><path d="M16 16l16 16M32 16L16 32" stroke-width="4"/></symbol>
+    <symbol id="i-document" viewBox="0 0 96 96"><path d="M22 8h38l18 18v56a6 6 0 0 1-6 6H22a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6z" fill="#F6E9DA"/><path d="M60 8v18h18"/><path d="M28 46h40M28 58h40M28 70h24" stroke-width="4"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 96 96"><path d="M8 24a6 6 0 0 1 6-6h20l9 10h39a6 6 0 0 1 6 6v42a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z" fill="#D4A574"/><path d="M8 46a6 6 0 0 1 6-6h68a6 6 0 0 1 6 6v32a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z" fill="#F6E9DA"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 96 96">
+      <g fill="#4AB5A5"><rect x="41" y="6" width="14" height="84" rx="4"/><rect x="41" y="6" width="14" height="84" rx="4" transform="rotate(45 48 48)"/><rect x="41" y="6" width="14" height="84" rx="4" transform="rotate(90 48 48)"/><rect x="41" y="6" width="14" height="84" rx="4" transform="rotate(135 48 48)"/><circle cx="48" cy="48" r="29"/></g>
+      <circle cx="48" cy="48" r="11" fill="#FFFFFF"/>
+    </symbol>
+    <symbol id="i-question" viewBox="0 0 96 96"><circle cx="48" cy="48" r="38" fill="#4AB5A5"/><path d="M35 39c0-9 6-15 14-15s14 5 14 12c0 6-4 9-9 12-3 2-5 4-5 9" stroke-width="6"/><circle cx="49" cy="71" r="4" fill="#1B3A5C"/></symbol>
+    <symbol id="i-bubble" viewBox="0 0 96 96"><path d="M16 14h64a8 8 0 0 1 8 8v38a8 8 0 0 1-8 8H50L30 88V68H16a8 8 0 0 1-8-8V22a8 8 0 0 1 8-8z" fill="#E4F5F2"/><path d="M26 33h44M26 49h26" stroke-width="4"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 96 96"><g transform="rotate(40 48 48)"><path d="M38 8h20v12H38z" fill="#4AB5A5"/><path d="M38 20h20v46H38z" fill="#D4A574"/><path d="M38 66h20L48 88z" fill="#F6E9DA"/><path d="M44 79l4 9 4-9z" fill="#1B3A5C" stroke-width="2"/></g></symbol>
+    <symbol id="i-spark" viewBox="0 0 96 96"><path d="M44 10Q48 46 84 50Q48 54 44 90Q40 54 4 50Q40 46 44 10z" fill="#4AB5A5"/><path d="M76 8Q77 20 90 22Q77 24 76 36Q75 24 62 22Q75 20 76 8z" fill="#D4A574" stroke-width="3"/></symbol>
+  </defs>
+</svg>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="#1B3A5C" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.1 27.5L6.6 24.8M21.1 18.4L16.5 11.9M32 15V7M42.9 18.4L47.5 11.9M49.9 27.5L57.4 24.8"/>
+          <path d="M10 47C10 37 20 29 31 31C40 33 44 42 38 46C34 48 30 45 32 42"/>
+          <path d="M6 54q6.5-5 13 0t13 0 13 0 13 0M6 61q6.5-5 13 0t13 0 13 0 13 0"/>
+        </g>
+      </svg>
+      <span>Bright Coast AI</span>
+    </div>
+    <h1>What does Claude Code actually do on my computer?</h1>
+    <p class="lede">A picture guide in nine steps.</p>
+    <ul class="chips">
+      <li class="chip">Plain English</li>
+      <li class="chip">About two minutes</li>
+    </ul>
+  </header>
+  <main>
+    <ol class="cards" role="list">
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">1</span>
+          <div class="ttl">
+            <h2>It is an AI helper that starts in one folder you choose.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="You ask Claude, and Claude starts in one folder you choose.">
+      <use href="#i-person" x="14" y="52" width="116" height="116"/><text class="lbl" x="72" y="208">You</text>
+      <path class="arr" d="M130 128H190" marker-end="url(#head)"/>
+      <use href="#i-spark" x="202" y="52" width="116" height="116"/><text class="lbl" x="260" y="208">Claude</text>
+      <path class="arr" d="M322 128H382" marker-end="url(#head)"/>
+      <use href="#i-folder" x="390" y="52" width="116" height="116"/><text class="lbl" x="448" y="208">Folder</text>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">2</span>
+          <div class="ttl">
+            <h2>You ask in plain words. It reads, then proposes changes.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Three steps: you ask, it reads your files, and it proposes changes.">
+      <rect x="10" y="10" width="140" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <circle cx="40" cy="42" r="19" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="lbl bold" x="40" y="50">1</text>
+      <use href="#i-bubble" x="38" y="64" width="84" height="84"/><text class="lbl" x="80" y="186">Ask</text>
+      <path class="arr" d="M154 106H178" marker-end="url(#head)"/>
+      <rect x="190" y="10" width="140" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <circle cx="220" cy="42" r="19" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="lbl bold" x="220" y="50">2</text>
+      <use href="#i-folder" x="218" y="64" width="84" height="84"/><text class="lbl" x="260" y="186">Read</text>
+      <text class="lbl" x="260" y="216">files</text>
+      <path class="arr" d="M334 106H358" marker-end="url(#head)"/>
+      <rect x="370" y="10" width="140" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <circle cx="400" cy="42" r="19" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="lbl bold" x="400" y="50">3</text>
+      <use href="#i-pencil" x="398" y="64" width="84" height="84"/><text class="lbl" x="440" y="186">Propose</text>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">3</span>
+          <div class="ttl">
+            <h2>You decide what to allow. It does the routine work.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="You decide, approve and check. Claude reads files, drafts edits and runs tasks.">
+      <rect x="8" y="10" width="244" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M8 24a14 14 0 0 1 14-14h216a14 14 0 0 1 14 14v58H8z" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+      <use href="#i-person" x="20" y="18" width="56" height="56"/><text class="txt bold" x="88" y="54">You</text>
+      <use href="#i-yes" x="20" y="102" width="30" height="30"/><text class="txt" x="60" y="125">Decide</text>
+      <use href="#i-yes" x="20" y="148" width="30" height="30"/><text class="txt" x="60" y="171">Approve</text>
+      <use href="#i-yes" x="20" y="194" width="30" height="30"/><text class="txt" x="60" y="217">Check</text>
+      <rect x="268" y="10" width="244" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M268 24a14 14 0 0 1 14-14h216a14 14 0 0 1 14 14v58H268z" fill="#F6E9DA" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+      <use href="#i-spark" x="280" y="18" width="56" height="56"/><text class="txt bold" x="348" y="54">Claude</text>
+      <use href="#i-yes" x="280" y="102" width="30" height="30"/><text class="txt" x="320" y="125">Reads files</text>
+      <use href="#i-yes" x="280" y="148" width="30" height="30"/><text class="txt" x="320" y="171">Drafts edits</text>
+      <use href="#i-yes" x="280" y="194" width="30" height="30"/><text class="txt" x="320" y="217">Runs tasks</text>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">4</span>
+          <div class="ttl">
+            <h2>You choose how often it asks first.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Claude asks you first. If you say yes it goes ahead, and if you say no it stops.">
+      <use href="#i-spark" x="10" y="80" width="92" height="92"/>
+      <path class="arr" d="M108 126H154" marker-end="url(#head)"/>
+      <rect x="170" y="42" width="128" height="140" rx="16" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="4"/>
+      <use href="#i-bubble" x="184" y="62" width="100" height="100"/><text class="lbl" x="234" y="222">Asks you</text>
+      <path class="arr" d="M306 92L362 60" marker-end="url(#head)"/>
+      <path class="arr" d="M306 132L362 164" marker-end="url(#head)"/>
+      <use href="#i-document" x="380" y="14" width="80" height="80"/><use href="#i-yes" x="440" y="16" width="40" height="40"/><text class="lbl" x="430" y="112">Goes ahead</text>
+      <use href="#i-document" x="380" y="128" width="80" height="80"/><use href="#i-no" x="440" y="130" width="40" height="40"/><text class="lbl" x="430" y="226">Stops</text>
+    </svg>
+        </div>
+        <p class="cap">Manual mode asks before every change.</p>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">5</span>
+          <div class="ttl">
+            <h2>Here are three fair worries, answered plainly.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Three common worries about where files go, whether it asks first and mistakes, each with a short answer.">
+      <g transform="translate(0 0)">
+        <rect x="8" y="8" width="504" height="70" rx="12" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/><use href="#i-question" x="20" y="26" width="34" height="34"/>
+        <text class="txt bold" x="68" y="38">Where do my files go?</text><text class="txt" x="68" y="66">Anthropic gets what it reads.</text>
+        <rect x="8" y="86" width="504" height="70" rx="12" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/><use href="#i-question" x="20" y="104" width="34" height="34"/>
+        <text class="txt bold" x="68" y="116">Can it act without asking?</text><text class="txt" x="68" y="144">It depends on your mode.</text>
+        <rect x="8" y="164" width="504" height="70" rx="12" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/><use href="#i-question" x="20" y="182" width="34" height="34"/>
+        <text class="txt bold" x="68" y="194">What if it gets it wrong?</text><text class="txt" x="68" y="222">It can. Read its work first.</text>
+      </g>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">6</span>
+          <div class="ttl">
+            <h2>It is good at routine work. It can still be wrong.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="It is good at routine jobs and not good at being certain.">
+      <rect x="8" y="10" width="212" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M8 24a14 14 0 0 1 14-14h184a14 14 0 0 1 14 14v34H8z" fill="#F6E9DA" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/><text class="lbl" x="114" y="44">Good at</text>
+      <use href="#i-gear" x="66" y="72" width="96" height="96"/><text class="lbl" x="114" y="208">Routine jobs</text>
+      <circle cx="260" cy="125" r="26" fill="#F6E9DA" stroke="#1B3A5C" stroke-width="3"/><text class="lbl" x="260" y="133">vs</text>
+      <rect x="300" y="10" width="212" height="230" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M300 24a14 14 0 0 1 14-14h184a14 14 0 0 1 14 14v34H300z" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/><text class="lbl" x="406" y="44">Not good at</text>
+      <use href="#i-question" x="358" y="72" width="96" height="96"/><text class="lbl" x="406" y="208">Certainty</text>
+      <use href="#i-yes" x="176" y="66" width="34" height="34"/>
+      <use href="#i-no" x="468" y="66" width="34" height="34"/>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">7</span>
+          <div class="ttl">
+            <h2>It works in short rounds, and you check each one.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="You ask, it drafts, you check, and the round repeats.">
+      <path class="arr" d="M312 52Q420 52 420 112" marker-end="url(#head)"/>
+      <path class="arr" d="M370 168H154" marker-end="url(#head)"/>
+      <path class="arr" d="M100 112Q100 52 208 52" marker-end="url(#head)"/>
+      <use href="#i-bubble" x="224" y="8" width="72" height="72"/><text class="lbl" x="260" y="108">You ask</text>
+      <use href="#i-pencil" x="378" y="126" width="84" height="84"/><text class="lbl" x="420" y="238">It drafts</text>
+      <use href="#i-magnifier" x="58" y="126" width="84" height="84"/><text class="lbl" x="100" y="238">You check</text>
+      <text class="lbl" x="260" y="204">Repeat</text>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">8</span>
+          <div class="ttl">
+            <h2>Three words you may hear.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Three words with plain meanings: prompt, permission and terminal.">
+      <g transform="translate(0 30)">
+        <rect x="8" y="8" width="180" height="46" rx="10" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="txt bold mid" x="98" y="39">Prompt</text>
+        <text class="txt" x="204" y="39">What you ask it</text>
+        <rect x="8" y="68" width="180" height="46" rx="10" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="txt bold mid" x="98" y="99">Permission</text>
+        <text class="txt" x="204" y="99">Your yes or no</text>
+        <rect x="8" y="128" width="180" height="46" rx="10" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3"/><text class="txt bold mid" x="98" y="159">Terminal</text>
+        <text class="txt" x="204" y="159">A window you type in</text>
+      </g>
+    </svg>
+        </div>
+      </li>
+
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">9</span>
+          <div class="ttl">
+            <h2>A safe first try takes three small steps.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="A checklist of three things to do for a safe first try.">
+      <g transform="translate(0 0)">
+        <rect x="8" y="12" width="504" height="66" rx="12" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3"/><rect x="26" y="28" width="34" height="34" rx="7" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+        <text class="txt" x="78" y="55">Pick one small, low-risk job</text>
+        <rect x="8" y="90" width="504" height="66" rx="12" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3"/><rect x="26" y="106" width="34" height="34" rx="7" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+        <text class="txt" x="78" y="133">Work on a copy of your files</text>
+        <rect x="8" y="168" width="504" height="66" rx="12" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3"/><rect x="26" y="184" width="34" height="34" rx="7" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+        <text class="txt" x="78" y="211">Read every change first</text>
+      </g>
+    </svg>
+        </div>
+      </li>
+    </ol>
+  </main>
+  <footer>
+    <p class="note">This is a simplified picture, made to be understood rather than to be complete.</p>
+    <div class="foot">
+      <p>Made by Rob Lee, Bright Coast AI &middot; <a href="https://brightcoast.ai">brightcoast.ai</a></p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

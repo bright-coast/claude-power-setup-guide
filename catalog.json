@@ -14,7 +14,7 @@
     "version": "1.0",
     "path": "power-setup-field-guide.html",
     "sha256": "4f12658bb890f06a49067cf0b6dd05a854f70b00a81443f839a3d54747a6bb46",
-    "changes": "A one-page picture of what you are setting up, opened for you at the start of setup."
+    "changes": "A one-page picture of what you are setting up, shown to you at the start of setup."
   },
   "skills": [
     {
@@ -100,7 +100,7 @@
       "name": "Explain Like I'm Non-Technical",
       "status": "ready",
       "version": "1.0.0",
-      "sha256": "435fb076116e5168dc632ff7641d326676987ffed3dbcb33fb29fb700f7bb995",
+      "sha256": "1e0c560ac89bd9abb4d8927bda03719fd2484a3b74812d29d2a01f4c936f67b6",
       "category": "Communicate",
       "summary": "Explains anything to a non-technical person as a simple picture page: big visuals, very few words. Good for partners, clients and anyone who needs to understand something without the jargon. Every page carries a small Bright Coast AI credit, and you can add your own name above it.",
       "needs": [],
