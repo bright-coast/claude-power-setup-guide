@@ -1,0 +1,183 @@
+{
+  "catalog_version": 1,
+  "repo": "bright-coast/claude-power-setup-guide",
+  "ref": "stable",
+  "raw_base": "https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/",
+  "license": "Bright Coast AI Client Skills Licence 1.0",
+  "guide": {
+    "version": "3.0",
+    "path": "claude-code-power-setup-guide.md",
+    "sha256": "8c01b7758da1d35f333d9465dcfce2eb7e2727bc391bb4c92cbef2ef1a5fbcea",
+    "changes": "The guide now installs skills straight from this repo, asks what you use, and can check for updates without touching your own changes."
+  },
+  "skills": [
+    {
+      "id": "startup",
+      "name": "Startup",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "a17a4b4ea56c277e156038bd4fc12d32fd8edbc06ff982be0ce4c2cfc1228b56",
+      "category": "Every day",
+      "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
+      "needs": ["Your email and calendar connected, if you want them in the briefing"],
+      "offer_if": "everyone",
+      "path": "skills/startup/SKILL.md",
+      "changes": "First release."
+    },
+    {
+      "id": "skill-updates",
+      "name": "Skill Updates",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "74024155e5d2695d467cbb624be147780c3170bc4b027706141467db98677a71",
+      "category": "Housekeeping",
+      "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
+      "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
+      "offer_if": "everyone",
+      "path": "skills/skill-updates/SKILL.md",
+      "changes": "First release."
+    },
+    {
+      "id": "health-check",
+      "name": "Health Check",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "cc5e4cc99422a13453e9b2627e434a7b148d0cdf94b26597e2a576bbab476736",
+      "category": "Housekeeping",
+      "summary": "A quick check-up of your Claude Code setup: your instructions file, your memory, the tools installed on your computer and your disk space, with plain-English fixes.",
+      "needs": [],
+      "offer_if": "everyone",
+      "path": "skills/health-check/SKILL.md",
+      "changes": "First release as a standalone skill."
+    },
+    {
+      "id": "process-recordings",
+      "name": "Process Recordings",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "c6aa59bfe985d8fed603d099dd430714e6f83afe925525c538bd74d0a7aa4397",
+      "category": "Meetings",
+      "summary": "Turns meeting transcripts and notes (from a recording app, a connector or pasted in) into clean notes, decisions and follow-ups, filed where you can find them again. It works on text, not audio.",
+      "needs": ["A recording or transcript source, or transcripts you paste in"],
+      "offer_if": "records or transcribes meetings",
+      "path": "skills/process-recordings/SKILL.md",
+      "changes": "First release as a standalone skill."
+    },
+    {
+      "id": "ask-rob",
+      "name": "Ask Rob",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "29ae9f4b6c2ab217eff7a4fcbcb549d6c1909cfb65e5de0a485f51cd1845c335",
+      "category": "Get help",
+      "summary": "Sends a question to Rob straight from Claude, with the context attached, and brings the reply back to you.",
+      "needs": ["A Bright Coast AI client portal account and a personal token from its Settings page"],
+      "offer_if": "is a Bright Coast AI client",
+      "path": "skills/ask-rob/SKILL.md",
+      "changes": "First release from this repo. Includes the Windows attachment fix."
+    },
+    {
+      "id": "whatsapp-setup",
+      "name": "WhatsApp",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "ffc64556a2327e180f547cee7f277ce0343d2518d7232a08df7c6f5e488ac5fc",
+      "category": "Messages",
+      "summary": "Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice, and it only sends when you say so. This is unofficial, and WhatsApp can restrict or ban an account that uses it. It is an early version, and its full setup has not been run end to end yet.",
+      "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app, kept in Manual or Accept edits mode, never Auto or Bypass", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
+      "offer_if": "uses WhatsApp for work",
+      "path": "skills/whatsapp-setup/SKILL.md",
+      "changes": "First release."
+    },
+    {
+      "id": "explain-non-technical",
+      "name": "Explain Like I'm Non-Technical",
+      "status": "ready",
+      "version": "1.0.0",
+      "sha256": "435fb076116e5168dc632ff7641d326676987ffed3dbcb33fb29fb700f7bb995",
+      "category": "Communicate",
+      "summary": "Explains anything to a non-technical person as a simple picture page: big visuals, very few words. Good for partners, clients and anyone who needs to understand something without the jargon. Every page carries a small Bright Coast AI credit, and you can add your own name above it.",
+      "needs": [],
+      "offer_if": "everyone",
+      "path": "skills/explain-non-technical/SKILL.md",
+      "changes": "First release."
+    },
+    {
+      "id": "email-drafting",
+      "name": "Email Drafting",
+      "status": "planned",
+      "version": null,
+      "category": "Messages",
+      "summary": "Drafts emails in your own voice, learned from your sent mail. Drafts only, it never sends.",
+      "needs": ["Your email connected"],
+      "offer_if": "everyone",
+      "path": null
+    },
+    {
+      "id": "meeting-prep",
+      "name": "Meeting Prep",
+      "status": "planned",
+      "version": null,
+      "category": "Meetings",
+      "summary": "A one-page briefing before a meeting: who is in it, what happened last time and what to raise.",
+      "needs": ["Your calendar connected"],
+      "offer_if": "has regular meetings",
+      "path": null
+    },
+    {
+      "id": "debrief",
+      "name": "Debrief",
+      "status": "planned",
+      "version": null,
+      "category": "Meetings",
+      "summary": "After a call, captures what was agreed and drafts the follow-up for you to review.",
+      "needs": [],
+      "offer_if": "has regular meetings",
+      "path": null
+    },
+    {
+      "id": "respond-to-this",
+      "name": "Respond To This",
+      "status": "planned",
+      "version": null,
+      "category": "Messages",
+      "summary": "Paste in a message and get a reply in your voice, ready to review.",
+      "needs": [],
+      "offer_if": "everyone",
+      "path": null
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram Saves",
+      "status": "planned",
+      "version": null,
+      "category": "Content",
+      "summary": "Turns posts you save into notes, pulling out what is actually useful and where it applies to your work.",
+      "needs": [],
+      "offer_if": "saves ideas from Instagram",
+      "path": null
+    },
+    {
+      "id": "youtube",
+      "name": "YouTube Capture",
+      "status": "planned",
+      "version": null,
+      "category": "Content",
+      "summary": "Captures a video's key points and what to do with them, filed into your notes.",
+      "needs": [],
+      "offer_if": "learns from YouTube",
+      "path": null
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "status": "planned",
+      "version": null,
+      "category": "Content",
+      "summary": "Drafts blog posts for your website from your notes and ideas, in your voice.",
+      "needs": [],
+      "offer_if": "runs a blog",
+      "path": null
+    }
+  ]
+}

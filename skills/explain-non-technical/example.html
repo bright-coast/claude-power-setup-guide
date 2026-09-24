@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How does an email get from you to someone else?</title>
+<meta name="description" content="A nine step picture guide to how an email travels from your screen to someone else's inbox.">
+<meta name="generator" content="Explain Like I'm Non-Technical, a Bright Coast AI skill">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --teal: #4AB5A5;
+    --teal-tint: #E4F5F2;
+    --sand: #D4A574;
+    --sand-tint: #F6E9DA;
+    --sand-ink: #7A4A05;
+    --page: #F5F3F0;
+    --card: #FFFFFF;
+    --well: #FBF9F5;
+    --line: #E0DDD9;
+    --ink-2: #4A4538;
+    --muted: #6E6656;
+    --head: 'Montserrat', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Jost', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+  body { margin: 0; background: var(--page); color: var(--ink-2); font: 400 1.25rem/1.5 var(--body); }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px 56px; }
+
+  .brand { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; margin-bottom: 30px; border-bottom: 2px solid var(--navy); }
+  .brand svg { width: 40px; height: 40px; flex: none; }
+  .brand span { font: 700 0.85rem/1 var(--head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); }
+
+  h1 { margin: 0 0 12px; font: 700 clamp(1.9rem, 5.2vw, 2.7rem)/1.15 var(--head); color: var(--navy); text-wrap: balance; }
+  .lede { margin: 0 0 16px; font-size: 1.3rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+  .chip { padding: 6px 13px; border: 1.5px solid var(--navy); border-radius: 999px; background: var(--teal-tint); color: var(--navy); font: 600 0.85rem/1.2 var(--head); }
+
+  .cards { margin: 0; padding: 0; list-style: none; }
+  .card { margin: 0 0 24px; padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; break-inside: avoid; page-break-inside: avoid; }
+  .card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .num { flex: none; display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 2.5px solid var(--navy); border-radius: 50%; background: var(--teal-tint); color: var(--navy); font: 700 1.15rem/1 var(--head); }
+  .ttl { min-width: 0; }
+  h2 { margin: 0; font: 700 clamp(1.5rem, 3.8vw, 1.95rem)/1.2 var(--head); color: var(--navy); text-wrap: balance; break-after: avoid; }
+  .tag { display: inline-block; margin: 0 0 6px; padding: 3px 10px; border: 1.5px solid var(--sand); border-radius: 6px; background: var(--sand-tint); color: var(--sand-ink); font: 700 0.78rem/1.3 var(--head); letter-spacing: 0.05em; text-transform: uppercase; }
+  .visual { margin: 0 0 16px; padding: 12px; background: var(--well); border: 1px solid var(--line); border-radius: 10px; }
+  .visual svg { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; }
+  .cap { margin: 0; font-size: 1.25rem; color: var(--ink-2); }
+
+  svg text { font-family: var(--head); fill: var(--navy); }
+  .lbl { font-size: 24px; font-weight: 600; text-anchor: middle; }
+  .txt { font-size: 23px; font-weight: 600; }
+  .arr { fill: none; stroke: var(--navy); stroke-width: 4; stroke-linecap: butt; }
+
+  .note { margin: 40px 0 16px; padding: 14px 16px; border-left: 5px solid var(--sand); border-radius: 0 10px 10px 0; background: var(--sand-tint); color: var(--navy); font-size: 1.05rem; }
+  .foot { padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.95rem; color: var(--muted); }
+  .foot p { margin: 0 0 4px; }
+  .foot a { color: var(--navy); }
+
+  @media (max-width: 520px) {
+    .card { padding: 14px; }
+    .visual { padding: 6px; }
+    .card-top { gap: 10px; }
+    .num { width: 40px; height: 40px; }
+  }
+  @page { margin: 14mm; }
+  @media print {
+    body { background: #fff; font-size: 12pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .wrap { max-width: none; padding: 0; }
+    .card { margin-bottom: 12px; padding: 14px; }
+    .visual { padding: 6px; margin-bottom: 10px; }
+    .visual svg { max-width: 400px; }
+    .brand { margin-bottom: 18px; }
+    .chips { margin-bottom: 20px; }
+    .note { margin-top: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="head" viewBox="0 0 14 14" refX="2" refY="7" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L14 7 L0 14 Z" fill="#1B3A5C"/>
+    </marker>
+    <symbol id="i-person" viewBox="0 0 96 96">
+      <circle cx="48" cy="30" r="17" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M14 90c0-20 15-34 34-34s34 14 34 34z" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-envelope" viewBox="0 0 96 96">
+      <rect x="8" y="22" width="80" height="54" rx="7" fill="#D4A574" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M11 27l37 27 37-27" fill="none" stroke="#1B3A5C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-building" viewBox="0 0 96 96">
+      <rect x="16" y="10" width="64" height="78" rx="5" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="3.5"/>
+      <g fill="#FFFFFF" stroke="#1B3A5C" stroke-width="2.5">
+        <rect x="26" y="22" width="14" height="14" rx="2"/><rect x="56" y="22" width="14" height="14" rx="2"/>
+        <rect x="26" y="44" width="14" height="14" rx="2"/><rect x="56" y="44" width="14" height="14" rx="2"/>
+      </g>
+      <rect x="39" y="66" width="18" height="22" rx="2" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 96 96">
+      <path d="M26 72C12 72 8 54 21 48 19 31 40 23 50 33 58 24 79 30 76 47 91 49 90 72 74 72Z" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-screen" viewBox="0 0 96 96">
+      <rect x="12" y="16" width="72" height="50" rx="5" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M4 74h88l-7 10H11z" fill="#E4F5F2" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-postbox" viewBox="0 0 96 96">
+      <rect x="38" y="56" width="20" height="34" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M12 58V46C12 30 26 18 42 18h12c16 0 30 12 30 28v12z" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+      <rect x="26" y="37" width="44" height="8" rx="4" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="i-tray" viewBox="0 0 96 96">
+      <g transform="rotate(-7 40 34)"><rect x="16" y="12" width="46" height="34" rx="4" fill="#D4A574" stroke="#1B3A5C" stroke-width="3.2"/><path d="M18 16l21 15 21-15" fill="none" stroke="#1B3A5C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g transform="rotate(6 60 34)"><rect x="34" y="6" width="46" height="34" rx="4" fill="#F6E9DA" stroke="#1B3A5C" stroke-width="3.2"/><path d="M36 10l21 15 21-15" fill="none" stroke="#1B3A5C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <path d="M8 46h80v34a9 9 0 0 1-9 9H17a9 9 0 0 1-9-9z" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="3.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-magnifier" viewBox="0 0 96 96">
+      <circle cx="40" cy="40" r="26" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M59 59l26 26" stroke="#1B3A5C" stroke-width="9" stroke-linecap="round"/>
+      <path d="M29 41l8 8 15-16" fill="none" stroke="#1B3A5C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 96 96">
+      <circle cx="48" cy="48" r="38" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="3.5"/>
+      <path d="M48 24v26l16 10" fill="none" stroke="#1B3A5C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-yes" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="20" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="3"/>
+      <path d="M14 25l7 7 13-14" fill="none" stroke="#1B3A5C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-no" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="20" fill="#F6E9DA" stroke="#1B3A5C" stroke-width="3"/>
+      <path d="M16 16l16 16M32 16L16 32" fill="none" stroke="#1B3A5C" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="#1B3A5C" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.1 27.5L6.6 24.8M21.1 18.4L16.5 11.9M32 15V7M42.9 18.4L47.5 11.9M49.9 27.5L57.4 24.8"/>
+          <path d="M10 47C10 37 20 29 31 31C40 33 44 42 38 46C34 48 30 45 32 42"/>
+          <path d="M6 54q6.5-5 13 0t13 0 13 0 13 0M6 61q6.5-5 13 0t13 0 13 0 13 0"/>
+        </g>
+      </svg>
+      <span>Bright Coast AI</span>
+    </div>
+    <h1>How does an email get from you to someone else?</h1>
+    <p class="lede">A picture guide in nine steps.</p>
+    <ul class="chips">
+      <li class="chip">Plain English</li>
+      <li class="chip">About two minutes</li>
+    </ul>
+  </header>
+
+  <main>
+    <ol class="cards" role="list">
+
+      <!-- Card 1: analogy -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">1</span>
+          <div class="ttl">
+            <p class="tag">Analogy, not the real thing</p>
+            <h2>Email is a bit like posting a letter.</h2>
+          </div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="A person posts a letter into a post box, and it reaches another person.">
+            <use href="#i-person" x="14" y="52" width="116" height="116"/>
+            <text class="lbl" x="72" y="208">You</text>
+            <use href="#i-envelope" x="128" y="38" width="66" height="66"/>
+            <path class="arr" d="M130 128H190" marker-end="url(#head)"/>
+            <use href="#i-postbox" x="202" y="52" width="116" height="116"/>
+            <text class="lbl" x="260" y="208">Post box</text>
+            <path class="arr" d="M322 128H382" marker-end="url(#head)"/>
+            <use href="#i-person" x="390" y="52" width="116" height="116"/>
+            <text class="lbl" x="448" y="208">Them</text>
+          </svg>
+        </div>
+        <p class="cap">Same idea. Much faster.</p>
+      </li>
+
+      <!-- Card 2 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">2</span>
+          <div class="ttl"><h2>An email is a message with an address on it.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="An email showing a From address, a To address and a few lines of message.">
+            <rect x="50" y="12" width="420" height="226" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="4"/>
+            <text class="txt" x="80" y="62">From</text>
+            <text class="txt" x="172" y="62" style="font-weight:500">you@example.com</text>
+            <rect x="68" y="80" width="384" height="46" rx="9" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/>
+            <text class="txt" x="80" y="111">To</text>
+            <text class="txt" x="172" y="111">friend@example.com</text>
+            <path d="M68 146H452" stroke="#E0DDD9" stroke-width="3"/>
+            <rect x="80" y="164" width="320" height="14" rx="7" fill="#E0DDD9"/>
+            <rect x="80" y="190" width="270" height="14" rx="7" fill="#E0DDD9"/>
+            <rect x="80" y="216" width="190" height="14" rx="7" fill="#E0DDD9"/>
+          </svg>
+        </div>
+      </li>
+
+      <!-- Card 3 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">3</span>
+          <div class="ttl"><h2>You press Send. Your email service picks it up.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="A person presses Send on a laptop, and the message moves to their email service.">
+            <use href="#i-screen" x="8" y="28" width="170" height="170"/>
+            <rect x="54" y="81" width="78" height="38" rx="10" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="3"/>
+            <text x="93" y="107" style="font-size:22px;font-weight:700;text-anchor:middle">Send</text>
+            <text class="lbl" x="93" y="226">You</text>
+            <use href="#i-envelope" x="200" y="42" width="66" height="66"/>
+            <path class="arr" d="M184 122H316" marker-end="url(#head)"/>
+            <use href="#i-building" x="346" y="44" width="132" height="132"/>
+            <text class="lbl" x="412" y="226">Your service</text>
+          </svg>
+        </div>
+        <p class="cap">Gmail and Outlook are examples.</p>
+      </li>
+
+      <!-- Card 4 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">4</span>
+          <div class="ttl"><h2>The part after the @ says where it goes.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="The address friend at example.com. The part before the at sign points to their mailbox, and the part after it points to their email service.">
+            <rect x="24" y="12" width="472" height="64" rx="32" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="4"/>
+            <rect x="232" y="24" width="222" height="40" rx="10" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/>
+            <text x="226" y="54" style="font-size:30px;font-weight:600;text-anchor:end">friend@</text>
+            <text x="242" y="54" style="font-size:30px;font-weight:700">example.com</text>
+            <path class="arr" d="M150 88V116" marker-end="url(#head)"/>
+            <path class="arr" d="M370 88V116" marker-end="url(#head)"/>
+            <use href="#i-tray" x="104" y="128" width="92" height="92"/>
+            <text class="lbl" x="150" y="240">Their mailbox</text>
+            <use href="#i-building" x="324" y="128" width="92" height="92"/>
+            <text class="lbl" x="370" y="240">Their service</text>
+          </svg>
+        </div>
+        <p class="cap">Your service looks it up.</p>
+      </li>
+
+      <!-- Card 5 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">5</span>
+          <div class="ttl"><h2>Your service contacts theirs across the internet.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Your email service sends the message across the internet to their email service.">
+            <use href="#i-building" x="26" y="54" width="120" height="120"/>
+            <text class="lbl" x="86" y="212">Your service</text>
+            <path class="arr" d="M136 120H170" marker-end="url(#head)"/>
+            <use href="#i-cloud" x="176" y="44" width="156" height="156"/>
+            <use href="#i-envelope" x="228" y="88" width="52" height="52"/>
+            <text class="lbl" x="254" y="212">Internet</text>
+            <path class="arr" d="M330 120H352" marker-end="url(#head)"/>
+            <use href="#i-building" x="366" y="54" width="120" height="120"/>
+            <text class="lbl" x="426" y="212">Their service</text>
+          </svg>
+        </div>
+        <p class="cap">Both speak the same agreed language.</p>
+      </li>
+
+      <!-- Card 6 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">6</span>
+          <div class="ttl"><h2>Their service checks it is real, not junk.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="The message goes through a check. Real messages are delivered. Junk is stopped.">
+            <use href="#i-envelope" x="10" y="80" width="92" height="92"/>
+            <path class="arr" d="M108 126H154" marker-end="url(#head)"/>
+            <rect x="170" y="42" width="128" height="140" rx="16" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="4"/>
+            <use href="#i-magnifier" x="184" y="62" width="100" height="100"/>
+            <text class="lbl" x="234" y="222">Check</text>
+            <path class="arr" d="M306 92L362 60" marker-end="url(#head)"/>
+            <path class="arr" d="M306 132L362 164" marker-end="url(#head)"/>
+            <use href="#i-envelope" x="380" y="14" width="80" height="80"/>
+            <use href="#i-yes" x="440" y="16" width="40" height="40"/>
+            <text class="lbl" x="430" y="112">Delivered</text>
+            <use href="#i-envelope" x="380" y="128" width="80" height="80"/>
+            <use href="#i-no" x="440" y="130" width="40" height="40"/>
+            <text class="lbl" x="430" y="226">Stopped</text>
+          </svg>
+        </div>
+        <p class="cap">Most junk gets stopped here.</p>
+      </li>
+
+      <!-- Card 7 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">7</span>
+          <div class="ttl"><h2>It waits safely in their mailbox.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Messages wait in a mailbox tray, next to a clock.">
+            <use href="#i-tray" x="60" y="10" width="200" height="200"/>
+            <text class="lbl" x="160" y="238">Their mailbox</text>
+            <use href="#i-clock" x="330" y="46" width="136" height="136"/>
+            <text class="lbl" x="398" y="238">Waiting</text>
+          </svg>
+        </div>
+        <p class="cap">Until they next check their email.</p>
+      </li>
+
+      <!-- Card 8 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">8</span>
+          <div class="ttl"><h2>They open their email, and it appears.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="A person looks at an inbox on a screen. A new message from you is at the top.">
+            <use href="#i-person" x="14" y="62" width="112" height="112"/>
+            <text class="lbl" x="70" y="212">Them</text>
+            <rect x="146" y="12" width="364" height="226" rx="14" fill="#FFFFFF" stroke="#1B3A5C" stroke-width="4"/>
+            <text x="170" y="54" style="font-size:25px;font-weight:700">Inbox</text>
+            <path d="M158 68H498" stroke="#E0DDD9" stroke-width="3"/>
+            <rect x="160" y="82" width="336" height="54" rx="10" fill="#F6E9DA" stroke="#D4A574" stroke-width="3"/>
+            <use href="#i-envelope" x="168" y="87" width="46" height="46"/>
+            <text x="224" y="117" style="font-size:23px;font-weight:600">From you</text>
+            <rect x="406" y="95" width="78" height="34" rx="17" fill="#4AB5A5" stroke="#1B3A5C" stroke-width="2.5"/>
+            <text x="445" y="120" style="font-size:22px;font-weight:700;text-anchor:middle">New</text>
+            <rect x="174" y="160" width="260" height="13" rx="6.5" fill="#E0DDD9"/>
+            <rect x="174" y="184" width="200" height="13" rx="6.5" fill="#E0DDD9"/>
+            <rect x="174" y="208" width="230" height="13" rx="6.5" fill="#E0DDD9"/>
+          </svg>
+        </div>
+        <p class="cap">Their app shows it in the inbox.</p>
+      </li>
+
+      <!-- Card 9 -->
+      <li class="card" data-card>
+        <div class="card-top">
+          <span class="num" aria-hidden="true">9</span>
+          <div class="ttl"><h2>The whole trip usually takes seconds.</h2></div>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 520 250" role="img" aria-label="The six stages in order: a laptop, your email service, the internet, a check, a mailbox and a laptop. The whole trip usually takes seconds.">
+            <use href="#i-screen" x="12" y="26" width="64" height="64"/>
+            <path d="M80 50l10 6-10 6z" fill="#1B3A5C"/>
+            <use href="#i-building" x="98" y="26" width="64" height="64"/>
+            <path d="M166 50l10 6-10 6z" fill="#1B3A5C"/>
+            <use href="#i-cloud" x="184" y="26" width="64" height="64"/>
+            <path d="M252 50l10 6-10 6z" fill="#1B3A5C"/>
+            <use href="#i-magnifier" x="270" y="26" width="64" height="64"/>
+            <path d="M338 50l10 6-10 6z" fill="#1B3A5C"/>
+            <use href="#i-tray" x="356" y="26" width="64" height="64"/>
+            <path d="M424 50l10 6-10 6z" fill="#1B3A5C"/>
+            <use href="#i-screen" x="442" y="26" width="64" height="64"/>
+            <path d="M14 112v14H506v-14" fill="none" stroke="#1B3A5C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <use href="#i-clock" x="104" y="150" width="84" height="84"/>
+            <text x="204" y="205" style="font-size:30px;font-weight:700">Usually seconds</text>
+          </svg>
+        </div>
+        <p class="cap">If it fails, you get a message back.</p>
+      </li>
+
+    </ol>
+  </main>
+
+  <footer>
+    <p class="note">This is a simplified picture, made to be understood rather than to be complete.</p>
+    <div class="foot">
+      <p>Made by Rob Lee, Bright Coast AI &middot; <a href="https://brightcoast.ai">brightcoast.ai</a></p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
