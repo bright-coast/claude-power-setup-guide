@@ -105,6 +105,28 @@ else {
   }
 }
 
+// ---------- 2b. the overview page (optional catalog entry) ----------
+if (cat.overview) {
+  const o = cat.overview;
+  if (typeof o.path !== 'string' || !/^[A-Za-z0-9._-]+\.html$/.test(o.path)) fail(`overview path "${o.path}" must be a plain file name ending in .html`);
+  else {
+    if (!/^\d+(\.\d+)*$/.test(o.version || '')) fail(`overview version "${o.version}" must be numbers and dots`);
+    const op = path.join(ROOT, o.path);
+    if (!fs.existsSync(op)) fail(`overview file ${o.path} is missing`);
+    else {
+      const f0 = failures;
+      checkHash('overview', o.sha256, op);
+      const oh = fs.readFileSync(op, 'utf8');
+      if (!oh.includes('Made by Rob Lee, Bright Coast AI. Copyright 2026 Bright Coast AI.')) fail('overview page is missing its credit and licence footer');
+      if (!oh.includes('support@brightcoast.ai')) fail('overview page does not carry the support contact');
+      if (/<script[^>]+src=/i.test(oh)) fail('overview page loads an external script');
+      const gtxt = fs.readFileSync(path.join(ROOT, cat.guide.path), 'utf8');
+      if (!gtxt.includes('### Next, show the picture')) fail('the catalog has an overview but the guide has no "Next, show the picture" step');
+      if (failures === f0) ok('overview page present, fingerprint current, credit footer present, guide step present');
+    }
+  }
+}
+
 // ---------- 3. text hygiene on every file ----------
 console.log('3. Text rules on every file');
 const dashRe = /[\u2013\u2014]/;

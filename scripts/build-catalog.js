@@ -83,6 +83,16 @@ for (const key of Object.keys(cat)) {
     const h = hashFile('guide', g.path);
     if (h) report.push(['guide', g.sha256 === h ? 'unchanged' : g.sha256 ? 'updated' : 'added', h]);
     out.guide = withHash(g, 'path', h);
+  } else if (key === 'overview') {
+    const o = cat.overview;
+    if (!o || typeof o.path !== 'string' || !/^[A-Za-z0-9._-]+\.html$/.test(o.path)) {
+      problems.push('overview: path must be a plain file name ending in .html');
+      out.overview = o;
+      continue;
+    }
+    const h = hashFile('overview', o.path);
+    if (h) report.push(['overview', o.sha256 === h ? 'unchanged' : o.sha256 ? 'updated' : 'added', h]);
+    out.overview = withHash(o, 'path', h);
   } else if (key === 'skills') {
     out.skills = cat.skills.map((s) => {
       if (!ID_RE.test(String(s.id))) { problems.push(`skill id "${s.id}" must match ^[a-z][a-z0-9-]*$`); return s; }

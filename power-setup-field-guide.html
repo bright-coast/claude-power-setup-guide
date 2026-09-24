@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Power Setup Field Guide</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Montserrat:wght@300;600;700&display=swap">
+<style>
+@font-face{font-family:"Montserrat Fallback";src:local("Arial"),local("Helvetica Neue"),local("Segoe UI");size-adjust:112%;ascent-override:86%;descent-override:22%;line-gap-override:0%}@font-face{font-family:"Jost Fallback";src:local("Arial"),local("Helvetica Neue"),local("Segoe UI");size-adjust:94%;ascent-override:104%;descent-override:28%;line-gap-override:0%}:root{--bc-bg:#F5F3F0;--bc-surface:#FFF;--bc-surface-2:#FBF9F5;--bc-ink:#1B3A5C;--bc-ink-muted:#6E6656;--bc-border:#E0DDD9;--bc-border-strong:#8A8375;--bc-accent:#4AB5A5;--bc-accent-hover:#5CC4B4;--bc-accent-tint:#E4F5F2;--bc-accent-ink:#0B4A42;--bc-on-accent:#1B3A5C;--bc-focus:#167A6C;--bc-sand:#D4A574;--bc-sand-tint:#F6EBDC;--bc-sand-ink:#68411A;--bc-warn:#B5720A;--bc-warn-tint:#FBF0DE;--bc-warn-ink:#75470A;--bc-code-bg:#EFEBE4;--il-line:#1B3A5C;--il-teal:#4AB5A5;--il-teal-tint:#DCEFEC;--il-sand:#D4A574;--il-paper:#FFF;--il-ink:#1B3A5C;--il-sea:#4AB5A5;--font-display:"Montserrat","Montserrat Fallback",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--font-body:"Jost","Jost Fallback",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--font-mono:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;--r-sm:6px;--r-md:8px;--r-lg:12px;--r-xl:16px;--ease:cubic-bezier(.16,1,.3,1);color-scheme:light}@media screen and (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bc-bg:#14171B;--bc-surface:#1E2227;--bc-surface-2:#23272D;--bc-ink:#F1EFE9;--bc-ink-muted:#A6A08F;--bc-border:#333941;--bc-border-strong:#7C8592;--bc-accent:#55C6B5;--bc-accent-hover:#6BD2C2;--bc-accent-tint:#1A3733;--bc-accent-ink:#BFF3EA;--bc-on-accent:#0C1E30;--bc-focus:#55C6B5;--bc-sand:#C79A66;--bc-sand-tint:#332A1F;--bc-sand-ink:#EBCB9F;--bc-warn:#D7A23A;--bc-warn-tint:#332608;--bc-warn-ink:#F0CB82;--bc-code-bg:#1A1D22;--il-line:#B4C8DE;--il-teal:#3D9E90;--il-teal-tint:#1E3A38;--il-sand:#B98A57;--il-paper:#262B31;--il-ink:#B4C8DE;--il-sea:#3D9E90;color-scheme:dark}}@media screen{:root[data-theme="dark"]{--bc-bg:#14171B;--bc-surface:#1E2227;--bc-surface-2:#23272D;--bc-ink:#F1EFE9;--bc-ink-muted:#A6A08F;--bc-border:#333941;--bc-border-strong:#7C8592;--bc-accent:#55C6B5;--bc-accent-hover:#6BD2C2;--bc-accent-tint:#1A3733;--bc-accent-ink:#BFF3EA;--bc-on-accent:#0C1E30;--bc-focus:#55C6B5;--bc-sand:#C79A66;--bc-sand-tint:#332A1F;--bc-sand-ink:#EBCB9F;--bc-warn:#D7A23A;--bc-warn-tint:#332608;--bc-warn-ink:#F0CB82;--bc-code-bg:#1A1D22;--il-line:#B4C8DE;--il-teal:#3D9E90;--il-teal-tint:#1E3A38;--il-sand:#B98A57;--il-paper:#262B31;--il-ink:#B4C8DE;--il-sea:#3D9E90;color-scheme:dark}}*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--bc-bg);color:var(--bc-ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}img,svg{max-width:100%}a{color:var(--bc-accent-ink);text-underline-offset:.18em;text-decoration-thickness:1px}a:hover{text-decoration-thickness:2px}:focus-visible{outline:2px solid var(--bc-focus);outline-offset:3px;border-radius:4px}h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;color:var(--bc-ink);margin:0;line-height:1.12;text-wrap:balance}h2{font-size:clamp(1.65rem,2.6vw + .6rem,2.35rem);letter-spacing:-.02em}h3{font-size:1.3125rem;letter-spacing:-.01em}h4{font-size:1.0625rem;line-height:1.25}p{margin:0}code{background:var(--bc-code-bg);border-radius:4px;padding:1.5px 6px;color:var(--bc-ink);overflow-wrap:anywhere}code.url{overflow-wrap:normal}code,kbd{font-family:var(--font-mono);font-size:.86em}b,strong{font-weight:600}.tnum{font-variant-numeric:tabular-nums}.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--bc-ink);color:var(--bc-bg);padding:10px 16px;border-radius:var(--r-md);font-weight:600;text-decoration:none}.skip:focus{top:12px}symbol.il *{fill:none;stroke:var(--il-line);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}symbol.il .thin{stroke-width:1.75}symbol.il .f-teal{fill:var(--il-teal)}symbol.il .f-sand{fill:var(--il-sand)}symbol.il .f-paper{fill:var(--il-paper)}symbol.il .f-teal-tint{fill:var(--il-teal-tint)}symbol.il .f-ink{fill:var(--il-ink)}symbol.il .st{stroke:var(--il-teal)}symbol.il .ns{stroke:none}symbol.il text{fill:var(--il-line);stroke:none;font:700 15px var(--font-display)}symbol.il text.big{font-size:26px}.ic{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}.shell{display:grid;grid-template-columns:minmax(0,1fr);max-width:1280px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}.content{min-width:0;container:content / inline-size;padding-bottom:48px}@media (min-width:1080px){.shell{grid-template-columns:232px minmax(0,1fr);column-gap:clamp(40px,5vw,72px)}}.progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:60;background:transparent;pointer-events:none}.progress i{display:block;height:100%;width:100%;background:var(--bc-accent);transform-origin:0 50%;transform:scaleX(var(--p,0))}.rail{display:none}@media (min-width:1080px){.rail{display:flex;flex-direction:column;gap:28px;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding-block:36px 28px;scrollbar-width:thin}}.rail-brand{display:grid;gap:2px}.rail-brand b{font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-.01em;line-height:1.2}.rail-brand span{font-size:.8125rem;color:var(--bc-ink-muted)}.rail-nav{position:relative;margin:0;padding:0;list-style:none}.rail-nav::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--bc-border);border-radius:2px}.rail-nav::after{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--bc-accent);border-radius:2px;transform-origin:50% 0;transform:scaleY(var(--p,0));transition:transform .12s linear}.rail-nav a{position:relative;display:grid;grid-template-columns:12px minmax(0,1fr);column-gap:14px;align-items:center;padding:8px 0;text-decoration:none;color:var(--bc-ink-muted);font-family:var(--font-body);font-weight:500;font-size:.9375rem;line-height:1.3;transition:color .15s}.rail-nav a::before{content:"";position:relative;z-index:1;width:12px;height:12px;border-radius:50%;background:var(--bc-bg);border:2px solid var(--bc-border-strong);transition:background .15s,border-color .15s,transform .2s var(--ease)}.rail-nav a:hover{color:var(--bc-ink)}.rail-nav a[data-state="done"]::before{background:var(--bc-accent);border-color:var(--bc-accent)}.rail-nav a[aria-current="true"]{color:var(--bc-ink);font-weight:600}.rail-nav a[aria-current="true"]::before{background:var(--bc-bg);border-color:var(--bc-accent);transform:scale(1.25);box-shadow:0 0 0 3px var(--bc-accent-tint)}.rail-nav .n,.chipnav .n{font-variant-numeric:tabular-nums;font-size:.75rem;letter-spacing:.05em;opacity:.8;margin-right:4px}.rail-status{font-size:.8125rem;color:var(--bc-ink-muted);line-height:1.45;display:grid;gap:6px}.rail-status b{color:var(--bc-ink)}.rail-foot{font-size:.8125rem;line-height:1.5;color:var(--bc-ink-muted);max-width:26ch}.rail-actions{display:flex;gap:8px;align-items:center}.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;margin-inline:calc(-1 * clamp(16px,4vw,32px));padding-inline:clamp(16px,4vw,32px);background:color-mix(in srgb,var(--bc-bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--bc-border)}@media (min-width:1080px){.topbar{display:none}}.topbar-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px 4px}.topbar-row b{font-family:var(--font-display);font-size:.9375rem;letter-spacing:-.01em;white-space:nowrap}@media (max-width:520px){.topbar .btn-theme .lbl{display:none}.topbar .btn-theme{padding:6px 10px}}.topbar-row .where{font-size:.8125rem;color:var(--bc-ink-muted);font-variant-numeric:tabular-nums;white-space:nowrap;margin-left:auto}.chipnav{display:flex;gap:6px;overflow-x:auto;padding-block:6px 10px;margin:0;list-style:none;scrollbar-width:none}.chipnav::-webkit-scrollbar{display:none}.chipnav a{display:inline-flex;align-items:center;white-space:nowrap;min-height:36px;padding:6px 13px;border-radius:999px;border:1px solid var(--bc-border);background:var(--bc-surface);color:var(--bc-ink-muted);font-size:.875rem;font-weight:500;text-decoration:none;transition:background .15s,border-color .15s,color .15s}.chipnav a[aria-current="true"]{background:var(--bc-accent-tint);border-color:var(--bc-accent);color:var(--bc-accent-ink);font-weight:600}.btn-theme{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 13px;border-radius:999px;border:1px solid var(--bc-border);background:var(--bc-surface);color:var(--bc-ink);font:500 .8125rem var(--font-body);cursor:pointer;transition:border-color .15s}.btn-theme:hover{border-color:var(--bc-accent)}.btn-theme .ic{width:16px;height:16px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:var(--r-md);border:1px solid transparent;font:600 1rem var(--font-display);letter-spacing:-.005em;text-decoration:none;cursor:pointer;transition:background .12s,transform .12s var(--ease),border-color .12s}.btn-primary{background:var(--bc-accent);color:var(--bc-on-accent)}.btn-primary:hover{background:var(--bc-accent-hover);transform:translateY(-1px);text-decoration:none}.btn-primary:active{transform:translateY(0) scale(.99)}.btn .ic{width:20px;height:20px;stroke-width:2}.link-quiet{display:inline-flex;align-items:center;min-height:44px;color:var(--bc-ink);font-weight:500;text-decoration:underline;text-decoration-color:var(--bc-border-strong);text-underline-offset:.25em}.link-quiet:hover{text-decoration-color:var(--bc-accent)}.chip{display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:3px 11px;border-radius:999px;font:500 .8125rem/1.25 var(--font-body);border:1px solid var(--bc-border);color:var(--bc-ink);background:var(--bc-surface-2)}.chip .ic{width:14px;height:14px}.chip-ready{background:var(--bc-accent-tint);border-color:transparent;color:var(--bc-accent-ink);font-weight:600}.chip-ready{--ck:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}.chip-ready::before{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:var(--ck) center/contain no-repeat;mask:var(--ck) center/contain no-repeat}.chip-soon{background:transparent;border-style:dashed;border-color:var(--bc-border-strong);color:var(--bc-ink-muted)}.chip-warn{background:var(--bc-warn-tint);border-color:transparent;color:var(--bc-warn-ink);font-weight:600}.chip-you{background:transparent;border-color:var(--bc-ink);color:var(--bc-ink);font-weight:600}.chip-claude{background:var(--bc-accent-tint);border-color:transparent;color:var(--bc-accent-ink);font-weight:600}.chip-both{background:var(--bc-sand-tint);border-color:transparent;color:var(--bc-sand-ink);font-weight:600}.chip-need{background:var(--bc-surface-2);color:var(--bc-ink)}.chips{display:flex;flex-wrap:wrap;gap:6px}.hero{padding-block:clamp(24px,4vw,44px) 0}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.logo{display:block;height:auto;width:clamp(190px,26vw,250px)}.logo-dark{display:none}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-light{display:none}:root:not([data-theme="light"]) .logo-dark{display:block}}:root[data-theme="dark"] .logo-light{display:none}:root[data-theme="dark"] .logo-dark{display:block}.ver{font:500 .8125rem/1.4 var(--font-body);color:var(--bc-ink-muted);text-align:right;font-variant-numeric:tabular-nums}.eyebrow{display:flex;align-items:center;gap:10px;font:500 .78rem var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--bc-accent-ink);margin:clamp(32px,5vw,52px) 0 16px}.eyebrow::before{content:"";width:22px;height:2px;background:var(--bc-accent);flex:none}.hero h1{font-size:clamp(2.15rem,5.4vw,3.5rem);line-height:1.04;letter-spacing:-.022em;max-width:22ch}.hero-grid{display:grid;gap:34px;margin-top:clamp(28px,4vw,52px);align-items:start}@container content (min-width:780px){.hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:clamp(32px,5vw,64px)}}.lead{font-size:clamp(1.0625rem,.5vw + 1rem,1.25rem);line-height:1.5;max-width:46ch}.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:26px}.hint{font-size:.9375rem;color:var(--bc-ink-muted);max-width:52ch;margin-top:12px;line-height:1.5}.say{position:relative;border:1px solid var(--bc-border);border-radius:var(--r-xl);background:var(--bc-surface);padding:clamp(20px,3vw,26px);display:grid;gap:14px;margin-top:46px}@container content (min-width:780px){.say{margin-top:0}}.art{fill:none;stroke:var(--il-line);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.say-art{position:absolute;right:22px;top:-46px;width:104px;height:56px;pointer-events:none}.say-kicker{font:600 .78rem var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--bc-ink-muted)}.invoke{display:flex;align-items:center;gap:8px;background:var(--bc-ink);border-radius:var(--r-md);padding:4px 4px 4px 16px;width:fit-content;max-width:100%}.invoke code{background:none;border-radius:0;font-family:var(--font-mono);font-size:.9rem;color:var(--bc-bg);padding:8px 0;line-height:1.35;flex:1;min-width:0;overflow-wrap:anywhere}.invoke .copy-btn{min-height:40px;min-width:40px;padding:4px 10px;color:var(--bc-bg);border-color:color-mix(in srgb,var(--bc-bg) 40%,transparent);flex:none}.invoke .copy-btn:focus-visible{outline-color:var(--bc-bg)}.invoke .copy-btn:hover{background:color-mix(in srgb,var(--bc-bg) 18%,transparent);border-color:var(--bc-accent)}.invoke .copy-btn.done{background:color-mix(in srgb,var(--bc-bg) 22%,transparent);border-color:var(--bc-accent);color:var(--bc-bg)}.invoke-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:.9375rem}.say p{font-size:.9375rem;color:var(--bc-ink-muted);line-height:1.5}.say p b{color:var(--bc-ink)}.copy-btn{display:inline-flex;align-items:center;gap:7px;min-height:44px;min-width:44px;justify-content:center;padding:6px 12px;border:1px solid var(--bc-border-strong);border-radius:var(--r-md);background:transparent;color:var(--bc-ink);font:500 .8125rem var(--font-body);cursor:pointer;transition:border-color .12s,background .12s}.copy-btn:hover{border-color:var(--bc-accent);background:var(--bc-accent-tint)}.copy-btn .ic{width:16px;height:16px}.copy-btn .ic-done{display:none}.copy-btn.done{border-color:var(--bc-accent);background:var(--bc-accent-tint);color:var(--bc-accent-ink)}.copy-btn.done .ic-copy{display:none}.copy-btn.done .ic-done{display:inline}.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);z-index:80;background:var(--bc-ink);color:var(--bc-bg);padding:10px 16px;border-radius:var(--r-md);font:500 .9375rem var(--font-body);opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);box-shadow:0 1px 2px rgba(0,0,0,.25),0 10px 28px rgba(0,0,0,.25);max-width:calc(100vw - 32px)}.toast.show{opacity:1;transform:translate(-50%,0)}.part{padding-top:clamp(64px,9vw,104px);scroll-margin-top:24px}@media (max-width:1079px){.part,.journey-wrap{scroll-margin-top:112px}}.part + .part{margin-top:clamp(64px,9vw,104px);border-top:1px solid var(--bc-border)}.part-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(14px,2.5vw,28px);row-gap:12px;align-items:end;margin-bottom:clamp(32px,4vw,48px)}.part-num{grid-row:span 2;font:300 clamp(4rem,10vw,7.25rem)/.78 var(--font-display);letter-spacing:-.05em;color:var(--bc-ink);font-variant-numeric:tabular-nums;user-select:none}.part-head h2{align-self:end}.dek{grid-column:2;font-size:1.125rem;line-height:1.5;color:var(--bc-ink-muted);max-width:56ch}@media (max-width:560px){.part-head{grid-template-columns:1fr}.part-num{grid-row:auto;font-size:3.75rem}.dek{grid-column:1}}.part-head.compact{margin-bottom:clamp(24px,3vw,32px)}.part-head.compact{align-items:center}.part-head.compact .part-num{font-size:clamp(2.75rem,6vw,4rem);align-self:center}.part-head.compact h2{align-self:end}.part-head.compact .dek{align-self:start}.sub{margin-top:clamp(40px,5vw,60px)}.sub h3,.split2 h3{margin-bottom:8px}.sub-dek{color:var(--bc-ink-muted);max-width:62ch;margin-bottom:22px}.prose{max-width:66ch}.prose p + p{margin-top:12px}.muted{color:var(--bc-ink-muted)}.callout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;padding:14px 16px;border-radius:var(--r-lg);border:1px solid color-mix(in srgb,var(--bc-accent) 35%,transparent);background:var(--bc-accent-tint);color:var(--bc-ink);font-size:.9688rem;line-height:1.5}.callout .ic{margin-top:2px;color:var(--bc-accent-ink)}.callout b.k{display:block;font:700 .78rem var(--font-display);letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px;color:var(--bc-accent-ink)}.callout.trap{background:var(--bc-warn-tint);border-color:color-mix(in srgb,var(--bc-warn) 40%,transparent)}.callout.trap .ic,.callout.trap b.k{color:var(--bc-warn-ink)}.callout.sand{background:var(--bc-sand-tint);border-color:color-mix(in srgb,var(--bc-sand) 50%,transparent)}.callout.sand .ic,.callout.sand b.k{color:var(--bc-sand-ink)}.callout p + p{margin-top:8px}.callout ul{margin:6px 0 0;padding-left:1.1em;display:grid;gap:4px}.callouts{display:grid;gap:14px}@container content (min-width:700px){.callouts.two{grid-template-columns:1fr 1fr}.callouts.three{grid-template-columns:repeat(3,minmax(0,1fr))}}.code-panel{background:#1c2128;border:1px solid #2c333d;border-radius:var(--r-lg);overflow:hidden;min-width:0}.code-panel-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 8px 6px 14px;background:#22282f;border-bottom:1px solid #2c333d}.code-panel-lang{font:500 .6875rem var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:#98a2b1}.code-panel pre{margin:0;padding:14px 18px;overflow-x:auto;scrollbar-width:thin}.code-panel code{background:none;padding:0;border-radius:0;font-family:var(--font-mono);font-size:.8125rem;line-height:1.65;color:#d8dee9;white-space:pre}.code-panel .copy-btn{min-height:36px;min-width:36px;padding:4px 10px;color:#c5ccd6;border-color:#414a56}.code-panel .copy-btn:focus-visible{outline-color:#55C6B5}.code-panel .copy-btn:hover{color:#fff;border-color:#55C6B5;background:rgba(85,198,181,.12)}.code-panel .copy-btn.done{color:#bff3ea;border-color:#55C6B5;background:rgba(85,198,181,.16)}.plat-bar{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--bc-code-bg);border:1px solid var(--bc-border)}.plat-bar .hs{display:inline}@media (max-width:520px){.plat-bar{display:flex;width:100%}.plat-bar button{flex:1 1 0;padding:8px 6px;font-size:.8125rem}.plat-bar .hs{display:none}}.plat-bar button{min-height:44px;padding:8px 18px;border-radius:999px;border:0;background:transparent;color:var(--bc-ink-muted);font:600 .875rem var(--font-display);cursor:pointer;transition:background .18s var(--ease),color .18s}.plat-bar button:hover{color:var(--bc-ink)}.plat-bar button[aria-selected="true"]{background:var(--bc-surface);color:var(--bc-ink);box-shadow:inset 0 0 0 1.5px var(--bc-ink)}.plat-label{font-size:.9375rem;color:var(--bc-ink-muted);margin-bottom:10px}.plat-panel{margin-top:22px}.js .plat-panel [data-p]:not(.on){display:none}.p-tag{display:none}@media print{.p-tag{display:inline-block}}.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:st}.step{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:18px;padding-bottom:30px;position:relative}.step:last-child{padding-bottom:0}.step::before{counter-increment:st;content:counter(st);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--bc-surface);border:1.5px solid var(--bc-ink);font:700 1rem var(--font-display);font-variant-numeric:tabular-nums;z-index:1}.step::after{content:"";position:absolute;left:21.5px;top:48px;bottom:4px;width:1.5px;background:var(--bc-border)}.step:last-child::after{display:none}.step h4{font-size:1.1875rem;letter-spacing:-.01em;margin-top:9px}.step .body{display:grid;gap:10px;min-width:0}.step p{max-width:62ch}.step .aside{font-size:.9375rem;color:var(--bc-ink-muted)}.facts{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--bc-border)}.facts li{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--bc-border)}.facts li > b{font-family:var(--font-display);font-size:.9375rem;font-weight:700}@media (max-width:560px){.facts li{grid-template-columns:1fr}}.acc{border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);margin-top:18px}.acc-btn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:56px;padding:14px 18px;background:transparent;border:0;color:var(--bc-ink);text-align:left;font:700 1.0625rem var(--font-display);letter-spacing:-.01em;cursor:pointer;border-radius:var(--r-lg)}.acc-btn small{display:block;font:400 .9rem var(--font-body);color:var(--bc-ink-muted);letter-spacing:0;margin-top:2px}.acc-btn .ic{width:22px;height:22px;transition:transform .25s var(--ease);color:var(--bc-ink-muted)}.acc-btn[aria-expanded="true"] .ic{transform:rotate(180deg)}.acc-btn:hover .ic{color:var(--bc-ink)}.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease)}.acc-panel.open{grid-template-rows:1fr}.acc-inner{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s .3s}.acc-panel.open .acc-inner{visibility:visible;transition:visibility 0s}.ic.sm{width:16px;height:16px}.acc-body .rules{margin:0}.acc-body{padding:4px 18px 20px;display:grid;gap:14px}.journey-wrap{container:journey / inline-size;margin-top:8px}.journey{position:relative}.sea{display:none;position:absolute;left:0;top:0;width:100%;height:164px;pointer-events:none;overflow:hidden}.sea path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}.sea path.fill{fill:var(--bc-accent-tint);stroke:none}.sea .w1{stroke:var(--il-line);stroke-width:2.5}.sea .w2{stroke:var(--il-sea);stroke-width:1.75;opacity:.7}.sea .w3{stroke:var(--il-sea);stroke-width:1.5;opacity:.4}.stops{--wv:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 60'%3E%3Cpath d='M44 0C58 15 58 15 44 30S30 45 44 60' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E")}.stop:not(:last-child)::before,.stop:not(:last-child)::after{content:"";position:absolute;left:0;top:86px;bottom:-2px;width:88px;-webkit-mask:var(--wv) repeat-y 0 0/88px 60px;mask:var(--wv) repeat-y 0 0/88px 60px;pointer-events:none}.stop:not(:last-child)::before{background:var(--il-sea);opacity:.6;transform:translateX(13px)}.stop:not(:last-child)::after{background:var(--il-line)}.stops{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}.stop{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:22px;padding-bottom:30px}.stop:last-child{padding-bottom:0}.stop-art{position:relative;z-index:1;width:88px;height:88px;border-radius:50%;background:var(--bc-surface);border:1.5px solid var(--bc-border-strong);display:grid;place-items:center;grid-row:span 2}.stop-art svg{width:68px;height:68px}.stop-n{position:absolute;left:-4px;top:-4px;width:30px;height:30px;border-radius:50%;background:var(--bc-ink);color:var(--bc-bg);display:grid;place-items:center;font:700 .875rem var(--font-display);font-variant-numeric:tabular-nums}.stop h3{font-size:1.1875rem;line-height:1.2;margin-top:6px}.stop p{font-size:.9688rem;line-height:1.45;color:var(--bc-ink-muted);margin-top:6px;max-width:34ch}.stop .chip{margin-top:10px;justify-self:start;align-self:start}.stop h3,.stop p,.stop .chip{grid-column:2}@container journey (min-width:780px){.stop::before,.stop::after{display:none!important}.sea{display:block}.stops{grid-template-columns:repeat(6,minmax(0,1fr))}.stop{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px}.stop-slot{height:164px;display:flex;justify-content:center;align-items:flex-start;padding-top:10px}.stop:nth-child(even) .stop-slot{padding-top:40px}.stop-art{width:112px;height:112px;grid-row:auto}.stop-art svg{width:88px;height:88px}.stops{align-items:stretch}.stop{height:100%}.stop h3{margin-top:0;font-size:1.0625rem;min-height:2.3em}.stop p{margin-inline:auto;font-size:.9375rem;max-width:22ch;margin-bottom:16px}.stop .chip{justify-self:center;align-self:center;margin-top:auto}}.stop-slot{display:contents}@container journey (min-width:780px){.stop-slot{display:flex}}.stop-art{grid-column:1}.trio{display:grid;gap:0;margin:clamp(40px,5vw,56px) 0 0;padding:0;list-style:none;border-top:1px solid var(--bc-border)}.trio li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:18px 0;border-bottom:1px solid var(--bc-border);align-content:start}.trio .ic{width:28px;height:28px;color:var(--bc-accent-ink);grid-row:span 2;margin-top:2px;stroke-width:1.6}.trio b{font-family:var(--font-display);font-size:1.0625rem;font-weight:700;line-height:1.25}.trio span{color:var(--bc-ink-muted);max-width:60ch}@container content (min-width:760px){.trio{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:0;border-bottom:1px solid var(--bc-border)}.trio li{border-bottom:0;padding:22px 24px 22px 0}.trio li + li{padding-left:24px;border-left:1px solid var(--bc-border)}}.modes{display:grid;gap:0;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);overflow:hidden;margin:0;padding:0;list-style:none}.mode{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:16px 18px;border-bottom:1px solid var(--bc-border);align-content:start}.mode:last-child{border-bottom:0}.mode .ic{width:22px;height:22px;grid-row:span 2;margin-top:2px;color:var(--bc-ink-muted)}.mode > b{font:700 1.0625rem var(--font-display);display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.mode span.d{color:var(--bc-ink-muted);font-size:.9688rem}.mode.start{background:var(--bc-accent-tint)}.mode.start .ic{color:var(--bc-accent-ink)}.mode.avoid{background:var(--bc-warn-tint)}.mode.avoid .ic{color:var(--bc-warn-ink)}@container content (min-width:820px){.modes{grid-template-columns:repeat(4,minmax(0,1fr))}.mode{grid-template-columns:1fr;border-bottom:0;border-right:1px solid var(--bc-border);padding:18px 18px 20px}.mode:last-child{border-right:0}.mode .ic{grid-row:auto}.mode > b{flex-direction:column;align-items:flex-start;min-height:3.7rem}}.file{border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);overflow:hidden}.file-bar{display:flex;align-items:center;gap:10px;padding:9px 16px;background:var(--bc-surface-2);border-bottom:1px solid var(--bc-border);font:500 .8125rem var(--font-mono);color:var(--bc-ink-muted)}.file pre{margin:0;padding:16px 18px;font:400 .78rem/1.7 var(--font-mono);color:var(--bc-ink);white-space:pre-wrap;overflow-wrap:anywhere}.file .hd{color:var(--bc-accent-ink);font-weight:600}.file .done{color:var(--bc-ink)}.file .todo{color:var(--bc-ink-muted)}.split2{display:grid;gap:28px;grid-template-columns:minmax(0,1fr)}.split2 > *{min-width:0}@container content (min-width:820px){.split2{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px;align-items:start}}.promises{display:grid;gap:0;margin:0 0 clamp(28px,4vw,40px);padding:0;list-style:none;border-top:1px solid var(--bc-border)}.promises li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--bc-border);align-content:start}.promises .ic{width:24px;height:24px;color:var(--bc-accent-ink);grid-row:span 2;margin-top:2px}.promises b{font:700 1rem var(--font-display);line-height:1.3}.promises span{color:var(--bc-ink-muted);font-size:.9688rem}@container content (min-width:760px){.promises{grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--bc-border)}.promises li{border-bottom:0;padding:20px 22px 20px 0}.promises li + li{padding-left:22px;border-left:1px solid var(--bc-border)}}.gallery{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);margin:0;padding:0;list-style:none}@container content (min-width:600px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}@container content (min-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}.skill{display:flex;flex-direction:column;gap:14px;padding:22px;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);min-width:0}.skill-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.tile{display:grid;place-items:center;width:60px;height:60px;border-radius:var(--r-lg);background:var(--bc-accent-tint);flex:none}.tile svg{width:44px;height:44px}.skill h3{font-size:1.25rem;letter-spacing:-.015em}.skill .cat{font:500 .8125rem var(--font-body);color:var(--bc-ink-muted);margin-top:4px}.skill .sum{font-size:.9938rem;line-height:1.5}.skill .say-it{font-size:.9375rem;color:var(--bc-ink-muted);line-height:1.4;margin-top:auto}.skill .say-it q{color:var(--bc-ink);font-weight:500;quotes:"\201C" "\201D"}.skill .needs{display:grid;gap:8px}.skill .needs-h{font:600 .72rem var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--bc-ink-muted)}.skill .first{font-size:.875rem;color:var(--bc-accent-ink);font-weight:600;display:flex;gap:6px;align-items:center}.skill.wide{grid-column:1/-1}@container content (min-width:760px){.skill.wide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:36px;row-gap:14px;align-content:start}.skill.wide .wa-main{display:flex;flex-direction:column;gap:14px}}.skill.wide .wa-warn{display:grid;gap:12px;align-content:start;padding:16px 18px;border-radius:var(--r-lg);background:var(--bc-warn-tint);border:1px solid color-mix(in srgb,var(--bc-warn) 40%,transparent)}.wa-warn h4{display:flex;align-items:center;gap:8px;color:var(--bc-warn-ink);font-size:1rem}.wa-warn ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}.wa-warn li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:.9688rem;line-height:1.45}.wa-warn li .ic{width:18px;height:18px;color:var(--bc-warn-ink);margin-top:2px}.soon{display:flex;flex-wrap:wrap;gap:12px;margin:0;padding:0;list-style:none}.soon li{flex:1 1 200px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:14px 16px;border:1.5px dashed var(--bc-border-strong);border-radius:var(--r-lg);background:transparent;min-width:0}.soon .ic{width:22px;height:22px;color:var(--bc-ink-muted);grid-row:span 2;margin-top:2px}.soon b{font:700 .9688rem var(--font-display)}.soon span{font-size:.9rem;line-height:1.4;color:var(--bc-ink-muted)}.trio-say{display:grid;gap:14px;margin:0;padding:0;list-style:none}@container content (min-width:760px){.trio-say{grid-template-columns:repeat(3,minmax(0,1fr))}}.say-card{display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface)}.say-card h3{font-size:1.125rem}.say-card p{font-size:.9688rem;color:var(--bc-ink-muted);line-height:1.5}.say-card p b{color:var(--bc-ink)}.rules{margin:0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--bc-border)}h3 + .rules{margin-top:14px}.step h4 .chip{margin-left:6px}.rules li{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:4px 28px;padding:14px 0;border-bottom:1px solid var(--bc-border)}.rules li > b{font:700 .9688rem var(--font-display);line-height:1.3}.rules span{color:var(--bc-ink)}@media (max-width:640px){.rules li{grid-template-columns:1fr}}.anatomy{display:grid;gap:0;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);overflow:hidden}.anat-head{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--bc-surface-2);border-bottom:1px solid var(--bc-border);font:500 .875rem var(--font-mono);color:var(--bc-ink-muted);flex-wrap:wrap}.anat-head .ic{width:18px;height:18px}.fileline{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:4px 20px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--bc-border)}.fileline:last-child{border-bottom:0}.fileline code{font-family:var(--font-mono);font-size:.875rem;font-weight:500;color:var(--bc-ink);overflow-wrap:anywhere}.fileline .d{font-size:.9688rem;color:var(--bc-ink-muted)}.fileline .d b{color:var(--bc-ink)}.fileline.repo{background:var(--bc-accent-tint)}.fileline.repo .d{color:var(--bc-accent-ink)}.fileline.mine{background:var(--bc-sand-tint)}.fileline.mine .d{color:var(--bc-sand-ink)}.wall{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;height:34px;background:var(--bc-surface);border-bottom:1px solid var(--bc-border);font:600 .78rem var(--font-body);letter-spacing:.05em;text-transform:uppercase;color:var(--bc-ink-muted);overflow:hidden}.wall svg{position:absolute;inset:0;width:100%;height:100%}.wall span{position:relative;background:var(--bc-surface);padding:2px 12px}@media (max-width:640px){.fileline{grid-template-columns:1fr}}@media (max-width:640px){.fileline code{font-size:.8125rem}}.tree{border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-code-bg);padding:16px 18px;overflow-x:auto;scrollbar-width:thin}.tree pre{margin:0;font:400 .78rem/1.85 var(--font-mono);color:var(--bc-ink-muted);white-space:pre}.tree b{color:var(--bc-accent-ink);font-weight:600}.tree .c{color:var(--bc-ink-muted);opacity:.9}.types{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--bc-border)}.types li{display:grid;grid-template-columns:minmax(0,8rem) minmax(0,1fr);gap:4px 20px;padding:13px 0;border-bottom:1px solid var(--bc-border)}.types li > b{font:700 .9688rem var(--font-display)}.types span{color:var(--bc-ink)}@media (max-width:560px){.types li{grid-template-columns:1fr}}.levels{display:grid;gap:14px}@container content (min-width:700px){.levels{grid-template-columns:1fr 1fr}}.level{padding:18px 20px;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);display:grid;gap:8px;align-content:start}.level h4{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.level p{font-size:.9688rem;color:var(--bc-ink-muted)}.level.yours{background:var(--bc-accent-tint);border-color:color-mix(in srgb,var(--bc-accent) 35%,transparent)}.level.yours p{color:var(--bc-ink)}.flow{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:fl}@container content (min-width:780px){.flow{grid-template-columns:repeat(4,minmax(0,1fr));gap:0}.flow li:not(:last-child)::after{content:"";position:absolute;left:46px;right:10px;top:16px;height:2px;background:var(--bc-border-strong);border-radius:2px}}.flow li{position:relative;counter-increment:fl;display:grid;gap:8px;align-content:start;padding:0 22px 0 0}@container content (min-width:780px){.flow li{padding-right:30px}}.flow li::before{content:counter(fl);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--bc-ink);color:var(--bc-bg);font:700 .9375rem var(--font-display);font-variant-numeric:tabular-nums}.flow h3{font-size:1.0625rem}.flow p{font-size:.9688rem;color:var(--bc-ink-muted);line-height:1.5}.routes{border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);overflow-x:auto}.routes table{width:100%;border-collapse:collapse;font-size:.9688rem;min-width:520px}.routes th{text-align:left;font:600 .72rem var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--bc-ink-muted);padding:10px 16px;background:var(--bc-surface-2);border-bottom:1px solid var(--bc-border)}.routes td{padding:12px 16px;border-bottom:1px solid var(--bc-border);vertical-align:top;line-height:1.45}.routes tr:last-child td{border-bottom:0}.routes td:first-child{font-weight:600;white-space:nowrap;padding-right:8px;color:var(--bc-ink)}.gsteps{margin:0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:gs}.gsteps > li{counter-increment:gs;display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px}.gsteps > li::before{content:counter(gs);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--bc-ink);font:700 .8125rem var(--font-display);font-variant-numeric:tabular-nums;margin-top:1px}.gsteps > li > div{display:grid;gap:8px;min-width:0}.check-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}.meter{display:flex;align-items:center;gap:14px;flex:1 1 240px;max-width:420px}.meter .bar{flex:1;height:8px;border-radius:999px;background:var(--bc-border);overflow:hidden}.meter .bar i{display:block;height:100%;width:100%;background:var(--bc-accent);transform-origin:0 50%;transform:scaleX(var(--c,0));transition:transform .25s var(--ease)}.meter .count{font:600 .9375rem var(--font-body);font-variant-numeric:tabular-nums;color:var(--bc-ink);white-space:nowrap}.btn-ghost{min-height:44px;padding:8px 16px;border-radius:var(--r-md);border:1px solid var(--bc-border-strong);background:transparent;color:var(--bc-ink);font:500 .875rem var(--font-body);cursor:pointer;transition:border-color .12s,background .12s}.btn-ghost:hover{border-color:var(--bc-accent);background:var(--bc-accent-tint)}.checklist{list-style:none;margin:0;padding:0;border:1px solid var(--bc-border);border-radius:var(--r-lg);background:var(--bc-surface);overflow:hidden}.checklist li{border-bottom:1px solid var(--bc-border)}.checklist li:last-child{border-bottom:0}.checklist label{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;align-items:start;padding:16px 18px;cursor:pointer;transition:background .12s}.checklist label:hover{background:var(--bc-surface-2)}.checklist input{appearance:none;-webkit-appearance:none;margin:0;width:24px;height:24px;border-radius:7px;border:2px solid var(--bc-border-strong);background:var(--bc-surface);display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s;margin-top:1px}.checklist input::after{content:"";width:12px;height:7px;border-left:2.5px solid var(--bc-on-accent);border-bottom:2.5px solid var(--bc-on-accent);transform:translateY(-1px) rotate(-45deg) scale(0);transition:transform .18s var(--ease)}.checklist input:checked{background:var(--bc-accent);border-color:var(--bc-accent)}.checklist input:checked::after{transform:translateY(-1px) rotate(-45deg) scale(1)}.checklist input:focus-visible{outline:2px solid var(--bc-focus);outline-offset:3px}.checklist .t{display:block;font-weight:500;line-height:1.35}.checklist .s{display:block;font-size:.9375rem;color:var(--bc-ink-muted);line-height:1.45;margin-top:2px}.checklist input:checked ~ .lab .t{color:var(--bc-ink-muted);text-decoration:line-through;text-decoration-thickness:1px}.checklist .later{font:500 .78rem var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--bc-ink-muted)}.traps{margin:0;padding:0;list-style:none;border-top:1px solid var(--bc-border)}.trap-group{font:700 .78rem var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--bc-ink-muted);padding:22px 0 8px}.traps li{display:grid;grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:4px 28px;padding:14px 0;border-bottom:1px solid var(--bc-border)}.traps li > b{font:700 .9688rem var(--font-display);line-height:1.3;display:flex;gap:10px;align-items:flex-start}.traps li > b::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;background:var(--bc-warn-ink);-webkit-mask:var(--wn) center/contain no-repeat;mask:var(--wn) center/contain no-repeat;--wn:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4l9.5 16.5h-19zM12 10.5v4.5M12 18v.1' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}@media (max-width:700px){.traps li{grid-template-columns:1fr}}.finale{margin-top:clamp(56px,7vw,80px);padding:clamp(24px,4vw,40px);border-radius:var(--r-xl);border:1px solid var(--bc-border);background:var(--bc-surface);display:grid;gap:18px;position:relative;overflow:hidden}.finale h3{font-size:clamp(1.5rem,2vw + .8rem,2rem);letter-spacing:-.02em;max-width:22ch}.finale p{max-width:58ch;color:var(--bc-ink-muted)}.finale .cta-row{margin-top:4px}.finale-art{position:absolute;right:-6px;bottom:-2px;width:min(46%,300px);height:auto;pointer-events:none;opacity:1}@media (max-width:640px){.finale-art{display:none}}.help{display:grid;gap:6px;font-size:.9688rem;margin-top:8px}.help p{color:var(--bc-ink);max-width:62ch}footer.colophon{margin-top:clamp(56px,7vw,80px);padding-top:24px;border-top:1px solid var(--bc-border);font-size:.9rem;line-height:1.6;color:var(--bc-ink-muted);max-width:76ch}footer.colophon a{color:var(--bc-ink-muted)}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes wipe{from{clip-path:inset(-20px 100% -20px 0)}to{clip-path:inset(-20px 0 -20px 0)}}@keyframes pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:no-preference){.hero-top,.hero .eyebrow,.hero h1,.hero .lead,.hero .cta-row,.hero .hint,.say{animation:rise .6s var(--ease) both}.hero .eyebrow{animation-delay:.06s}.hero h1{animation-delay:.11s}.hero .lead{animation-delay:.17s}.hero .cta-row{animation-delay:.23s}.hero .hint{animation-delay:.28s}.say{animation-delay:.3s}.js .journey:not(.in) .stop{opacity:0}.js .journey.in .stop{animation:pop .45s var(--ease) both;animation-delay:calc(var(--i) * 110ms + 150ms)}.js .journey:not(.in) .sea{clip-path:inset(-20px 100% -20px 0)}.js .journey.in .sea{animation:wipe 1.6s var(--ease) both}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}@page{size:A4;margin:13mm 12mm 15mm}@media print{html{font-size:9.4pt}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;line-height:1.45}*{animation:none!important;transition:none!important}.js .journey:not(.in) .stop{opacity:1!important;transform:none!important}.js .journey:not(.in) .sea{clip-path:none!important}.rail,.topbar,.progress,.toast,.skip,.copy-btn,.plat-bar,.btn-theme,.check-head .btn-ghost,.plat-label{display:none!important}.cta-row::after{content:"Download link:https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md";flex-basis:100%;font:400 7.5pt var(--font-mono);color:var(--bc-ink-muted);overflow-wrap:anywhere;margin-top:4pt}.shell{display:block;padding:0;max-width:none}.logo-light{display:block!important}.logo-dark{display:none!important}.hero{padding-top:0}.hero-top .logo{width:150pt}.eyebrow{margin:14pt 0 8pt}.hero h1{font-size:26pt}.hero .hint{display:none}.journey-wrap{break-inside:avoid;page-break-inside:avoid}.hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)!important;margin-top:8pt;gap:20pt}.lead{font-size:10.5pt}.say{margin-top:26pt!important;padding:12pt}.part{padding-top:16pt}.part + .part{margin-top:16pt}.part-body{margin-top:26pt!important}.part-head{margin-bottom:10pt}.part-num{font-size:32pt}.part-head.compact .part-num{font-size:26pt}h2{font-size:17pt}h3{font-size:12pt}.dek{font-size:10.5pt}.sub{margin-top:14pt}.sub > .sub-dek{margin-bottom:8pt}.rules li,.types li,.facts li,.traps li,.promises li,.trio li{padding-top:5pt;padding-bottom:5pt}.step{padding-bottom:9pt}.callout{padding:7pt 10pt}.acc{margin-top:10pt}.checklist label{padding:6pt 10pt}.code-panel-bar{display:none}.code-panel pre{padding:6pt 10pt}.invoke{padding:2pt 2pt 2pt 10pt}.skill{padding:9pt;gap:6pt}.say-card{padding:9pt;gap:6pt}.mode{padding:7pt 9pt}.fileline{padding:5pt 10pt}.anat-head{padding:6pt 10pt}.level{padding:9pt 11pt}.finale{margin-top:18pt;padding:14pt}.finale-art{display:block;width:140pt}.promises{margin-bottom:12pt}.trio{margin-top:16pt}.trap-group{padding:10pt 0 4pt}footer.colophon{margin-top:14pt;padding-top:10pt}.skill,.callout,.say,.say-card,.level,.fileline,.file,.code-panel,.tree,.finale,.flow li,.traps li,.checklist li,.facts li,.rules li,.types li,.mode,.stop,.soon li,.promises li,.trio li,.wa-warn,.gsteps > li,.routes tr,.wall{break-inside:avoid;page-break-inside:avoid}h2,h3,h4,.part-head,.trap-group,.sub-dek,.acc-btn{break-after:avoid;page-break-after:avoid}.acc-panel{grid-template-rows:1fr!important}.acc-inner{visibility:visible!important}.acc-btn .ic{display:none}.acc-btn{padding:8pt 12pt;min-height:0}.js .plat-panel [data-p]:not(.on){display:block!important}.plat-panel{margin-top:0}.plat-panel [data-p]{margin-top:3pt}.p-tag{font:700 7pt var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--bc-ink-muted);margin-right:6pt}.code-panel{background:#F1EEE8;border-color:#D9D5CE}.code-panel code{color:#1B3A5C;font-size:8pt}.invoke{background:#1B3A5C;-webkit-print-color-adjust:exact;print-color-adjust:exact}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8pt}.skill.wide{grid-column:1/-1}.tile{width:34pt;height:34pt}.tile svg{width:26pt;height:26pt}.stops{grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:none!important;grid-auto-flow:row!important;column-gap:0!important}.stop{display:flex!important;flex-direction:column;align-items:center;text-align:center;padding:0 3pt!important;height:100%}.stop-slot{display:flex!important;height:118pt}.stop-art{width:74pt;height:74pt}.stop-art svg{width:58pt;height:58pt}.stop p{font-size:8.4pt;margin-inline:auto}.sea{display:block!important;height:118pt}.stop::before,.stop::after{display:none!important}.btn-primary{border:1.5px solid #1B3A5C}}@container journey (min-width:560px) and (max-width:779px){.stops{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;column-gap:32px}.stop:nth-child(3)::before,.stop:nth-child(3)::after{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><i id="pgbar"></i></div>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<div id="toast" class="toast" role="status"></div>
+<svg class="sprite" width="0" height="0" aria-hidden="true" style="position:absolute">
+<defs>
+<path id="wg" d="M40.78 35.64L53.71 40.99A23.5 23.5 0 0 1 40.99 53.71L35.64 40.78A9.5 9.5 0 0 0 40.78 35.64Z" style="fill:var(--il-teal);stroke:none"/>
+<symbol class="il" id="i-startup" viewBox="0 0 64 64">
+<path d="M16 42a16 16 0 0 1 32 0z" class="f-sand"/>
+<path d="M32 19v-7M46.8 27.2l4.3-4.3M17.2 27.2l-4.3-4.3M52.3 36.6l5.8-1.6M11.7 36.6L5.9 35"/>
+<path d="M6 42h52"/>
+<path d="M11 50q5-4 10 0t10 0t10 0t10 0" class="st"/>
+<path d="M18 57q4-3 8 0t8 0t8 0" class="st"/>
+</symbol>
+<symbol class="il" id="i-updates" viewBox="0 0 64 64">
+<rect x="24" y="24" width="16" height="16" rx="3.5" class="f-sand"/>
+<path d="M28.5 32.5l2.7 2.7 5.3-5.6"/>
+<path d="M14.1 26.6A19 19 0 0 1 49.9 26.6"/>
+<path d="M50.6 19.4l1.3 9.1-8.6-2.6z" class="f-teal"/>
+<path d="M49.9 37.4A19 19 0 0 1 14.1 37.4"/>
+<path d="M13.4 44.6l-1.3-9.1 8.6 2.6z" class="f-teal"/>
+</symbol>
+<symbol class="il" id="i-health" viewBox="0 0 64 64">
+<path d="M32 53C13 41 9 28 15.5 20.5c5-5.5 13-3.5 16.5 3 3.5-6.5 11.5-8.5 16.5-3C55 28 51 41 32 53z" class="f-teal-tint"/>
+<path d="M12 34h10l4-9 7 19 5-13 3 3h11"/>
+</symbol>
+<symbol class="il" id="i-recordings" viewBox="0 0 64 64">
+<path d="M8 28v8M14 21v22M20 15v34M26 23v18" class="st" style="stroke-width:3.5"/>
+<path d="M31.5 32h8M37 28.5l3.5 3.5-3.5 3.5"/>
+<path d="M43 13h10l6 6v32H43z" class="f-paper"/>
+<path d="M53 13v6h6z" class="f-sand"/>
+<path d="M47.5 30h8M47.5 36h8M47.5 42h5"/>
+</symbol>
+<symbol class="il" id="i-askrob" viewBox="0 0 64 64">
+<use href="#wg"/>
+<use href="#wg" transform="rotate(90 32 32)"/>
+<use href="#wg" transform="rotate(180 32 32)"/>
+<use href="#wg" transform="rotate(270 32 32)"/>
+<circle cx="32" cy="32" r="23.5"/>
+<circle cx="32" cy="32" r="9.5"/>
+</symbol>
+<symbol class="il" id="i-whatsapp" viewBox="0 0 64 64">
+<path d="M12 12h40a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H30l-11 9v-9h-7a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" class="f-teal"/>
+<circle cx="22" cy="28" r="2.3" class="f-ink ns"/><circle cx="32" cy="28" r="2.3" class="f-ink ns"/><circle cx="42" cy="28" r="2.3" class="f-ink ns"/>
+<path d="M49 33l10.5 18.5h-21z" class="f-sand"/>
+<path d="M49 40v5.5" style="stroke-width:2.6"/><circle cx="49" cy="49" r="1.2" class="f-ink ns"/>
+</symbol>
+<symbol class="il" id="i-explain" viewBox="0 0 64 64">
+<rect x="8" y="9" width="48" height="34" rx="4.5" class="f-paper"/>
+<circle cx="22" cy="21" r="5" class="f-sand"/>
+<path d="M12 36q5-5 10 0t10 0t10 0t10 0" class="st"/>
+<path d="M14 51h36M14 57h22"/>
+</symbol>
+<symbol id="p-email" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7.5l8.5 6 8.5-6"/></symbol>
+<symbol id="p-meeting" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="p-debrief" viewBox="0 0 24 24"><path d="M6 21V4M6 5h11l-2.5 4 2.5 4H6"/></symbol>
+<symbol id="p-respond" viewBox="0 0 24 24"><path d="M10 7L4 12.5l6 5.5M4 12.5h10a6 6 0 0 1 6 6"/></symbol>
+<symbol id="p-instagram" viewBox="0 0 24 24"><path d="M6.5 3.5h11v17.5L12 16.8 6.5 21z"/></symbol>
+<symbol id="p-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z"/></symbol>
+<symbol id="p-blog" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16.5 4l3.5 3.5L8.5 19z"/><path d="M14 6.5l3.5 3.5"/></symbol>
+<symbol id="g-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.5"/><path d="M15.5 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7.5a2 2 0 0 0 2 2h2.5"/></symbol>
+<symbol id="g-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="g-down" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+<symbol id="g-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="g-warn" viewBox="0 0 24 24"><path d="M12 4l9.5 16.5h-19z"/><path d="M12 10.5v4.5M12 18v.1"/></symbol>
+<symbol id="g-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4.5l2 2.5H19a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="g-yes" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+<symbol id="g-repo" viewBox="0 0 24 24"><path d="M6.5 18a4 4 0 0 1-.7-7.9A5.5 5.5 0 0 1 16.5 8.5 4.5 4.5 0 0 1 17 18z"/></symbol>
+<symbol id="g-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></symbol>
+<symbol id="g-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+<symbol id="g-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol class="il" id="s-download" viewBox="0 0 120 120">
+<path d="M37 18h31l15 15v39H37z" class="f-paper"/>
+<path d="M68 18l15 15H68z" class="f-sand"/>
+<path d="M68 18v15h15"/>
+<path d="M45 44h30M45 51h30" class="thin"/>
+<text x="60" y="66" text-anchor="middle" class="stxt">.md</text>
+<circle cx="60" cy="88" r="11" class="f-teal ns"/>
+<path d="M60 82v12M54.5 89l5.5 5.5 5.5-5.5"/>
+<path d="M38 104h44"/>
+</symbol>
+<symbol class="il" id="s-run" viewBox="0 0 120 120">
+<rect x="22" y="27" width="76" height="60" rx="8" class="f-paper"/>
+<path d="M22 43h76"/>
+<circle cx="32" cy="35" r="2.6" class="f-sand"/><circle cx="41" cy="35" r="2.6" class="f-teal"/><circle cx="50" cy="35" r="2.6" class="f-paper"/>
+<path d="M32 55l8 6-8 6"/>
+<path d="M48 58h36M48 66h22" class="thin"/>
+<rect x="74" y="63" width="8" height="6" rx="1" class="f-teal ns"/>
+<path d="M60 87v10M46 97h28" />
+</symbol>
+<symbol class="il" id="s-interview" viewBox="0 0 120 120">
+<path d="M26 26h38a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H46l-11 10V60h-9a6 6 0 0 1-6-6V32a6 6 0 0 1 6-6z" class="f-paper"/>
+<text x="45" y="49" text-anchor="middle" class="stxt big">?</text>
+<path d="M62 58h33a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6h-5v11L77 88H62a6 6 0 0 1-6-6V64a6 6 0 0 1 6-6z" class="f-teal"/>
+<circle cx="69" cy="73" r="2.8" class="f-ink ns"/><circle cx="79" cy="73" r="2.8" class="f-ink ns"/><circle cx="89" cy="73" r="2.8" class="f-ink ns"/>
+</symbol>
+<symbol class="il" id="s-connect" viewBox="0 0 120 120">
+<path d="M8 66q6-9 12 0t8 0" class="st"/>
+<rect x="28" y="48" width="28" height="36" rx="7" class="f-sand"/>
+<path d="M56 58h14M56 74h14"/>
+<rect x="70" y="42" width="30" height="48" rx="8" class="f-teal-tint"/>
+<path d="M70 58h10M70 74h10"/>
+<circle cx="90" cy="66" r="2.8" class="f-teal ns"/>
+</symbol>
+<symbol class="il" id="s-skills" viewBox="0 0 120 120">
+<rect x="32" y="30" width="24" height="42" rx="4" class="f-teal" transform="rotate(-9 44 60)"/>
+<rect x="48" y="22" width="24" height="48" rx="4" class="f-sand"/>
+<rect x="64" y="30" width="24" height="42" rx="4" class="f-paper" transform="rotate(9 76 60)"/>
+<path d="M54 46l4.5 4.5 8.5-9" />
+<path d="M28 68h64l-6 32H34z" class="f-paper"/>
+<path d="M28 68h64"/>
+<path d="M46 82h28" class="thin"/>
+</symbol>
+<symbol class="il" id="s-updates" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="14" class="f-sand"/>
+<path d="M60 36v-5M77 43l3.5-3.5M43 43l-3.5-3.5M84 60h5M31 60h5M77 77l3.5 3.5M43 77l-3.5 3.5M60 84v5" class="thin"/>
+<path d="M22.5 45A40 40 0 0 1 97.5 45"/>
+<path d="M99 35l3.5 14-14-3z" class="f-teal"/>
+<path d="M97.5 75A40 40 0 0 1 22.5 75"/>
+<path d="M21 85l-3.5-14 14 3z" class="f-teal"/>
+</symbol>
+</defs>
+</svg>
+<div class="shell">
+<nav class="rail" aria-label="Guide outline">
+<div class="rail-brand"><b>Power Setup Field Guide</b><span>Guide version 3.0, 24 Sep 2026</span></div>
+<ol class="rail-nav" id="railnav">
+<li><a href="#overview" data-sec="overview"><span class="lab"><span class="n">00</span> Overview</span></a></li>
+<li><a href="#get-started" data-sec="get-started"><span class="lab"><span class="n">01</span> Get started</span></a></li>
+<li><a href="#run-setup" data-sec="run-setup"><span class="lab"><span class="n">02</span> What &ldquo;run my setup&rdquo; does</span></a></li>
+<li><a href="#skills" data-sec="skills"><span class="lab"><span class="n">03</span> The skills</span></a></li>
+<li><a href="#updates" data-sec="updates"><span class="lab"><span class="n">04</span> Keeping it up to date</span></a></li>
+<li><a href="#memory" data-sec="memory"><span class="lab"><span class="n">05</span> Memory and rules</span></a></li>
+<li><a href="#connect" data-sec="connect"><span class="lab"><span class="n">06</span> Connect tools</span></a></li>
+<li><a href="#checklist" data-sec="checklist"><span class="lab"><span class="n">07</span> Checklist and traps</span></a></li>
+</ol>
+<div class="rail-status">
+<span>You are at <b id="nowlabel">00 Overview</b></span>
+<span><b class="tnum" id="pctlabel">0%</b> of the page</span>
+</div>
+<div class="rail-actions"><button class="btn-theme" type="button" data-theme-btn aria-label="Theme: System"><svg class="ic"><use href="#g-auto"/></svg><span class="lbl">Theme: System</span></button></div>
+<p class="rail-foot">A map of the written guide, which has every detail and is the source of truth.</p>
+</nav>
+<main class="content" id="main">
+<div class="topbar">
+<div class="topbar-row">
+<b>Power Setup Field Guide</b>
+<span class="where" id="whereTop">00 of 07</span>
+<button class="btn-theme" type="button" data-theme-btn aria-label="Theme: System"><svg class="ic"><use href="#g-auto"/></svg><span class="lbl">Theme: System</span></button>
+</div>
+<ul class="chipnav" id="chipnav" aria-label="Guide outline">
+<li><a href="#overview" data-sec="overview"><span class="n">00</span> Overview</a></li>
+<li><a href="#get-started" data-sec="get-started"><span class="n">01</span> Get started</a></li>
+<li><a href="#run-setup" data-sec="run-setup"><span class="n">02</span> Run my setup</a></li>
+<li><a href="#skills" data-sec="skills"><span class="n">03</span> Skills</a></li>
+<li><a href="#updates" data-sec="updates"><span class="n">04</span> Updates</a></li>
+<li><a href="#memory" data-sec="memory"><span class="n">05</span> Memory</a></li>
+<li><a href="#connect" data-sec="connect"><span class="n">06</span> Connect</a></li>
+<li><a href="#checklist" data-sec="checklist"><span class="n">07</span> Checklist</a></li>
+</ul>
+</div>
+<section class="part" id="overview" aria-labelledby="h-overview" style="padding-top:0;border-top:0">
+<header class="hero">
+<div class="hero-top">
+<img class="logo logo-light" src="data:image/png;base64,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" width="529" height="70" alt="Bright Coast AI">
+<img class="logo logo-dark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhEAAABGCAMAAABFVDZGAAADAFBMVEVMaXH////////////////////+/v7////////////+/v7////////////////////////////////////////////+/v7+/v7///////+oqrDBwb/////+/v/////////MzMz///////+CfYf9/v4RAB/+///+///////////+/v/////////////+/v7////////+///////////////////////////+/v7+/v/9///9/v/U1Nf++//////////////////+///////////////+/v/+///////+///+/v/////////+/v/////////////9/v/+/v/////////////////+/v/////////+/v/9/f/+///////////+/v79/v39/v/////////////+/v/////////////////////////+///9/v/7/P7+///////+/v7////////////////7/f/+///+///09vv9/v/////////////////////////////////////8/v7////////+/v/////+/v/////8///+/v/+/v/////9/v/+///////////////////+///9///9///9/f/////9/f/////////////////////////////////+///////+///////////+///9/f/+///9///////////////////////////////////////+///+/v79/f/9/v/9///+/v7////////////+/v7////////+/v7////+///l6fv9/v/8/P/9///8/P/G2P/9///////////////////+/v7////////////////+///c7vP9/f/9/f/9///9/v7+/v7////+///////9///9///9/v79/f/9/f/6/P7y7/L///////////+q///r6/r9/v/7/v7+/f/9/v/9/f39/f/////9/v/19fz9///8/P39///9/v79/f3n5+f9/f/9/f+ZmZn8/f/////+/////v9ut1rAAAAA/XRSTlMA/QQ3A/v8Af4CDgX6rvEGkXVyVTyqyncHpQMEjnvQUAUINgIQAQ8LigwS5bGU7vk9O9fOvOiwTu5BLCkGCd2+tjMV9DV4pDG731k6ajgK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" width="529" height="70" alt="Bright Coast AI">
+<p class="ver">Guide version 3.0<br>24 Sep 2026</p>
+</div>
+<p class="eyebrow">Claude Code Power Setup Guide</p>
+<h1>Set up Claude Code around how you work</h1>
+<div class="hero-grid">
+<div class="hero-copy">
+<p class="lead">Download one file and tell Claude to read it. Claude asks what you use, connects your tools and installs the skills you pick, one step at a time, and asks before it changes anything.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md" target="_blank" rel="noopener"><svg class="ic"><use href="#g-down"/></svg>Download the guide</a>
+<a class="link-quiet" href="#journey">How it works</a>
+</div>
+<p class="hint">Right-click the button and choose Save link as (in Safari, Download Linked File As). Keep the file name ending in <code>.md</code>.</p>
+</div>
+<aside class="say" aria-label="What to say to Claude">
+<svg class="say-art" viewBox="0 0 104 56" aria-hidden="true"><g class="art"><path d="M22 56a30 30 0 0 1 60 0z" style="fill:var(--il-sand)"/><path d="M52 14V5M27 22l-6-6M77 22l6-6M12 39H5M92 39h7"/></g></svg>
+<p class="say-kicker">Then, in Claude Code, say</p>
+<div class="invoke"><code id="say-main">Read this guide and run my setup.</code><button class="copy-btn" type="button" data-copy="say-main" aria-label="Copy the sentence"></button></div>
+<p>Open Claude Code in your <b>ClaudeSetup</b> folder first. Section 01 shows how. Claude starts by asking whether Bright Coast AI gave you the guide.</p>
+</aside>
+</div>
+</header>
+<div class="part-body" style="margin-top:clamp(40px,5vw,56px)">
+<div class="part-head compact">
+<span class="part-num" aria-hidden="true">00</span>
+<h2 id="h-overview">The whole journey</h2>
+<p class="dek">Six stops, from a downloaded file to a Claude that is set up around you. You download and say one sentence, and Claude leads from there.</p>
+</div>
+<div class="journey-wrap" id="journey">
+<figure class="journey reveal" style="margin:0" aria-label="Illustrated map of the six stops of setup">
+<svg class="sea" viewBox="0 0 1200 164" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M-100 81C0 81 0 66 100 66C200 66 200 96 300 96C400 96 400 66 500 66C600 66 600 96 700 96C800 96 800 66 900 66C1000 66 1000 96 1100 96C1200 96 1200 81 1300 81L1300 125C1200 125 1200 140 1100 140C1000 140 1000 110 900 110C800 110 800 140 700 140C600 140 600 110 500 110C400 110 400 140 300 140C200 140 200 110 100 110C0 110 0 125 -100 125Z"/><path class="w3" d="M-100 105C0 105 0 90 100 90C200 90 200 120 300 120C400 120 400 90 500 90C600 90 600 120 700 120C800 120 800 90 900 90C1000 90 1000 120 1100 120C1200 120 1200 105 1300 105"/><path class="w2" d="M-100 93C0 93 0 78 100 78C200 78 200 108 300 108C400 108 400 78 500 78C600 78 600 108 700 108C800 108 800 78 900 78C1000 78 1000 108 1100 108C1200 108 1200 93 1300 93"/><path class="w1" d="M-100 81C0 81 0 66 100 66C200 66 200 96 300 96C400 96 400 66 500 66C600 66 600 96 700 96C800 96 800 66 900 66C1000 66 1000 96 1100 96C1200 96 1200 81 1300 81"/></svg>
+<ol class="stops">
+<li class="stop" style="--i:0"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A page named dot md with a download arrow beneath it"><use href="#s-download"/></svg><span class="stop-n" aria-hidden="true">1</span></div></div><h3>Download the guide</h3><p>One file, saved into a plain new folder called ClaudeSetup.</p><span class="chip chip-you">You</span></li>
+<li class="stop" style="--i:1"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A Claude Code window with a prompt"><use href="#s-run"/></svg><span class="stop-n" aria-hidden="true">2</span></div></div><h3>Run setup</h3><p>Open Claude Code in that folder and say &ldquo;Read this guide and run my setup.&rdquo;</p><span class="chip chip-you">You</span></li>
+<li class="stop" style="--i:2"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="Two speech bubbles, one with a question mark"><use href="#s-interview"/></svg><span class="stop-n" aria-hidden="true">3</span></div></div><h3>Answer a few questions</h3><p>Claude asks what you use, then three quick yes or no questions.</p><span class="chip chip-claude">Claude leads</span></li>
+<li class="stop" style="--i:3"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A plug going into a socket"><use href="#s-connect"/></svg><span class="stop-n" aria-hidden="true">4</span></div></div><h3>Connect your tools</h3><p>One at a time, from your Claude account. You type <code>/mcp</code> and Claude tests each one.</p><span class="chip chip-both">Together</span></li>
+<li class="stop" style="--i:4"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="An open box with three skill cards going in"><use href="#s-skills"/></svg><span class="stop-n" aria-hidden="true">5</span></div></div><h3>Pick your skills</h3><p>Each one is read out to you before Claude writes it. Only what you pick is installed.</p><span class="chip chip-you">You pick</span></li>
+<li class="stop" style="--i:5"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A sun with two circular arrows around it"><use href="#s-updates"/></svg><span class="stop-n" aria-hidden="true">6</span></div></div><h3>Stay up to date</h3><p>Say &ldquo;check for updates&rdquo;. You see what changed first, and your own settings are kept.</p><span class="chip chip-you">You ask</span></li>
+</ol>
+</figure>
+</div>
+<ul class="trio">
+<li><svg class="ic"><use href="#g-yes"/></svg><b>Claude asks before it changes anything</b><span>You approve each step, and every skill is read out to you before it is written.</span></li>
+<li><svg class="ic"><use href="#g-auto"/></svg><b>One or two restarts are normal</b><span>New connections and skills appear after Claude Code restarts. Claude keeps a small progress file so it carries on where it stopped.</span></li>
+<li><svg class="ic"><use href="#g-lock"/></svg><b>Your own work is never overwritten</b><span>A skill of yours with the same name stays as it is. If you say so, it is moved to a backup folder, never deleted.</span></li>
+</ul>
+</div>
+</section>
+<section class="part" id="get-started" aria-labelledby="h-get-started">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">01</span>
+<h2 id="h-get-started">Get started</h2>
+<p class="dek">Install Claude Code, make one folder, save one file and say one sentence. If Claude Code is already installed and you can log in, skip to step 3.</p>
+</div>
+<ul class="facts">
+<li><b>A paid Claude plan</b><span>Pro, Max, Team or Enterprise, or an Anthropic Console account. The free claude.ai plan does not include Claude Code. Current plans are at <code>claude.com/pricing</code>.</span></li>
+<li><b>A computer that qualifies</b><span>macOS 13 or newer, or Windows 10 (version 1809) or newer, with at least 4 GB of memory. On an older or slow machine, close spare browser tabs first.</span></li>
+<li><b>Two ways to run it</b><span>The Claude desktop app has a <b>Code</b> tab and needs no terminal. Or use a terminal: Terminal on Mac, PowerShell or Windows Terminal on Windows. Both run on your computer. Not sure? Pick the desktop app. The WhatsApp skill needs it.</span></li>
+</ul>
+<div class="callout trap" style="margin-top:22px"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Not the same thing</b><p><code>claude.ai/code</code> is Claude Code on the web. It runs on Anthropic&rsquo;s servers instead of your computer. It is a real product, but not what this guide sets up.</p></div></div>
+<div class="sub" style="margin-top:40px">
+<h3>Pick how you will run it</h3>
+<p class="plat-label">Choose once. The steps below show only what applies to you.</p>
+<div class="plat" id="plat">
+<div class="plat-bar" role="tablist" aria-label="How will you run Claude Code?">
+<button type="button" role="tab" id="tab-desktop" aria-selected="true" aria-controls="plat-panel" data-plat="desktop">Desktop app</button>
+<button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="plat-panel" data-plat="mac" tabindex="-1">Mac<span class="hs"> Terminal</span></button>
+<button type="button" role="tab" id="tab-win" aria-selected="false" aria-controls="plat-panel" data-plat="win" tabindex="-1">Windows<span class="hs"> PowerShell</span></button>
+</div>
+<div class="plat-panel" id="plat-panel" role="tabpanel" aria-labelledby="tab-desktop" tabindex="0">
+<ol class="steps">
+<li class="step"><div class="body">
+<h4>Install Claude Code</h4>
+<p data-p="desktop" class="on"><span class="p-tag">Desktop app</span>Download the Claude desktop app from <code>claude.com/download</code> (Mac or Windows), run the installer, open it and sign in with your Claude account. Then click the <b>Code</b> tab.</p>
+<div data-p="mac"><span class="p-tag">Mac Terminal</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">Terminal</span><button class="copy-btn" type="button" data-copy="cmd-mac-install" aria-label="Copy Mac install command"></button></div><pre><code id="cmd-mac-install">curl -fsSL https://claude.ai/install.sh | bash</code></pre></div>
+</div>
+<div data-p="win"><span class="p-tag">Windows PowerShell</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-win-install" aria-label="Copy Windows install command"></button></div><pre><code id="cmd-win-install">irm https://claude.ai/install.ps1 | iex</code></pre></div>
+</div>
+<p class="aside" data-p="win">The Mac line does not work in PowerShell, so use this one. A PowerShell prompt starts with <code>PS</code>. If you see <code>'irm' is not recognized</code>, you are in the older Command Prompt: open PowerShell from the Start menu. You do not need to run it as Administrator.</p>
+<p class="aside" data-p="mac win">Install commands are Anthropic&rsquo;s own, from <code>code.claude.com/docs/en/setup</code>, the place to check if one ever stops working.</p>
+</div></li>
+<li class="step"><div class="body">
+<h4>Log in</h4>
+<p>The first time you open Claude Code it asks you to sign in with your Claude account. After that you land in something that looks like a chat or command window. That is normal: it is Claude Code running.</p>
+<div data-p="mac win"><p class="aside" style="margin-bottom:8px">In a terminal, start it with <code>claude</code>. To check it worked, run <code>claude --version</code>.</p></div>
+<div data-p="win"><div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Windows, do this once</b><p>PowerShell blocks scripts by default, which trips up many installers. Run this once, before anything fails:</p>
+<div class="code-panel" style="margin-top:10px"><div class="code-panel-bar"><span class="code-panel-lang">PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-win-policy" aria-label="Copy PowerShell settings command"></button></div><pre><code id="cmd-win-policy">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre></div>
+<p style="margin-top:10px">Anthropic also recommends Git for Windows: <code>winget install --id Git.Git -e</code>. Setup works without it, but updates and merges need it.</p></div></div></div>
+</div></li>
+<li class="step"><div class="body">
+<h4>Make a plain new folder called ClaudeSetup</h4>
+<p data-p="desktop" class="on"><span class="p-tag">Desktop app</span>Inside your user folder, make a new folder called <b>ClaudeSetup</b>. Do not use your Desktop or Documents folder.</p>
+<div data-p="mac"><span class="p-tag">Mac Terminal</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">Terminal</span><button class="copy-btn" type="button" data-copy="cmd-mac-mkdir" aria-label="Copy Mac folder command"></button></div><pre><code id="cmd-mac-mkdir">mkdir -p ~/ClaudeSetup</code></pre></div>
+</div>
+<div data-p="win"><span class="p-tag">Windows PowerShell</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-win-mkdir" aria-label="Copy Windows folder command"></button></div><pre><code id="cmd-win-mkdir">New-Item -ItemType Directory -Force $HOME\ClaudeSetup</code></pre></div>
+</div>
+<p class="aside">If the folder is already there, nothing breaks. Avoid Desktop and Documents: on Windows they are often inside OneDrive, and on a Mac they can be inside iCloud Drive. Syncing can make Claude Code crash.</p>
+</div></li>
+<li class="step"><div class="body">
+<h4>Save the guide into that folder</h4>
+<p>The direct link is below. Right-click it and choose <b>Save link as</b> (in Safari, <b>Download Linked File As</b>), and make sure the file name still ends in <code>.md</code>.</p>
+<p><a href="https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md" target="_blank" rel="noopener"><code>https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md</code></a></p>
+<p class="aside">The repo&rsquo;s own page is <code>github.com/bright-coast/claude-power-setup-guide</code>.</p>
+</div></li>
+<li class="step"><div class="body">
+<h4>Open Claude Code in that folder and say the sentence</h4>
+<p data-p="desktop" class="on"><span class="p-tag">Desktop app</span>On the <b>Code</b> tab choose <b>Local</b>, click <b>Select folder</b> and pick <b>ClaudeSetup</b>.</p>
+<div data-p="mac"><span class="p-tag">Mac Terminal</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">Terminal</span><button class="copy-btn" type="button" data-copy="cmd-mac-cd" aria-label="Copy Mac open commands"></button></div><pre><code id="cmd-mac-cd">cd ~/ClaudeSetup
+claude</code></pre></div>
+</div>
+<div data-p="win"><span class="p-tag">Windows PowerShell</span>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-win-cd" aria-label="Copy Windows open commands"></button></div><pre><code id="cmd-win-cd">cd $HOME\ClaudeSetup
+claude</code></pre></div>
+</div>
+<p>Then tell Claude:</p>
+<div class="invoke"><code id="say-2">Read this guide and run my setup.</code><button class="copy-btn" type="button" data-copy="say-2" aria-label="Copy the sentence"></button></div>
+<p class="aside">From there Claude walks you through it one step at a time. Expect to restart Claude Code once or twice. Claude tells you what to say afterwards.</p>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callouts two" style="margin-top:36px">
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">One account per person</b><p>Never share a Claude login. Two people on one account causes session-sync conflicts across devices. Each person signs in with their own.</p></div></div>
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">No synced or shared folders</b><p>Do not base Claude in a shared or synced drive (OneDrive, iCloud Drive, Dropbox, a team drive). Syncing can crash Claude Code, and a shared drive can expose your settings and logins.</p></div></div>
+</div>
+<div class="acc" data-acc>
+<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-blocked" id="acc-blocked-btn"><span>If something blocks you<small>Work computers, locked-down settings and commands that are not found</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
+<div class="acc-panel" id="acc-blocked" role="region" aria-labelledby="acc-blocked-btn"><div class="acc-inner"><div class="acc-body">
+<ul class="rules">
+<li><b>PowerShell refuses the setting</b><span>Your organisation&rsquo;s Group Policy can override it. Ask your IT person to allow it, or to tell you what they allow instead.</span></li>
+<li><b>winget or Git for Windows wants admin rights</b><span>Ask your IT person to install it for you.</span></li>
+<li><b>Downloads are blocked</b><span>Open the address in your browser, save the file (Save link as; in Safari, Download Linked File As) and tell Claude the full path. Claude runs the same fingerprint check on that file.</span></li>
+<li><b>A command is not recognised after installing</b><span>Close and reopen your terminal. That is expected, not a failed install.</span></li>
+<li><b>You see Claude installing Python or git</b><span>That is normal. Claude sets up whatever the step you asked for needs.</span></li>
+<li><b>An Apple window offers developer tools</b><span>On a Mac, the first time git is used, Apple may offer to install &ldquo;command line developer tools&rdquo;. Click Install and wait until it finishes.</span></li>
+</ul>
+</div></div></div>
+</div>
+</section>
+<section class="part" id="run-setup" aria-labelledby="h-run-setup">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">02</span>
+<h2 id="h-run-setup">What &ldquo;run my setup&rdquo; does</h2>
+<p class="dek">Claude works through it one step at a time, checks that each thing worked, and asks before it changes anything.</p>
+</div>
+<h3>Before step 1</h3>
+<ul class="rules">
+<li><b>The licence question</b><span>Claude asks whether Bright Coast AI gave you the guide, for example a link was sent to you or you found it in the Bright Coast AI client portal. If not, it tells you plainly that you are welcome to read the guide, that setting up from it needs permission from <code>support@brightcoast.ai</code>, and it stops without installing anything.</span></li>
+<li><b>The permission mode check</b><span>Before any command or file change, Claude asks which permission mode the session is in. If it says Auto, <b>you</b> switch to Manual: Shift+Tab in a terminal, or the mode selector next to the send button in the desktop app. Claude never switches it for you and waits until you confirm.</span></li>
+<li><b>The one-page picture</b><span>Claude saves this page next to your guide and shows it to you: click its path in the desktop app (it opens in the Browser pane), or say yes in a terminal to open it in your browser. It is a plain file, and nothing is sent anywhere, though it may load its fonts online. If Claude cannot get it, it skips it and carries on.</span></li>
+<li><b>A look at what you already have</b><span>If you set up from an older guide or built skills of your own, Claude reads the folder names first and asks only for what is missing. It never overwrites a skill you built.</span></li>
+</ul>
+<div class="sub">
+<h3>The seven steps</h3>
+<p class="sub-dek">Steps 2, 3 and 6 only happen if they apply to you.</p>
+<ol class="steps">
+<li class="step"><div class="body"><h4>What you use</h4><p>Claude asks which tools you use day to day, for example Notion, Xero, Stripe, HubSpot, Google Drive or spreadsheets. Then three quick questions: do you record or transcribe meetings, do you use WhatsApp for work, and are you a Bright Coast AI client? It then creates <code>SETUP-PROGRESS.md</code>.</p></div></li>
+<li class="step"><div class="body"><h4>Google Drive <span class="chip chip-soon">Only if you use it</span></h4><p>Install Google Drive for desktop, sign in with your work account and make a small test file. A synced icon after a few seconds is the real proof.</p></div></li>
+<li class="step"><div class="body"><h4>A shared team folder <span class="chip chip-soon">Only if you have one</span></h4><p>Claude checks it appears under <b>Shared drives</b> in Google Drive, then reads the team&rsquo;s shared instructions back to you in its own words. If it can describe them correctly, the step worked.</p></div></li>
+<li class="step"><div class="body"><h4>Connect your tools</h4><p>One at a time. You type <code>/mcp</code>, Claude checks what is already connected, and anything new is tested after a restart. Details are in section 06.</p></div></li>
+<li class="step"><div class="body"><h4>How much Claude asks first</h4><p>You choose a permission mode (below). Claude also offers to write a safer settings file. It shows you the exact text first, and you can say no.</p></div></li>
+<li class="step"><div class="body"><h4>Ask Rob <span class="chip chip-soon">Optional, clients only</span></h4><p>If you are a Bright Coast AI client, Claude mentions this skill once. It sends a question straight to Rob with the context attached and brings the reply back.</p></div></li>
+<li class="step"><div class="body"><h4>Install skills</h4><p>The closing step. You pick from the list in section 03. Claude then checks that git is there, and asks you to restart.</p></div></li>
+</ol>
+</div>
+<div class="callout" style="margin-top:30px"><svg class="ic"><use href="#g-auto"/></svg><div><b class="k">After the restart</b><p>Quit Claude Code and open it again in the same folder. In the desktop app, close the app completely, reopen it and choose the same folder on the Code tab. In a terminal, type <code>/exit</code>, then run <code>claude</code> again. Then say the sentence once more. Claude finds <code>SETUP-PROGRESS.md</code>, tells you where you got to and carries on. If you installed Startup, it takes over next.</p></div></div>
+<div class="sub">
+<div class="split2">
+<div>
+<h3>It keeps its place in a file</h3>
+<p class="sub-dek" style="margin-bottom:16px">A restart ends the conversation, so Claude keeps <code>SETUP-PROGRESS.md</code> next to your guide. It is a plain text file you can open. It holds tool names and yes or no answers only, never passwords, tokens, keys or login codes. Steps you postpone are marked deferred and offered once, at the end.</p>
+</div>
+<div class="file" role="figure" aria-label="Example of the progress file">
+<div class="file-bar"><svg class="ic sm"><use href="#g-folder"/></svg>SETUP-PROGRESS.md</div>
+<pre><span class="hd">## Steps</span>
+<span class="done">- [x] Step 1: what you use</span>
+<span class="done">- [x] Step 2: Google Drive (skipped, they don't use it)</span>
+<span class="done">- [x] Step 3: shared team folder (skipped, solo setup)</span>
+<span class="todo">- [ ] Step 4: connections (Notion added, not yet tested, needs a restart)</span>
+<span class="todo">- [ ] Step 5: how much Claude asks first</span>
+<span class="todo">- [ ] Step 6: Ask Rob (deferred &lt;date&gt;, they will generate the token later)</span>
+<span class="todo">- [ ] Step 7: skills</span></pre>
+</div>
+</div>
+</div>
+<div class="sub">
+<h3>How much Claude asks first</h3>
+<p class="sub-dek">These are the permission modes, by the names Anthropic uses. Shift+Tab cycles through them in a terminal. <code>/permissions</code> manages the individual rules.</p>
+<ul class="modes">
+<li class="mode start"><svg class="ic"><use href="#g-yes"/></svg><b>Manual <span class="chip chip-ready">Safest for setup</span></b><span class="d">Claude asks before it edits a file or runs a command. Slowest, and the most control.</span></li>
+<li class="mode"><svg class="ic"><use href="#g-folder"/></svg><b>Accept edits</b><span class="d">Changes files in the working folder without asking each time, but still asks before most commands.</span></li>
+<li class="mode"><svg class="ic"><use href="#g-eye"/></svg><b>Plan</b><span class="d">Claude looks around and proposes a plan. It changes nothing.</span></li>
+<li class="mode avoid"><svg class="ic"><use href="#g-warn"/></svg><b>Auto <span class="chip chip-warn">Switch away for setup</span></b><span class="d">A second checking model decides what needs asking. Anthropic says it reduces prompts but does not guarantee safety.</span></li>
+</ul>
+<div class="callouts two" style="margin-top:14px">
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Anything that touches messages</b><p>WhatsApp, or sending email or chat messages: stay in Manual or Accept edits, never Auto.</p></div></div>
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Never Bypass permissions</b><p>It switches the safety checks off completely. Anthropic says to use it only inside isolated containers or virtual machines, not on your own computer.</p></div></div>
+</div>
+<div class="acc" data-acc>
+<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-settings" id="acc-settings-btn"><span>The safer settings file<small>What Claude offers to write in step 5, and what each line means</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
+<div class="acc-panel" id="acc-settings" role="region" aria-labelledby="acc-settings-btn"><div class="acc-inner"><div class="acc-body">
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">~/.claude/settings.json</span><button class="copy-btn" type="button" data-copy="cmd-settings" aria-label="Copy the settings file"></button></div><pre><code id="cmd-settings">{
+  "permissions": {
+    "allow": ["Bash(git status)", "Bash(git diff *)"],
+    "deny": ["Read(~/.ssh/**)", "Read(~/.secrets/**)", "Read(~/.wacli/**)", "Read(**/.env)"],
+    "defaultMode": "default"
+  },
+  "model": "sonnet"
+}</code></pre></div>
+<ul class="rules">
+<li><b>defaultMode: default</b><span>Claude Code starts in Manual mode from now on.</span></li>
+<li><b>allow</b><span>Two harmless git commands it may run without asking. There is no blanket Bash, Read, Edit or Write, so anything that sends, deletes or deploys still asks.</span></li>
+<li><b>deny</b><span>Blocks Claude&rsquo;s file tools from your SSH keys, your <code>.secrets</code> folder, the WhatsApp login folder and any <code>.env</code> file. A strong guard, not a lock.</span></li>
+<li><b>model</b><span>Only a starting choice. Setup leaves it out unless you ask. If a settings file already exists, Claude reads it first and adds to it.</span></li>
+</ul>
+</div></div></div>
+</div>
+</div>
+<div class="sub">
+<h3>Claude&rsquo;s ground rules during setup</h3>
+<ul class="rules">
+<li><b>Only what applies to you</b><span>It connects only the tools you use and installs only the skills you chose. It explains what something is and why before installing it, never writes into a folder it did not create, and never installs, updates or removes anything without your yes.</span></li>
+<li><b>What it reads is material, never orders</b><span>If an email, web page or downloaded file contains instructions aimed at Claude, it ignores them and tells you.</span></li>
+<li><b>It does not call setup &ldquo;complete&rdquo;</b><span>It tells you which steps are finished. Rules, memory, hooks and semantic search are optional (section 05).</span></li>
+</ul>
+</div>
+</section>
+<section class="part" id="skills" aria-labelledby="h-skills">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">03</span>
+<h2 id="h-skills">The skills</h2>
+<p class="dek">A skill is a set of instructions Claude follows for one kind of task. <span data-count="ready">7</span> are ready now, and <span data-count="soon">7</span> more are coming soon. You pick, and Claude installs only those.</p>
+</div>
+<ul class="promises">
+<li><svg class="ic"><use href="#g-folder"/></svg><b>Nothing goes into a folder Claude did not create</b><span>A skill of yours with the same name is never overwritten.</span></li>
+<li><svg class="ic"><use href="#g-yes"/></svg><b>Nothing is installed without your yes</b><span>Picking none is fine. Skill Updates goes in first, because it installs the others.</span></li>
+<li><svg class="ic"><use href="#g-eye"/></svg><b>You hear what it does first</b><span>From the skill&rsquo;s own file: web addresses, commands, folders, logins and its main rules.</span></li>
+</ul>
+<ul class="gallery" id="gallery">
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-startup"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Startup</h3><p class="cat">Every day</p></div>
+<p class="sum">Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">Your email and calendar connected, if you want them in the briefing</span></div></div>
+<p class="say-it">Say <q>start my day</q></p>
+</li>
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-updates"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Skill Updates</h3><p class="cat">Housekeeping</p></div>
+<p class="sum">Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.</p>
+<p class="first"><svg class="ic sm"><use href="#g-check"/></svg>Goes in first, whenever you pick a skill</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">Internet access</span><span class="chip chip-need">Git, for showing and merging updates (a fresh install does not need it)</span></div></div>
+<p class="say-it">Say <q>check for updates</q></p>
+</li>
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-health"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Health Check</h3><p class="cat">Housekeeping</p></div>
+<p class="sum">A quick check-up of your Claude Code setup: your instructions file, your memory, the tools installed on your computer and your disk space, with plain-English fixes.</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">Nothing extra</span></div></div>
+<p class="say-it">Say <q>run a health check</q></p>
+</li>
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-recordings"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Process Recordings</h3><p class="cat">Meetings</p></div>
+<p class="sum">Turns meeting transcripts and notes (from a recording app, a connector or pasted in) into clean notes, decisions and follow-ups, filed where you can find them again. It works on text, not audio.</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">A recording or transcript source, or transcripts you paste in</span></div></div>
+<p class="say-it">Say <q>process my recording</q></p>
+</li>
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-askrob"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Ask Rob</h3><p class="cat">Get help</p></div>
+<p class="sum">Sends a question to Rob straight from Claude, with the context attached, and brings the reply back to you.</p>
+<p class="first"><svg class="ic sm"><use href="#g-check"/></svg>For Bright Coast AI clients only</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">A Bright Coast AI client portal account</span><span class="chip chip-need">A personal token from its Settings page</span></div></div>
+</li>
+<li class="skill" data-status="ready">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-explain"/></svg></div><span class="chip chip-ready">Ready</span></div>
+<div><h3>Explain Like I&rsquo;m Non-Technical</h3><p class="cat">Communicate</p></div>
+<p class="sum">Explains anything to a non-technical person as a simple picture page: big visuals, very few words. Good for partners, clients and anyone who needs to understand something without the jargon. Every page carries a small Bright Coast AI credit, and you can add your own name above it.</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">Nothing extra</span></div></div>
+<p class="say-it">Say <q>explain like I&rsquo;m non-technical</q></p>
+</li>
+<li class="skill wide" data-status="ready">
+<div class="wa-main">
+<div class="skill-top"><div class="tile"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></div><div class="chips"><span class="chip chip-ready">Ready</span><span class="chip chip-warn"><svg class="ic"><use href="#g-warn"/></svg>Early version</span></div></div>
+<div><h3>WhatsApp</h3><p class="cat">Messages</p></div>
+<p class="sum">Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice. It only sends when you say so. Installing it only puts a short guide on your computer, and nothing gets connected until you say yes inside it.</p>
+<div class="needs"><span class="needs-h">Needs</span><div class="chips"><span class="chip chip-need">A phone with WhatsApp, on a number you can afford to risk having restricted</span><span class="chip chip-need">The Claude Code Desktop app</span><span class="chip chip-need">Manual or Accept edits mode, never Auto or Bypass</span></div></div>
+<p class="say-it">Say <q>connect my WhatsApp</q></p>
+</div>
+<div class="wa-warn" role="note">
+<h4><svg class="ic"><use href="#g-warn"/></svg>Read this before you say yes</h4>
+<ul>
+<li><svg class="ic"><use href="#g-warn"/></svg><span><b>It is unofficial.</b> WhatsApp can restrict or permanently ban an account that uses it. That matters most if this is the number your business relies on.</span></li>
+<li><svg class="ic"><use href="#g-eye"/></svg><span><b>Claude can read every chat</b>, and what it reads is processed by Anthropic.</span></li>
+<li><svg class="ic"><use href="#g-warn"/></svg><span><b>It is an early version (0.2).</b> The complete setup has not been run end to end anywhere yet, and the Mac steps have never been run on a Mac.</span></li>
+<li><svg class="ic"><use href="#g-down"/></svg><span><b>The one-off setup is heavy.</b> It includes a first copy of your messages and a 460 MB voice note tool, and each can take several minutes. Your phone needs to be nearby.</span></li>
+</ul>
+</div>
+</li>
+</ul>
+<div class="sub">
+<h3>Coming soon</h3>
+<p class="sub-dek">These cannot be installed yet, so Claude does not offer them or promise dates.</p>
+<ul class="soon" id="soon">
+<li><svg class="ic"><use href="#p-email"/></svg><b>Email Drafting</b><span>Drafts emails in your own voice, learned from your sent mail. Drafts only, it never sends.</span></li>
+<li><svg class="ic"><use href="#p-meeting"/></svg><b>Meeting Prep</b><span>A one-page briefing before a meeting: who is in it, what happened last time and what to raise.</span></li>
+<li><svg class="ic"><use href="#p-debrief"/></svg><b>Debrief</b><span>After a call, captures what was agreed and drafts the follow-up for you to review.</span></li>
+<li><svg class="ic"><use href="#p-respond"/></svg><b>Respond To This</b><span>Paste in a message and get a reply in your voice, ready to review.</span></li>
+<li><svg class="ic"><use href="#p-instagram"/></svg><b>Instagram Saves</b><span>Turns posts you save into notes, pulling out what is actually useful and where it applies to your work.</span></li>
+<li><svg class="ic"><use href="#p-youtube"/></svg><b>YouTube Capture</b><span>Captures a video&rsquo;s key points and what to do with them, filed into your notes.</span></li>
+<li><svg class="ic"><use href="#p-blog"/></svg><b>Blog</b><span>Drafts blog posts for your website from your notes and ideas, in your voice.</span></li>
+</ul>
+</div>
+</section>
+<section class="part" id="updates" aria-labelledby="h-updates">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">04</span>
+<h2 id="h-updates">Keeping it up to date</h2>
+<p class="dek">Skills and the guide improve over time. You decide what to take, and your own changes survive.</p>
+</div>
+<ul class="trio-say">
+<li class="say-card">
+<h3>Check for updates</h3>
+<div class="invoke"><code id="say-upd">check for updates</code><button class="copy-btn" type="button" data-copy="say-upd" aria-label="Copy: check for updates"></button></div>
+<p>Looks at every skill you installed from the repo, and at the guide, and tells you what is newer and what changed. It mentions a newly ready skill once. Ask <b>any new skills</b> for the full list.</p>
+</li>
+<li class="say-card">
+<h3>Check the guide</h3>
+<div class="invoke"><code id="say-guide">check the guide</code><button class="copy-btn" type="button" data-copy="say-guide" aria-label="Copy: check the guide"></button></div>
+<p>Checks only the guide file. A newer guide is saved next to this one as <code>claude-code-power-setup-guide-&lt;version&gt;.md</code>. Your current file is never replaced, and Claude does not follow the new one unless you say to.</p>
+</li>
+<li class="say-card">
+<h3>Remove a skill</h3>
+<div class="invoke-row"><div class="invoke"><code id="say-rm">remove</code></div><span class="muted">and the skill&rsquo;s name</span></div>
+<p>Claude shows which files will go, says your own settings for that skill go with it, and asks for a clear yes. The folder is moved to <code>~/.claude/skills-backup/</code>, never deleted. It only removes skills it installed itself.</p>
+</li>
+</ul>
+<div class="sub">
+<h3>Every skill has two parts</h3>
+<p class="sub-dek">The skill itself comes from the repo and can be updated. Your own answers and tweaks live in a separate file that updates never touch.</p>
+<div class="anatomy" role="figure" aria-label="The files inside an installed skill folder, split into the part that updates and the part that is yours">
+<div class="anat-head"><svg class="ic"><use href="#g-folder"/></svg><span>~/.claude/skills/&lt;skill-name&gt;/</span></div>
+<div class="fileline repo"><code><svg class="ic" style="width:16px;height:16px;margin-right:8px"><use href="#g-repo"/></svg>SKILL.md</code><span class="d"><b>Comes from the repo.</b> Updates replace this file.</span></div>
+<div class="wall" aria-hidden="true"><svg viewBox="0 0 600 34" preserveAspectRatio="none"><path d="M0 17q37.5-11 75 0t75 0t75 0t75 0t75 0t75 0t75 0t75 0" style="fill:none;stroke:var(--il-sea);stroke-width:1.75;vector-effect:non-scaling-stroke"/><path d="M0 24q37.5-11 75 0t75 0t75 0t75 0t75 0t75 0t75 0t75 0" style="fill:none;stroke:var(--il-line);stroke-width:2;vector-effect:non-scaling-stroke"/></svg><span>Updates stop here</span></div>
+<div class="fileline mine"><code>local.md</code><span class="d"><b>Yours.</b> Your answers and tweaks. Updates never touch it. It can add to a skill or make it stricter, but never loosen an &ldquo;ask first&rdquo; or &ldquo;never&rdquo; rule.</span></div>
+<div class="fileline"><code>.upstream.json</code><span class="d">A note of which version you installed and where it came from.</span></div>
+<div class="fileline"><code>.upstream/base.md</code><span class="d">An exact copy of what was installed. It lets an update tell whether you edited the skill.</span></div>
+<div class="fileline"><code>SKILL.md.bak-&lt;version&gt;-&lt;YYYYMMDD-HHMM&gt;</code><span class="d">A backup an update makes of the file it is about to replace.</span></div>
+</div>
+</div>
+<div class="sub">
+<h3>How an update works</h3>
+<ul class="rules">
+<li><b>You see it first</b><span>Claude lists each update: the skill, your version, the new version and a one-line summary. Nothing is applied without your yes, and there are no silent updates.</span></li>
+<li><b>The real file is compared</b><span>Claude downloads the new file to a temporary place and compares it before anything is written. The one-line summary is never the basis for saying yes.</span></li>
+<li><b>Risky changes need a separate yes</b><span>A new web address, a new command or script, a new file, folder, login or account, or a weakened &ldquo;never&rdquo; or &ldquo;ask first&rdquo; rule. Claude quotes the exact lines. If you say no to any, that skill is not updated at all.</span></li>
+<li><b>Your edits are merged, not overwritten</b><span>If you changed a skill directly, Claude applies every change that does not clash. Where the two overlap, it explains both sides and asks which to keep. If a merge is unclear, your version stays.</span></li>
+<li><b>Git does the comparing</b><span>Showing changes and merging use git. A fresh install works without it, but updates and merges need it. If git is missing, Claude says so and updates nothing.</span></li>
+<li><b>A backup every time</b><span>Before changing a skill, Claude saves a backup next to it and says where. Afterwards it shows what differs and reads the file back.</span></li>
+<li><b>Quiet by default</b><span>Startup runs the check once per session and only speaks up when something is newer.</span></li>
+</ul>
+</div>
+<div class="callout sand" style="margin-top:36px"><svg class="ic"><use href="#g-lock"/></svg><div><b class="k">What the fingerprint check does and does not do</b><p>Every download is compared with a fingerprint listed in the catalog. That confirms the file arrived complete and is the one the catalog names. The catalog and the files live in the same repo, so it does not protect you if the repo itself were ever compromised.</p><p>What does protect you: Claude shows you what changes before anything is applied, risky changes need a second yes from you, and Bright Coast AI runs release checks before it moves the <code>stable</code> branch. In the end you are trusting Bright Coast AI&rsquo;s releases, the same way you trust any software you install.</p><p>If a fingerprint does not match, Claude stops and changes nothing. Please report it by opening an issue at <code>github.com/bright-coast/claude-power-setup-guide/issues</code>.</p></div></div>
+</section>
+<section class="part" id="memory" aria-labelledby="h-memory">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">05</span>
+<h2 id="h-memory">Memory and rules</h2>
+<p class="dek">Optional reading for later. This is what makes Claude Code remember you, and setup does not build it.</p>
+</div>
+<div class="callout"><svg class="ic"><use href="#g-yes"/></svg><div><b class="k">Not part of &ldquo;run my setup&rdquo;</b><p>Setup does not create your <code>CLAUDE.md</code>, rules, memory, hooks or semantic search. Sections 3 to 9 of the guide cover them, and you can build any of them later with Claude&rsquo;s help.</p></div></div>
+<div class="sub">
+<h3>Two levels of settings</h3>
+<div class="levels">
+<div class="level yours"><h4>Global <code>~/.claude/</code></h4><p>Every project, every session. Your personal preferences, memory and rules. It is yours only, not checked into git. This guide is about this layer.</p></div>
+<div class="level"><h4>Project <code>&lt;repo&gt;/CLAUDE.md</code></h4><p>That one repo only, plus its own <code>.claude/</code> folder. It is shared, so a teammate sees it too.</p></div>
+</div>
+</div>
+<div class="sub">
+<div class="split2">
+<div>
+<h3>Where things live</h3>
+<p class="sub-dek">A short map of your global folder. Each piece has one job.</p>
+<div class="tree" role="figure" aria-label="Map of the global Claude folder"><pre><b>~/CLAUDE.md</b>          <span class="c">index of your projects</span>
+<b>~/.claude/</b>
+  rules/               <span class="c">loads every session</span>
+  skills/              <span class="c">one folder per skill</span>
+  skills-backup/       <span class="c">never deleted</span>
+  settings.json        <span class="c">permissions, hooks</span>
+  projects/&lt;workspace-name&gt;/memory/
+    <b>MEMORY.md</b>          <span class="c">always-loaded index</span>
+    user_role.md       <span class="c">who you are</span>
+    feedback_&lt;topic&gt;.md
+    project_&lt;topic&gt;.md
+    reference_&lt;topic&gt;.md</pre></div>
+</div>
+<div>
+<h3>Four kinds of memory</h3>
+<p class="sub-dek">Save only what would otherwise need re-explaining.</p>
+<ul class="types">
+<li><b>User</b><span>Who you are, your role and your knowledge level.</span></li>
+<li><b>Feedback</b><span>Corrections and confirmations about how to work with you. The most valuable kind.</span></li>
+<li><b>Project</b><span>Who is doing what, why, and by when.</span></li>
+<li><b>Reference</b><span>Where things live in other systems.</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sub">
+<h3>Rules, the always-loaded part</h3>
+<div class="split2">
+<p class="prose" style="max-width:none">Every <code>.md</code> file in <code>~/.claude/rules/</code> loads into every session, in every project. That is where the preferences you never want to repeat live. The guide suggests starting with two: <b>formatting</b> (dashes, time zone, how you sign off) and <b>execution discipline</b>, which keeps Claude from running ahead of you.</p>
+<ul class="types" style="margin-top:0">
+<li><b>Plan first</b><span>For anything non-trivial, present a numbered plan and wait for approval.</span></li>
+<li><b>Verify</b><span>Never call a task complete without proof: run the script, check the file.</span></li>
+<li><b>Fix, then continue</b><span>Escalate only when the fix needs a decision only you can make.</span></li>
+</ul>
+</div>
+</div>
+<div class="sub">
+<h3>Go further, later</h3>
+<ul class="rules">
+<li><b>Semantic memory search</b><span>Optional, mainly for people who code. A local index of your memory files so Claude can search by meaning. The <code>.md</code> files stay the source of truth.</span></li>
+<li><b>Hooks</b><span>Small automatic reactions to Claude&rsquo;s own actions, such as a reminder that survives when a long chat is compacted.</span></li>
+<li><b>Superpowers plugin</b><span>Optional, mainly for people who code. It is a third-party plugin by an individual author, not Anthropic or Bright Coast AI, and it runs with your own permissions. Install it only if you are comfortable with that.</span></li>
+</ul>
+</div>
+</section>
+<section class="part" id="connect" aria-labelledby="h-connect">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">06</span>
+<h2 id="h-connect">Connect tools</h2>
+<p class="dek">Start with the connectors already in your Claude account, then test what you connect.</p>
+</div>
+<div class="prose"><p>If you signed in to Claude Code with a claude.ai account, the connectors you added there are available in Claude Code automatically. That does not happen if you signed in with an API key or a cloud provider such as Amazon Bedrock, so check what is really connected.</p></div>
+<ol class="flow" style="margin-top:28px">
+<li><h3>See what is connected</h3><p>Type <code>/mcp</code> and read out what it lists. In a terminal, <code>claude mcp list</code> shows the same. Claude cannot type a slash command, so you do.</p></li>
+<li><h3>Add what is missing</h3><p>In your Claude account, at <code class="url">claude.ai/<wbr>customize/<wbr>connectors</code>, add the Google connector for Gmail and Calendar and sign in with your own account. On Team or Enterprise plans, only an admin can add connectors.</p></li>
+<li><h3>Restart Claude Code</h3><p>The list loads when Claude Code starts. Setup groups this with the restart at the end of step 7.</p></li>
+<li><h3>Sign in and test</h3><p>Type <code>/mcp</code> again and choose the connector. Claude does one small real read, then asks it which Google account it is signed in to.</p></li>
+</ol>
+<div class="sub">
+<div class="callouts three">
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">The Google sign-in trap</b><p>A login screen that worked is not proof. The standard Google connector covers exactly <b>one</b> Google account, so ask it which account it is signed in to, and check that it is yours.</p><p>A second Gmail address, Sheets or Slides write access, or Google Chat needs the more advanced Google Cloud route below.</p></div></div>
+<div class="callout"><svg class="ic"><use href="#g-eye"/></svg><div><b class="k">Read-only by default</b><p>On the advanced route the connector starts with <code>--read-only</code>. Reading, listing and searching work. Anything that sends, edits or creates is blocked, including drafting an email or adding an event.</p><p>It is a guard, not a lock. To allow writes later, remove it and register it again without the flag.</p></div></div>
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">The silent scope trap</b><p>A connector can finish its sign-in and still lack the one permission a real task needs. A Gmail connection once read and drafted fine but could not send. An automated task ran daily for a month and never emailed anyone, with no error anywhere.</p><p>After connecting anything that can send or write, do one real test of that exact thing.</p></div></div>
+</div>
+</div>
+<div class="acc" data-acc>
+<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-google" id="acc-google-btn"><span>Advanced: a second Google account, or more access<small>The Google Cloud route, registered read-only</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
+<div class="acc-panel" id="acc-google" role="region" aria-labelledby="acc-google-btn"><div class="acc-inner"><div class="acc-body">
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">A third-party tool</b><p>The connector is <code>google-workspace-mcp</code>, run by one individual. It is not Google and not Anthropic, and it will hold broad access to your Gmail, Drive, Docs and Sheets. Only go ahead if you are comfortable with that. The commands pin version <code>2.3.6</code>, the newest on npm on 24 Sep 2026, so new code cannot arrive unnoticed. Move the pin only on purpose.</p></div></div>
+<ol class="gsteps">
+<li><div><b>Create the project under the account owner&rsquo;s own Google login</b><span>At <code>console.cloud.google.com</code>. If you are setting this up for someone else, use their login, not yours.</span></div></li>
+<li><div><b>Enable each API you need, one at a time</b><span>Gmail, Calendar, Drive, Docs, Sheets, Slides and Forms. Enabling one does not cover the others.</span></div></li>
+<li><div><b>Set up the consent screen</b><span>On a Google Workspace (work) account, choose <b>Internal</b>, which has no 7-day sign-in limit. On a personal account, choose <b>External</b> and add yourself as a test user. An External app left in Testing signs you out every 7 days, which is Google&rsquo;s rule. Switch it to <b>In production</b> to stop that. Google then shows &ldquo;Google hasn&rsquo;t verified this app&rdquo;, which is expected for an app only you use: choose Advanced, then continue.</span></div></li>
+<li><div><b>Create an OAuth client ID of type Desktop app</b><span>Google Chat is the one exception: it needs <b>Web application</b> with a callback URL. Keep the downloaded <code>credentials.json</code> out of any repo that is served publicly.</span></div></li>
+<li><div><b>Register the connector, read-only</b>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">Terminal or PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-gw-add" aria-label="Copy register command"></button></div><pre><code id="cmd-gw-add">claude mcp add google-workspace --scope user -- npx -y google-workspace-mcp@2.3.6 serve --read-only</code></pre></div>
+<span>To allow writes later, run <code>claude mcp remove google-workspace --scope user</code>, register it again without <code>--read-only</code>, and restart Claude Code. Test any write-capable connection on a copy of a real file first.</span></div></li>
+<li><div><b>Sign in each account by name</b>
+<div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">Terminal or PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-gw-acct" aria-label="Copy sign-in commands"></button></div><pre><code id="cmd-gw-acct">npx -y google-workspace-mcp@2.3.6 accounts add [account-name]
+npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
+<span>The same command adds a second or third account later. Each gets its own named sign-in and never overwrites the last.</span></div></li>
+</ol>
+</div></div></div>
+</div>
+<div class="acc" data-acc>
+<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-other" id="acc-other-btn"><span>Other tools and mailboxes<small>Which route fits which tool</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
+<div class="acc-panel" id="acc-other" role="region" aria-labelledby="acc-other-btn"><div class="acc-inner"><div class="acc-body">
+<div class="routes"><table>
+<thead><tr><th scope="col">Tool</th><th scope="col">What to do</th></tr></thead>
+<tbody>
+<tr><td>Gmail, Calendar, Drive</td><td>The connector in your claude.ai account, for one Google account. Check it with <code>/mcp</code>.</td></tr>
+<tr><td>Notion, Xero, Stripe, HubSpot</td><td>Check <code>/mcp</code> first. If it is missing, Claude helps you add it and you sign in in a browser window. It takes effect after a restart. Then ask something real and simple, such as which Notion pages it can see.</td></tr>
+<tr><td>Spreadsheets</td><td>Depends whether it is Google Sheets or Excel. Writing to a Google Sheet needs the Google Cloud route. If nothing connects, paste the rows or save the sheet as a CSV file and give Claude its path.</td></tr>
+<tr><td>Outlook or Microsoft 365</td><td>Register an app in your own Entra ID with Delegated permissions, never Application. Keep one registration per tenant and check for an existing one first. A managed work tenant usually needs a Global Administrator to grant consent.</td></tr>
+<tr><td>Apple Mail or iCloud</td><td>Already signed in to Mail.app on a Mac: <code>apple-mail-mcp</code> talks to it locally with no credentials. Otherwise use an app-specific password, never your real Apple ID password.</td></tr>
+<tr><td>Any other mailbox</td><td>A standalone IMAP connector pointed at your provider&rsquo;s own settings. Leave sending switched off entirely, because a generic connector usually cannot withhold send on its own.</td></tr>
+<tr><td>GitHub</td><td>For backups, use GitHub&rsquo;s own tool: run <code>gh auth login</code>, then <code>gh auth status</code>. It signs you in through your browser, so you never paste a password or token into Claude.</td></tr>
+</tbody></table></div>
+<div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Before you connect anything that can send</b><p>Check whether a third-party mail connector routes your mail through its own hosted service. If it does, a third party sees the mail flow, which is worth knowing but not a reason to avoid it outright. Keep tools that send, post or write to a database out of the auto-approved list, so you are asked before anything irreversible goes out. If an assistant needs your mailbox, use the provider&rsquo;s real delegation feature, never your login.</p></div></div>
+</div></div></div>
+</div>
+</section>
+<section class="part" id="checklist" aria-labelledby="h-checklist">
+<div class="part-head">
+<span class="part-num" aria-hidden="true">07</span>
+<h2 id="h-checklist">Checklist and traps</h2>
+<p class="dek">Tick things off as you go. Your ticks stay in this browser only.</p>
+</div>
+<div class="check-head">
+<div class="meter" role="group" aria-label="Checklist progress"><div class="bar" aria-hidden="true"><i id="cbar"></i></div><span class="count"><span id="cdone">0</span> of <span id="ctotal">0</span> done</span></div>
+<button class="btn-ghost" type="button" id="cclear">Clear ticks</button>
+</div>
+<ul class="checklist" id="checklistBox">
+<li><label for="c1"><input type="checkbox" id="c1"><span class="lab"><span class="t">Claude Code is installed and I am signed in</span><span class="s">On a paid plan: Pro, Max, Team, Enterprise or an Anthropic Console account.</span></span></label></li>
+<li><label for="c2"><input type="checkbox" id="c2"><span class="lab"><span class="t">I made a plain ClaudeSetup folder and saved the guide in it</span><span class="s">Not on the Desktop or in Documents, and the file name still ends in .md.</span></span></label></li>
+<li><label for="c3"><input type="checkbox" id="c3"><span class="lab"><span class="t">I opened Claude Code in that folder and said &ldquo;Read this guide and run my setup.&rdquo;</span><span class="s">Claude first asked how I got the guide.</span></span></label></li>
+<li><label for="c4"><input type="checkbox" id="c4"><span class="lab"><span class="t">The session is in Manual mode, and I switched it myself</span><span class="s">If it started in Auto, I changed it before Claude ran anything.</span></span></label></li>
+<li><label for="c5"><input type="checkbox" id="c5"><span class="lab"><span class="t">I told Claude what I use and answered the three quick questions</span><span class="s">Claude created SETUP-PROGRESS.md next to the guide.</span></span></label></li>
+<li><label for="c6"><input type="checkbox" id="c6"><span class="lab"><span class="t">My tools are connected, and I restarted Claude Code and checked with /mcp</span><span class="s">Each connection had one real read, and anything that can send or write had one real test.</span></span></label></li>
+<li><label for="c7"><input type="checkbox" id="c7"><span class="lab"><span class="t">I picked my skills, and Claude read each one out before installing it</span><span class="s">Skill Updates went in first.</span></span></label></li>
+<li><label for="c8"><input type="checkbox" id="c8"><span class="lab"><span class="t">I restarted, said the sentence again, and Claude carried on where it stopped</span><span class="s">Anything I postponed is marked deferred, not forgotten.</span></span></label></li>
+<li><label for="c9"><input type="checkbox" id="c9"><span class="lab"><span class="t">I know how to say &ldquo;check for updates&rdquo; and &ldquo;remove&rdquo;</span><span class="s">Both are covered in section 04.</span></span></label></li>
+<li><label for="c10"><input type="checkbox" id="c10"><span class="lab"><span class="t">Later, optional: I looked at memory and rules in section 05</span><span class="later">When you want them</span></span></label></li>
+</ul>
+<div class="sub">
+<h3>Traps, all in one place</h3>
+<p class="sub-dek">Each one has cost someone real time. Read them once now.</p>
+<p class="trap-group" style="padding-top:6px">Before you start</p>
+<ul class="traps">
+<li><b>claude.ai/code is the web version</b><span>It runs on Anthropic&rsquo;s servers, not your computer. Use the desktop app&rsquo;s Code tab or a terminal.</span></li>
+<li><b>The free plan</b><span>It does not include Claude Code. You need Pro, Max, Team, Enterprise or an Anthropic Console account.</span></li>
+<li><b>Desktop, Documents or a synced folder</b><span>OneDrive, iCloud Drive and Dropbox syncing can crash Claude Code. Use a plain local folder such as ClaudeSetup.</span></li>
+<li><b>A shared Claude login</b><span>One account per person, always.</span></li>
+<li><b>Windows: &ldquo;running scripts is disabled&rdquo;</b><span>PowerShell blocks scripts by default. Run <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code> once.</span></li>
+</ul>
+<p class="trap-group">During setup</p>
+<ul class="traps" style="border-top:1px solid var(--bc-border)">
+<li><b>The session starts in Auto</b><span>Switch to Manual yourself. Never choose Bypass permissions. For anything that touches messages, stay in Manual or Accept edits.</span></li>
+<li><b>A permission prompt for every file under .claude</b><span>That is normal. Click a plain <b>Yes</b> each time, and never choose the option that lets Claude edit its own settings for the rest of the session.</span></li>
+<li><b>Testing something you just installed</b><span>Restart Claude Code first. Connectors and skills do not take effect in the session where you added them.</span></li>
+<li><b>A login screen that worked</b><span>It is not proof. Ask the connector which account it is signed in to, and do one real read.</span></li>
+<li><b>A connection that reads but never sends</b><span>Test the exact thing you rely on: send a real test email, write a real test row.</span></li>
+<li><b>A token or key in chat, or in a skill file</b><span>Never paste one into a chat or write it into a skill. Point the skill at a separate credentials file you own, kept out of any synced folder.</span></li>
+<li><b>Downloads blocked on a work computer</b><span>Save the file in your browser and give Claude the full path. It runs the same fingerprint check.</span></li>
+</ul>
+</div>
+<div class="finale">
+<svg class="finale-art" viewBox="0 0 300 150" aria-hidden="true"><g class="art"><path d="M104 108a46 46 0 0 1 92 0z" style="fill:var(--il-sand)"/><path d="M150 46V30M116 60l-11-11M184 60l11-11M88 82H70M212 82h18"/><path d="M0 120q25-16 50 0t50 0t50 0t50 0t50 0t50 0" style="stroke:var(--il-sea);stroke-width:2"/><path d="M0 136q25-16 50 0t50 0t50 0t50 0t50 0t50 0"/></g></svg>
+<h3>Ready when you are</h3>
+<p>Download the guide, open Claude Code in your ClaudeSetup folder and say the sentence. Claude does the rest, one step at a time.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md" target="_blank" rel="noopener"><svg class="ic"><use href="#g-down"/></svg>Download the guide</a></div>
+<div class="help">
+<p><b>Stuck?</b> If you are a Bright Coast AI client, the Ask Rob skill sends your question straight to Rob. Anyone can open an issue at <code>github.com/bright-coast/claude-power-setup-guide/issues</code> or write to <code>support@brightcoast.ai</code>.</p>
+</div>
+</div>
+<footer class="colophon">
+<p>Made by Rob Lee, Bright Coast AI. Copyright 2026 Bright Coast AI. For Bright Coast AI clients and people Bright Coast AI has given the guide to. Licence and terms: <a href="https://github.com/bright-coast/claude-power-setup-guide" target="_blank" rel="noopener">github.com/bright-coast/claude-power-setup-guide</a>. Questions or permission: support@brightcoast.ai.</p>
+</footer>
+</section>
+</main>
+</div>
+<script>
+(function () {
+var doc = document, root = doc.documentElement;
+root.classList.add('js');
+function $(s, c) { return (c || doc).querySelector(s); }
+function $$(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; }
+var ready = $$('.skill[data-status="ready"]').length;
+var soon = $$('#soon li').length;
+$$('[data-count="ready"]').forEach(function (n) { n.textContent = ready; });
+$$('[data-count="soon"]').forEach(function (n) { n.textContent = soon; });
+var toast = $('#toast'), live = $('#live'), toastTimer;
+function say(msg) { live.textContent = ''; setTimeout(function () { live.textContent = msg; }, 30); }
+function showToast(msg) {
+toast.textContent = msg; toast.classList.add('show');
+clearTimeout(toastTimer); toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 4200);
+}
+var themes = ['system', 'light', 'dark'];
+var labels = { system: 'Theme: System', light: 'Theme: Light', dark: 'Theme: Dark' };
+var glyph = { system: '#g-auto', light: '#g-sun', dark: '#g-moon' };
+var themeNow = 'system';
+function applyTheme(t) {
+themeNow = t;
+if (t === 'system') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
+$$('[data-theme-btn]').forEach(function (b) {
+$('.lbl', b).textContent = labels[t]; b.setAttribute('aria-label', labels[t]);
+$('use', b).setAttribute('href', glyph[t]);
+});
+}
+var savedTheme = store('bcai-psg-theme');
+if (savedTheme && themes.indexOf(savedTheme) > -1) applyTheme(savedTheme);
+$$('[data-theme-btn]').forEach(function (b) {
+b.addEventListener('click', function () {
+var n = themes[(themes.indexOf(themeNow) + 1) % themes.length];
+applyTheme(n); store('bcai-psg-theme', n);
+});
+});
+var plat = $('#plat');
+if (plat) {
+var tabs = $$('[role="tab"]', plat), panel = $('#plat-panel', plat), items = $$('[data-p]', panel);
+var setPlat = function (p, focus) {
+tabs.forEach(function (t) {
+var on = t.dataset.plat === p;
+t.setAttribute('aria-selected', on ? 'true' : 'false');
+t.tabIndex = on ? 0 : -1;
+if (on) { panel.setAttribute('aria-labelledby', t.id); if (focus) t.focus(); }
+});
+items.forEach(function (el) {
+el.classList.toggle('on', el.dataset.p.split(' ').indexOf(p) > -1);
+});
+store('bcai-psg-plat', p);
+};
+tabs.forEach(function (t, i) {
+t.addEventListener('click', function () { setPlat(t.dataset.plat); });
+t.addEventListener('keydown', function (e) {
+var k = e.key, n = -1;
+if (k === 'ArrowRight' || k === 'ArrowDown') n = (i + 1) % tabs.length;
+else if (k === 'ArrowLeft' || k === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+else if (k === 'Home') n = 0; else if (k === 'End') n = tabs.length - 1;
+if (n > -1) { e.preventDefault(); setPlat(tabs[n].dataset.plat, true); }
+});
+});
+var sp = store('bcai-psg-plat');
+setPlat(sp && tabs.some(function (t) { return t.dataset.plat === sp; }) ? sp : 'desktop');
+}
+function selectNode(el) {
+var r = doc.createRange(); r.selectNodeContents(el);
+var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+$$('.copy-btn').forEach(function (btn) {
+btn.innerHTML = '<svg class="ic ic-copy"><use href="#g-copy"/></svg><svg class="ic ic-done"><use href="#g-check"/></svg><span class="t">Copy</span>';
+var label = $('.t', btn), timer;
+btn.addEventListener('click', function () {
+var el = doc.getElementById(btn.dataset.copy);
+if (!el) return;
+var text = el.textContent;
+function ok() {
+btn.classList.add('done'); if (label) label.textContent = 'Copied'; say('Copied');
+clearTimeout(timer);
+timer = setTimeout(function () { btn.classList.remove('done'); if (label) label.textContent = 'Copy'; }, 2000);
+}
+function fallback() {
+var done = false;
+try { selectNode(el); done = doc.execCommand && doc.execCommand('copy'); } catch (e) { done = false; }
+if (done) ok();
+else { selectNode(el); showToast('Copying is blocked here. The text is selected: press Ctrl+C, or Cmd+C on a Mac.'); }
+}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(text).then(ok, fallback);
+} else fallback();
+});
+});
+$$('[data-acc]').forEach(function (acc) {
+var btn = $('.acc-btn', acc), panelEl = $('.acc-panel', acc);
+btn.addEventListener('click', function () {
+var open = btn.getAttribute('aria-expanded') !== 'true';
+btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+panelEl.classList.toggle('open', open);
+});
+});
+var links = $$('#railnav a'), chips = $$('#chipnav a');
+var secs = links.map(function (a) { return doc.getElementById(a.dataset.sec); });
+var names = links.map(function (a) { return a.textContent.replace(/\s+/g, ' ').trim(); });
+var bar = $('#pgbar'), rail = $('#railnav'), chipnav = $('#chipnav');
+var nowLabel = $('#nowlabel'), pctLabel = $('#pctlabel'), whereTop = $('#whereTop');
+var ticking = false;
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function update() {
+ticking = false;
+var y = window.scrollY || root.scrollTop, vh = window.innerHeight;
+var max = Math.max(1, root.scrollHeight - vh);
+var pct = Math.min(1, Math.max(0, y / max));
+var line = y + vh * 0.32, cur = 0, frac = 0;
+for (var i = 0; i < secs.length; i++) { if (secs[i] && secs[i].getBoundingClientRect().top + y <= line) cur = i; }
+if (y >= max - 4) cur = secs.length - 1;
+var top = secs[cur].getBoundingClientRect().top + y;
+var end = cur + 1 < secs.length ? secs[cur + 1].getBoundingClientRect().top + y : root.scrollHeight;
+frac = Math.min(1, Math.max(0, (line - top) / Math.max(1, end - top)));
+var railP = Math.min(1, (cur + frac) / (secs.length - 1));
+bar.style.setProperty('--p', pct.toFixed(4));
+rail.style.setProperty('--p', railP.toFixed(4));
+links.forEach(function (a, i) {
+a.setAttribute('aria-current', i === cur ? 'true' : 'false');
+a.setAttribute('data-state', i < cur ? 'done' : (i === cur ? 'now' : 'todo'));
+});
+chips.forEach(function (a, i) { a.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+if (chips[cur] && chipnav && chipnav.scrollWidth > chipnav.clientWidth) {
+var c = chips[cur], target = c.offsetLeft - (chipnav.clientWidth - c.offsetWidth) / 2;
+chipnav.scrollLeft += (target - chipnav.scrollLeft) * 0.6;
+}
+nowLabel.textContent = names[cur];
+pctLabel.textContent = Math.round(pct * 100) + '%';
+whereTop.textContent = pad(cur) + ' of ' + pad(secs.length - 1);
+}
+function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+update();
+var reveals = $$('.reveal');
+function checkReveal() {
+var vh = window.innerHeight;
+reveals = reveals.filter(function (r) {
+if (r.getBoundingClientRect().top < vh * 0.9) { r.classList.add('in'); return false; }
+return true;
+});
+}
+window.addEventListener('scroll', checkReveal, { passive: true });
+window.addEventListener('resize', checkReveal);
+window.addEventListener('beforeprint', function () { $$('.reveal').forEach(function (r) { r.classList.add('in'); }); });
+checkReveal();
+var boxes = $$('#checklistBox input[type="checkbox"]');
+var cdone = $('#cdone'), ctotal = $('#ctotal'), cbar = $('#cbar');
+function tally() {
+var n = boxes.filter(function (b) { return b.checked; }).length;
+cdone.textContent = n; ctotal.textContent = boxes.length;
+cbar.style.setProperty('--c', (boxes.length ? n / boxes.length : 0).toFixed(3));
+}
+boxes.forEach(function (b) {
+if (store('bcai-psg3-' + b.id) === '1') b.checked = true;
+b.addEventListener('change', function () { store('bcai-psg3-' + b.id, b.checked ? '1' : '0'); tally(); });
+});
+var clear = $('#cclear');
+if (clear) clear.addEventListener('click', function () {
+boxes.forEach(function (b) { b.checked = false; store('bcai-psg3-' + b.id, '0'); });
+tally(); say('Checklist cleared');
+});
+tally();
+})();
+</script>
+</body>
+</html>

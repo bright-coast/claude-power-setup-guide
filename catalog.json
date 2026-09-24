@@ -7,8 +7,14 @@
   "guide": {
     "version": "3.0",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "8c01b7758da1d35f333d9465dcfce2eb7e2727bc391bb4c92cbef2ef1a5fbcea",
+    "sha256": "ed8fc6b59c81a230dbdb8405d80c70fb82aacbbc8fe086e5a2c3c7c01e424b96",
     "changes": "The guide now installs skills straight from this repo, asks what you use, and can check for updates without touching your own changes."
+  },
+  "overview": {
+    "version": "1.0",
+    "path": "power-setup-field-guide.html",
+    "sha256": "4f12658bb890f06a49067cf0b6dd05a854f70b00a81443f839a3d54747a6bb46",
+    "changes": "A one-page picture of what you are setting up, opened for you at the start of setup."
   },
   "skills": [
     {
@@ -16,7 +22,7 @@
       "name": "Startup",
       "status": "ready",
       "version": "1.0.0",
-      "sha256": "a17a4b4ea56c277e156038bd4fc12d32fd8edbc06ff982be0ce4c2cfc1228b56",
+      "sha256": "89f1089b012277aeaa176006fe6533c5238bd7ba14f9e7dd5e7b60e437e734d4",
       "category": "Every day",
       "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
       "needs": ["Your email and calendar connected, if you want them in the briefing"],
@@ -29,7 +35,7 @@
       "name": "Skill Updates",
       "status": "ready",
       "version": "1.0.0",
-      "sha256": "74024155e5d2695d467cbb624be147780c3170bc4b027706141467db98677a71",
+      "sha256": "6a295dc6181ad867e1b200bf9c54b1fe543f899307838134b2ef394bdcdcff58",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],

@@ -12,6 +12,8 @@ A guide and a library of skills that take Claude Code from "just installed" to p
 2. Download the guide: right-click **[claude-code-power-setup-guide.md](https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md)** and choose **Save link as** (in Safari: **Download Linked File As**), and keep the file name ending in `.md`. Save it into a plain new folder inside your user folder, for example one named `ClaudeSetup`. Please don't use your Desktop or Documents folder: on Windows they are often inside OneDrive, which can crash Claude Code. This page is the repo, and it lives at [github.com/bright-coast/claude-power-setup-guide](https://github.com/bright-coast/claude-power-setup-guide).
 3. Open Claude Code in that folder and say: **"Read this guide and run my setup."**
 
+At the start of setup Claude also shows you a one-page picture of what you are building, [power-setup-field-guide.html](power-setup-field-guide.html). It is a plain file saved on your own computer, and you can open it in any browser.
+
 Claude walks you through it one step at a time and asks before it changes anything. "Run my setup" connects the tools you use, helps you choose how much Claude asks first, and installs the skills you pick. It does not build your rules, memory or hooks: those sections of the guide (3 to 9) are optional reading that you can do later, with Claude's help, if you want. One or two restarts of Claude Code are normal along the way, and Claude tells you exactly what to say afterwards so it can carry on where it stopped.
 
 ## What you get
