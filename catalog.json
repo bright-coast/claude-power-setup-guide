@@ -7,7 +7,7 @@
   "guide": {
     "version": "3.1",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "a35133f5f56486b3ddedd9eecf36e41a238f244b27251cf621ddc78328f8d7ee",
+    "sha256": "f9baaa4a3287deec17868b3d93908e094b8f0f50948517b0d80fac282d021722",
     "changes": "No more setup folder: download the guide, open Claude Code, start a new session and tell it to read the file you just downloaded."
   },
   "overview": {
@@ -35,7 +35,7 @@
       "name": "Skill Updates",
       "status": "ready",
       "version": "1.0.0",
-      "sha256": "6a295dc6181ad867e1b200bf9c54b1fe543f899307838134b2ef394bdcdcff58",
+      "sha256": "c167f85c61dc8b3f542522f2f7199ca4457b81f4f1eb8eb79a47e6b7f219b748",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
@@ -74,7 +74,7 @@
       "name": "Ask Rob",
       "status": "ready",
       "version": "1.0.0",
-      "sha256": "29ae9f4b6c2ab217eff7a4fcbcb549d6c1909cfb65e5de0a485f51cd1845c335",
+      "sha256": "993eb2d052c6d7e847571e72ec10de844039ed7ae14ced3f9d0db7c6c25a3230",
       "category": "Get help",
       "summary": "Sends a question to Rob straight from Claude, with the context attached, and brings the reply back to you.",
       "needs": ["A Bright Coast AI client portal account and a personal token from its Settings page"],
