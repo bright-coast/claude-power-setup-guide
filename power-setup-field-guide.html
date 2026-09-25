@@ -187,7 +187,7 @@
 <div class="hero-copy">
 <p class="lead">Download one file and tell Claude to read it. Claude asks what you use, connects your tools and installs the skills you pick, one step at a time, and asks before it changes anything.</p>
 <div class="cta-row">
-<a class="btn btn-primary" href="https://setup.brightcoast.ai/guide" target="_blank" rel="noopener"><svg class="ic"><use href="#g-down"/></svg>Download the guide</a>
+<a class="btn btn-primary" href="https://setup.brightcoast.ai/claude-code-power-setup-guide.md" target="_blank" rel="noopener" data-guide-download><svg class="ic"><use href="#g-down"/></svg>Download the guide</a>
 <a class="link-quiet" href="#journey">How it works</a>
 </div>
 <p class="hint">Click to download the guide. If your browser shows it as text instead, right-click the button and choose Save link as (in Safari, Download Linked File As). Keep the file name ending in <code>.md</code>.</p>
@@ -718,7 +718,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <svg class="finale-art" viewBox="0 0 300 150" aria-hidden="true"><g class="art"><path d="M104 108a46 46 0 0 1 92 0z" style="fill:var(--il-sand)"/><path d="M150 46V30M116 60l-11-11M184 60l11-11M88 82H70M212 82h18"/><path d="M0 120q25-16 50 0t50 0t50 0t50 0t50 0t50 0" style="stroke:var(--il-sea);stroke-width:2"/><path d="M0 136q25-16 50 0t50 0t50 0t50 0t50 0t50 0"/></g></svg>
 <h3>Ready when you are</h3>
 <p>Download the guide, open Claude Code in your ClaudeSetup folder and say the sentence. Claude does the rest, one step at a time.</p>
-<div class="cta-row"><a class="btn btn-primary" href="https://setup.brightcoast.ai/guide" target="_blank" rel="noopener"><svg class="ic"><use href="#g-down"/></svg>Download the guide</a></div>
+<div class="cta-row"><a class="btn btn-primary" href="https://setup.brightcoast.ai/claude-code-power-setup-guide.md" target="_blank" rel="noopener" data-guide-download><svg class="ic"><use href="#g-down"/></svg>Download the guide</a></div>
 <div class="help">
 <p><b>Stuck?</b> If you are a Bright Coast AI client, the Ask Rob skill sends your question straight to Rob. Anyone can open an issue at <code>github.com/bright-coast/claude-power-setup-guide/issues</code> or write to <code><a href="mailto:support@brightcoast.ai">support@brightcoast.ai</a></code>.</p>
 </div>
@@ -735,7 +735,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <p>It is saved as <code>claude-code-power-setup-guide.md</code>, usually in your Downloads folder. Open Claude Code and paste one of these.</p>
 <div class="dl-say"><span class="dl-say-k">First time</span><div class="dl-field"><code id="dl-say-setup">Read claude-code-power-setup-guide.md and run my setup</code><button class="copy-btn" type="button" data-copy="dl-say-setup" aria-label="Copy the setup sentence"></button></div></div>
 <div class="dl-say"><span class="dl-say-k">Already set up</span><div class="dl-field"><code id="dl-say-new">Read claude-code-power-setup-guide.md and check what's new</code><button class="copy-btn" type="button" data-copy="dl-say-new" aria-label="Copy the sentence that checks what is new"></button></div></div>
-<p class="dl-retry">Nothing in your Downloads? <a href="https://setup.brightcoast.ai/guide">Download it again</a>.</p>
+<p class="dl-retry">Nothing in your Downloads? <a href="https://setup.brightcoast.ai/claude-code-power-setup-guide.md">Download it again</a>.</p>
 <p id="dl-copy-note" class="dl-retry" role="status" hidden></p>
 </div>
 <div class="dl-actions"><button type="button" class="btn btn-primary" data-dl-close autofocus>Got it</button></div>
@@ -745,7 +745,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <div id="dl-m-body" class="dl-body">
 <p>Wait until you're at your computer and download it there.</p>
 <p>In the meantime, check out what's new.</p>
-<p class="dl-retry">Using a computer? <a href="https://setup.brightcoast.ai/guide">Download anyway</a>.</p>
+<p class="dl-retry">Using a computer? <a href="https://setup.brightcoast.ai/claude-code-power-setup-guide.md">Download anyway</a>.</p>
 </div>
 <div class="dl-actions"><button type="button" class="btn btn-primary" data-dl-close autofocus>Got it</button></div>
 </dialog>
@@ -958,18 +958,30 @@ $$('[data-dl-close]', d).forEach(function (b) { b.addEventListener('click', func
 d.addEventListener('cancel', function (e) { e.preventDefault(); closeDl(d); });
 d.addEventListener('click', function (e) { if (e.target === d) closeDl(d); });
 });
-// Arriving from a Download Guide button (the email, the portal) with ?download: save the guide and say so.
-if (dlModal && dlMobile && new URLSearchParams(location.search).has('download')) {
-try { var u = new URL(location.href); u.searchParams.delete('download'); history.replaceState(null, '', u.pathname + u.search + u.hash); } catch (e) {}
+// One flow for every way in: on a computer, save the guide and say so; on a phone or tablet, say to do it at a computer instead.
+function startGuideFlow() {
 if (onPhoneOrTablet()) {
 openDl(dlMobile);
 say('Wait until you are at your computer to download the guide. In the meantime, check out what is new.');
-} else {
-var dl = doc.createElement('a'); dl.href = 'https://setup.brightcoast.ai/guide'; dl.download = 'claude-code-power-setup-guide.md';
+return;
+}
+var dl = doc.createElement('a'); dl.href = 'https://setup.brightcoast.ai/claude-code-power-setup-guide.md'; dl.download = 'claude-code-power-setup-guide.md';
 doc.body.appendChild(dl); dl.click(); doc.body.removeChild(dl);
 openDl(dlModal);
 say('Your guide has been downloaded');
 }
+// The page's own Download buttons use the same flow. A right-click or a modified click still gets the plain file link.
+$$('a[data-guide-download]').forEach(function (a) {
+a.addEventListener('click', function (e) {
+if (!dlModal || !dlMobile || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+e.preventDefault();
+startGuideFlow();
+});
+});
+// Arriving from a Download Guide button (the email, the portal) with ?download: save the guide and say so.
+if (dlModal && dlMobile && new URLSearchParams(location.search).has('download')) {
+try { var u = new URL(location.href); u.searchParams.delete('download'); history.replaceState(null, '', u.pathname + u.search + u.hash); } catch (e) {}
+startGuideFlow();
 }
 })();
 </script>

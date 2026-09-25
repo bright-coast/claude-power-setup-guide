@@ -11,10 +11,10 @@
     "changes": "The guide now installs skills straight from this repo, asks what you use, and can check for updates without touching your own changes."
   },
   "overview": {
-    "version": "1.2",
+    "version": "1.3",
     "path": "power-setup-field-guide.html",
-    "sha256": "16731ec3493fa32609f0304b3f7e0508a3b3c34812c3fc9db10a0dd6030d4a96",
-    "changes": "A one-page picture of what you are setting up, shown to you at the start of setup. Its Download button saves the guide in one click, and opening it from a Download Guide button saves the guide and tells you where to find it (on a phone or tablet it asks you to download at your computer instead). The contents outline now lines up, and long code lines fade out at the edge instead of widening the page on a phone."
+    "sha256": "20217c76411f8b92d6e3c46e30a981cd78fe2b050aa745f0b65c7db133a02448",
+    "changes": "A one-page picture of what you are setting up, shown to you at the start of setup. Its Download button saves the guide in one click, and opening it from a Download Guide button, or pressing either Download button on the page, saves the guide and tells you where to find it (on a phone or tablet it asks you to download at your computer instead). The contents outline now lines up, and long code lines fade out at the edge instead of widening the page on a phone."
   },
   "skills": [
     {
