@@ -5,15 +5,15 @@
   "raw_base": "https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/",
   "license": "Bright Coast AI Client Skills Licence 1.0",
   "guide": {
-    "version": "3.0",
+    "version": "3.1",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "ed8fc6b59c81a230dbdb8405d80c70fb82aacbbc8fe086e5a2c3c7c01e424b96",
-    "changes": "The guide now installs skills straight from this repo, asks what you use, and can check for updates without touching your own changes."
+    "sha256": "a35133f5f56486b3ddedd9eecf36e41a238f244b27251cf621ddc78328f8d7ee",
+    "changes": "No more setup folder: download the guide, open Claude Code, start a new session and tell it to read the file you just downloaded."
   },
   "overview": {
-    "version": "1.3",
+    "version": "1.4",
     "path": "power-setup-field-guide.html",
-    "sha256": "20217c76411f8b92d6e3c46e30a981cd78fe2b050aa745f0b65c7db133a02448",
+    "sha256": "8bc20430e04e7a6544daf17fc312d435a8f88015ac12982371e584767d540072",
     "changes": "A one-page picture of what you are setting up, shown to you at the start of setup. Its Download button saves the guide in one click, and opening it from a Download Guide button, or pressing either Download button on the page, saves the guide and tells you where to find it (on a phone or tablet it asks you to download at your computer instead). The contents outline now lines up, and long code lines fade out at the edge instead of widening the page on a phone."
   },
   "skills": [

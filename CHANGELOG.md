@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (25 Sep 2026)
+
+- The guide is now version 3.1. There is no setup folder any more: download the guide, open Claude Code, start a new session and tell it to read the file you just downloaded. The one-page picture (now 1.4) says the same, and its Download buttons show a "Your guide has been downloaded" note with copy-and-paste sentences (on a phone or tablet it asks you to download at your computer instead).
+
 ## 1.0.0 (24 Sep 2026)
 
 First release of the repo.
