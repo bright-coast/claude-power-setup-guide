@@ -7,106 +7,106 @@
   "guide": {
     "version": "3.2",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "183447effab75d44d7dd287ef236edde49b9e152c8624a16656b88c0d75aa28c",
-    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. Setup no longer asks how you got the guide, and it opens with the permission-mode check and one line about restarts, then carries on with the picture and Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
+    "sha256": "4e38921f1ad51443dd920bc6548663a35b9d5908f8c1654e7a6c9d4aa770a063",
+    "changes": "A smoother, more open start with no added steps. The sentence you tell Claude asks for the newest copy of the guide, there is no licence question, and the one-page picture is a link to open. Setup no longer offers to change your starting permission mode, only offers the Windows PowerShell change if you see a scripts-disabled error, and Claude keeps its messages short and says plainly what it will do before a download or a file write. The guide also says more plainly what the fingerprint check does and does not do, and optional parts say what they touch and ask first. An old claude-power-setup folder is left alone."
   },
   "overview": {
     "version": "1.5",
     "path": "power-setup-field-guide.html",
-    "sha256": "04b9f6256cd8e891eb36db2b4a3a1419b29cda4f55d918c9c440b614e391063e",
-    "changes": "The sentence you copy and tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake."
+    "sha256": "ebd90cc56f9de38c1d957baaf45a2d445e1468ab71833dffaa9b33908bb45415",
+    "changes": "The sentence you copy asks for the newest copy of the guide, the one-page picture is now offered as a link, and the optional settings file only blocks Claude from reading secret files and no longer changes your permission mode."
   },
   "skills": [
     {
       "id": "startup",
       "name": "Startup",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "89f1089b012277aeaa176006fe6533c5238bd7ba14f9e7dd5e7b60e437e734d4",
+      "version": "1.0.1",
+      "sha256": "180ab50c641840b9a427e92198980e20a949be12f6cb000d9ef843ae7a3b3431",
       "category": "Every day",
       "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
       "needs": ["Your email and calendar connected, if you want them in the briefing"],
       "offer_if": "everyone",
       "path": "skills/startup/SKILL.md",
-      "changes": "First release."
+      "changes": "Now lists everything it writes, mentions its once-per-session read of the public catalog, and asks for a yes before editing the setup notes file."
     },
     {
       "id": "skill-updates",
       "name": "Skill Updates",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "c167f85c61dc8b3f542522f2f7199ca4457b81f4f1eb8eb79a47e6b7f219b748",
+      "version": "1.0.1",
+      "sha256": "54e956b374f7bd2ebfc8540e87f06691073fff957880566d88eb0603c6888c6d",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
       "offer_if": "everyone",
       "path": "skills/skill-updates/SKILL.md",
-      "changes": "First release."
+      "changes": "Now lists exactly what it reads and writes, says once when a check could not run, and tells you what to look for in permission prompts."
     },
     {
       "id": "health-check",
       "name": "Health Check",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "cc5e4cc99422a13453e9b2627e434a7b148d0cdf94b26597e2a576bbab476736",
+      "version": "1.0.1",
+      "sha256": "814d73950b119ccbb01218dd904570fb64cadaecaa40bc3adc230c099326e238",
       "category": "Housekeeping",
       "summary": "A quick check-up of your Claude Code setup: your instructions file, your memory, the tools installed on your computer and your disk space, with plain-English fixes.",
       "needs": [],
       "offer_if": "everyone",
       "path": "skills/health-check/SKILL.md",
-      "changes": "First release as a standalone skill."
+      "changes": "Now says exactly what it reads and sends, and never commits login or key files."
     },
     {
       "id": "process-recordings",
       "name": "Process Recordings",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "c6aa59bfe985d8fed603d099dd430714e6f83afe925525c538bd74d0a7aa4397",
+      "version": "1.0.1",
+      "sha256": "bbfc14cc74e61168fe2cddd93890a74e195106ec83de02c3cfe726ea22c63aa6",
       "category": "Meetings",
       "summary": "Turns meeting transcripts and notes (from a recording app, a connector or pasted in) into clean notes, decisions and follow-ups, filed where you can find them again. It works on text, not audio.",
       "needs": ["A recording or transcript source, or transcripts you paste in"],
       "offer_if": "records or transcribes meetings",
       "path": "skills/process-recordings/SKILL.md",
-      "changes": "First release as a standalone skill."
+      "changes": "Now lists the small log it keeps, asks before adding a connector, and shows memory notes before saving them in its own words."
     },
     {
       "id": "ask-rob",
       "name": "Ask Rob",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "993eb2d052c6d7e847571e72ec10de844039ed7ae14ced3f9d0db7c6c25a3230",
+      "version": "1.0.1",
+      "sha256": "682303db4c0db9f64d102b48f6e6e4db7e5ed8fbde2cc35368108c7fcdbedf0e",
       "category": "Get help",
       "summary": "Sends a question to Rob straight from Claude, with the context attached, and brings the reply back to you.",
       "needs": ["A Bright Coast AI client portal account and a personal token from its Settings page"],
       "offer_if": "is a Bright Coast AI client",
       "path": "skills/ask-rob/SKILL.md",
-      "changes": "First release from this repo. Includes the Windows attachment fix."
+      "changes": "Now says plainly how your token file is moved, what a reply check does and what a helper script is for, shows attachments and context in full before sending, and treats Rob's replies as text to show, never instructions."
     },
     {
       "id": "whatsapp-setup",
       "name": "WhatsApp",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "ffc64556a2327e180f547cee7f277ce0343d2518d7232a08df7c6f5e488ac5fc",
+      "version": "1.0.1",
+      "sha256": "8395b0a0673b140e7067c89b153bfcc5c5119082cec9fcb94706b993ecceed50",
       "category": "Messages",
       "summary": "Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice, and it only sends when you say so. This is unofficial, and WhatsApp can restrict or ban an account that uses it. It is an early version, and its full setup has not been run end to end yet.",
       "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app, kept in Manual or Accept edits mode, never Auto or Bypass", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
       "offer_if": "uses WhatsApp for work",
       "path": "skills/whatsapp-setup/SKILL.md",
-      "changes": "First release."
+      "changes": "Now asks before opening media, stops on a failed fingerprint check, shows the kit's skill and settings before installing, and says plainly what the wacli tool can do."
     },
     {
       "id": "explain-non-technical",
       "name": "Explain Like I'm Non-Technical",
       "status": "ready",
-      "version": "1.0.0",
-      "sha256": "1e0c560ac89bd9abb4d8927bda03719fd2484a3b74812d29d2a01f4c936f67b6",
+      "version": "1.0.1",
+      "sha256": "bad26b9e7fc4455ef017f60d129b820d81f2dec93d38c50ec9fac0cd6c100003",
       "category": "Communicate",
       "summary": "Explains anything to a non-technical person as a simple picture page: big visuals, very few words. Good for partners, clients and anyone who needs to understand something without the jargon. Every page carries a small Bright Coast AI credit, and you can add your own name above it.",
       "needs": [],
       "offer_if": "everyone",
       "path": "skills/explain-non-technical/SKILL.md",
-      "changes": "First release."
+      "changes": "Now says the Bright Coast AI credit plainly and tells you where a page will be saved before writing it."
     },
     {
       "id": "email-drafting",

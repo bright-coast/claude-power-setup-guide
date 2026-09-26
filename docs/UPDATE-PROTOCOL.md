@@ -11,7 +11,7 @@ A skill has two parts. The repo part (`SKILL.md`) is the same for everyone and c
 ## Where the truth lives
 
 - Repo: `github.com/bright-coast/claude-power-setup-guide`
-- Ref: the `stable` branch. Clients follow `stable`, not `main`. Rob moves `stable` forward on purpose after his own release checks. A half-finished change on `main` never reaches anyone. Maintainer instruction: before the first release, turn on branch protection for `stable`: no force-push, and turn on two-factor sign-in for the GitHub account that owns the repo.
+- Ref: the `stable` branch. Clients follow `stable`, not `main`. Rob moves `stable` forward on purpose after his own release checks. A half-finished change on `main` never reaches anyone.
 - Raw base URL: `https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/`
 - `catalog.json` at that base lists every skill: its version, a one-line summary, what changed, and (for ready skills) a `sha256`, the fingerprint of `skills/<id>/SKILL.md` exactly as it sits in the repo, with LF line endings. The `guide` entry has its own `version` and `sha256`. `.gitattributes` (`* text eol=lf`) keeps files LF so the fingerprints match on Windows and Mac.
 
@@ -39,7 +39,7 @@ The backup folder sits outside `skills/` on purpose, so a moved-aside skill is n
 
 ## The rule behind everything
 
-**Never write into a folder you did not create.** A skill folder with an `.upstream.json` was created by this routine. A folder without one belongs to the person, and the routine only reads it, or moves it aside if the person says so.
+**Never write into a folder you did not create.** A skill folder with an `.upstream.json` was created by this routine. A folder without one belongs to the person, and the routine only reads it, or moves it aside if the person says so. There are three exceptions, each with the person's yes first: finishing an interrupted install in a folder that has no `.upstream.json` (only when the fingerprint matches, and never over `SKILL.md` or `local.md`), moving a skill or command of theirs with the same name aside to the backup folder, and moving `local.md` to the backup folder when a skill is removed. Nothing is ever deleted.
 
 ## Downloading and checking a file
 
@@ -56,7 +56,7 @@ Never use a page-reading or summarising web tool to get the catalog, a skill or 
 | Copy a file | `cp <from> <to>` | `cp <from> <to>` | `Copy-Item <from> <to>` |
 
 - On Windows use `curl.exe`, not `curl` (in PowerShell 5 that name is a different command).
-- The temporary-folder command prints the folder's full path (on Windows it ends in `.FullName`, so it prints the whole path on one line instead of a table). Claude uses that printed full path in every later command, because each command starts with no memory of the last one. When it is finished it deletes only the folder it made, by its full path, with the delete command above, run as a separate command and not chained with others (Claude Code can refuse a delete that is chained with others).
+- The temporary-folder command prints the folder's full path (on Windows it ends in `.FullName`, so it prints the whole path on one line instead of a table). Claude uses that printed full path in every later command, because each command starts with no memory of the last one. When it is finished it deletes only the folder it made, by its full path, with the delete command above, run as a command on its own, not chained with others, so the person approves one named folder and nothing else. Before running it, Claude checks that the path is the temporary folder it made in this run.
 - **In Git Bash on Windows,** make the temporary folder as `cygpath -w "$(mktemp -d)"`, so the path it prints is a Windows path (for example `C:\Users\yourname\AppData\Local\Temp\tmp.abc123`) that works everywhere. The plain `mktemp -d` prints a path like `/tmp/tmp.abc123`, which the shell understands but Claude's file-reading tool cannot open (it looks for `C:\tmp` instead). If Claude already has a path like that, it either reads the temporary files with `cat` through the shell, or converts the path with `cygpath -w "<path>"` before handing it to a file tool. Also, when a path has backslashes in it, `sha256sum` prints an extra backslash in front of the fingerprint, so only the 64 hex characters are compared.
 - **Never write a file by redirecting command output** (`>`, `>>`, `Out-File`, `Set-Content`) in PowerShell. Windows PowerShell 5.1 saves the text as UTF-16 with a hidden byte-order mark (or in another encoding), which silently breaks a skill. Files are written only by copying them (`cp`, `Copy-Item`), with a download command's own `-o` option, or with the editing tool. The one exception is the line-ending command in "Update a skill" (`tr` on macOS and Linux, `WriteAllText` on Windows PowerShell), which writes a plain UTF-8 text copy.
 - **Check that a file that was written is plain text.** A `SKILL.md` must start with the three characters `---` (not a byte-order mark) and contain no NUL bytes (a NUL byte means it was saved as UTF-16). First three bytes: macOS and Linux `head -c 3 <file>` (should print `---`); Windows PowerShell `[System.IO.File]::ReadAllBytes('<file>')[0..2]` (should print 45, 45, 45). NUL bytes: macOS and Linux `tr -cd '\000' < <file> | wc -c` (should print 0); Windows PowerShell `[System.IO.File]::ReadAllBytes('<file>') -contains 0` (should print False). Use the full path of the file.
@@ -125,7 +125,7 @@ Run by the `skill-updates` skill when the person asks (full mode), once per sess
 3. Compare each installed skill's `version` with the catalog's. A strictly higher version is an update, unless that exact version is in `.skipped.json`, which makes it a skipped update. Find ready skills that are not installed and are not in `.seen.json`. If `guidePath` is recorded, compare the guide's version too.
 4. Report:
    - **Full mode:** if nothing is newer, "Everything is up to date." Otherwise a table (skill, version you have, new version, the catalog's one-line `changes`, with any skipped update marked "you skipped this one before"), then any new skills and any newer guide, then ask which updates to go ahead with. The `changes` line is only a summary, so it is never the basis for approval.
-   - **Quiet mode:** if nothing is newer, say nothing. If the catalog cannot be reached, say nothing. A skipped update counts as nothing. Otherwise one line, for example "2 skill updates are available and there is 1 new skill (Meeting Prep). Want to see them?"
+   - **Quiet mode:** if nothing is newer, say nothing. If the check could not run (no internet, or a catalog that would not pass its checks), say so once in that conversation, in one short line, and carry on. A skipped update counts as nothing. Otherwise one line, for example "2 skill updates are available and there is 1 new skill (Meeting Prep). Want to see them?"
    - In full mode, if the catalog cannot be reached, say so plainly. Never guess.
 5. **The seen list.** Each new skill is mentioned once, and its id is added to `.seen.json` right after. Updates never touch that file. If the person asks directly ("any new skills"), every ready skill that is not installed is listed, whether or not it is in the list.
 6. **The skipped list.** `.skipped.json` is a JSON object that maps a skill id to the exact version the person said no to, for example `{"startup": "1.1.0"}`. A skip is recorded when the person says no (or "not now") to an update, either at the "which updates to go ahead with" question or at a flagged item in "Update a skill". Quiet mode never mentions an update whose exact version is recorded there. Full mode mentions it as "you skipped this one before" and asks again. A strictly higher version than the recorded one is a fresh update, and both modes mention it again. Applying an update never touches this file. If the file is missing or will not parse, it is treated as `{}`.
@@ -178,7 +178,7 @@ For each skill the person said yes to, one at a time. Nothing is written until t
 
 ## Rules that never bend
 
-- Never write into a folder you did not create.
+- Never write into a folder you did not create (the only exceptions are the three named under "The rule behind everything", each with a yes first).
 - Never apply, install or remove anything the person has not agreed to. No silent updates, ever.
 - Never write a file by redirecting command output (`>`, `Out-File`, `Set-Content`) in PowerShell. Windows PowerShell 5.1 encodes it as UTF-16. Write files only by copying them or with the editing tool.
 - Show what is changing before applying it. The catalog's `changes` line is a summary, never the basis for approval. For a new install, read the downloaded file to the person first (a read-out of the same fingerprint already given in this conversation may be referred back to) and get a clear yes for that skill: a yes to the catalog's summary is not a yes to the file.
@@ -196,7 +196,7 @@ For each skill the person said yes to, one at a time. Nothing is written until t
 2. Run `node scripts/build-catalog.js`. It works out each ready skill's and the guide's `sha256` from the files and writes them into `catalog.json`. Run it again after any later edit, because the fingerprints must match the exact files that get released.
 3. Run `node scripts/check-release.js --names-file <a list kept outside the repo>`. It fails if a fingerprint is missing or stale, if the catalog format or addresses are wrong, or if a skill or doc breaks the writing rules. Fix everything it reports.
 4. Merge to `main`, then read the diff once more.
-5. Move `stable` forward to the new `main` with a normal push. Never force-push `stable`. Before the first release, turn on branch protection for `stable`: no force-push, and turn on two-factor sign-in for the GitHub account that owns the repo. Moving `stable` is the moment clients can see the update.
+5. Move `stable` forward to the new `main` with a normal push. Never force-push `stable`. Moving `stable` is the moment clients can see the update.
 6. A few minutes later, download one skill from the `stable` address with the commands above and check that its fingerprint matches the catalog.
 
 **Rollback rule.** Never reuse or lower a version number. To undo a release, publish a new, higher version that contains the old content (roll forward). People who already installed the bad version have that version number recorded, so a lower number would never reach them, and the same number with different content would break the fingerprint checks.

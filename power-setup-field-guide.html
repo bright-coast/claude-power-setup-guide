@@ -265,7 +265,7 @@
 <h4>Log in</h4>
 <p>The first time you open Claude Code it asks you to sign in with your Claude account. After that you land in something that looks like a chat or command window. That is normal: it is Claude Code running.</p>
 <div data-p="mac win"><p class="aside" style="margin-bottom:8px">In a terminal, start it with <code>claude</code>. To check it worked, run <code>claude --version</code>.</p></div>
-<div data-p="win"><div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Windows, do this once</b><p>PowerShell blocks scripts by default, which trips up many installers. Run this once, before anything fails:</p>
+<div data-p="win"><div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Windows, only if you see an error</b><p>If you see <code>running scripts is disabled on this system</code>, PowerShell is blocking scripts, which is its default. This changes it for your own account only, and Claude asks before running it:</p>
 <div class="code-panel" style="margin-top:10px"><div class="code-panel-bar"><span class="code-panel-lang">PowerShell</span><button class="copy-btn" type="button" data-copy="cmd-win-policy" aria-label="Copy PowerShell settings command"></button></div><pre><code id="cmd-win-policy">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre></div>
 <p style="margin-top:10px">Anthropic also recommends Git for Windows: <code>winget install --id Git.Git -e</code>. Setup works without it, but updates and merges need it.</p></div></div></div>
 </div></li>
@@ -318,8 +318,8 @@
 </div>
 <h3>Before step 1</h3>
 <ul class="rules">
-<li><b>The permission mode check</b><span>Before any command or file change, Claude asks which permission mode the session is in. If it says Auto, <b>you</b> switch to Manual: Shift+Tab in a terminal, or the mode selector next to the send button in the desktop app. Claude never switches it for you and waits until you confirm.</span></li>
-<li><b>The one-page picture</b><span>Claude saves this page next to your guide and shows it to you: click its path in the desktop app (it opens in the Browser pane), or say yes in a terminal to open it in your browser. It is a plain file, and nothing is sent anywhere, though it may load its fonts online. If Claude cannot get it, it skips it and carries on.</span></li>
+<li><b>The permission mode check</b><span>Before any command or file change, Claude asks which permission mode the session is in. If it says Auto, <b>you</b> switch to Manual: Shift+Tab in a terminal, or the mode selector next to the send button in the desktop app. In Auto, a second model decides about writes to Claude&rsquo;s own folder and can refuse them halfway through setup. Claude never switches it for you and waits until you confirm.</span></li>
+<li><b>The one-page picture</b><span>Claude gives you a link to this page, <code>setup.brightcoast.ai</code>, to open in your browser. It is optional and you do not need it for setup. Claude downloads and saves nothing for it.</span></li>
 <li><b>A look at what you already have</b><span>If you set up from an older guide or built skills of your own, Claude reads the folder names first and asks only for what is missing. It never overwrites a skill you built.</span></li>
 </ul>
 <div class="sub">
@@ -330,7 +330,7 @@
 <li class="step"><div class="body"><h4>Google Drive <span class="chip chip-soon">Only if you use it</span></h4><p>Install Google Drive for desktop, sign in with your work account and make a small test file. A synced icon after a few seconds is the real proof.</p></div></li>
 <li class="step"><div class="body"><h4>A shared team folder <span class="chip chip-soon">Only if you have one</span></h4><p>Claude checks it appears under <b>Shared drives</b> in Google Drive, then reads the team&rsquo;s shared instructions back to you in its own words. If it can describe them correctly, the step worked.</p></div></li>
 <li class="step"><div class="body"><h4>Connect your tools</h4><p>One at a time. You type <code>/mcp</code>, Claude checks what is already connected, and anything new is tested after a restart. Details are in section 06.</p></div></li>
-<li class="step"><div class="body"><h4>How much Claude asks first</h4><p>You choose a permission mode (below). Claude also offers to write a safer settings file. It shows you the exact text first, and you can say no.</p></div></li>
+<li class="step"><div class="body"><h4>How much Claude asks first</h4><p>You choose a permission mode (below). Claude may also offer an optional file that stops its file tools reading your secret files. It does not change your permission mode. It shows you the exact text first, and you can say no.</p></div></li>
 <li class="step"><div class="body"><h4>Ask Rob <span class="chip chip-soon">Optional, clients only</span></h4><p>If you are a Bright Coast AI client, Claude mentions this skill once. It sends a question straight to Rob with the context attached and brings the reply back.</p></div></li>
 <li class="step"><div class="body"><h4>Install skills</h4><p>The closing step. You pick from the list in section 03. Claude then checks that git is there, and asks you to restart.</p></div></li>
 </ol>
@@ -369,21 +369,16 @@
 <div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Never Bypass permissions</b><p>It switches the safety checks off completely. Anthropic says to use it only inside isolated containers or virtual machines, not on your own computer.</p></div></div>
 </div>
 <div class="acc" data-acc>
-<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-settings" id="acc-settings-btn"><span>The safer settings file<small>What Claude offers to write in step 5, and what each line means</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
+<button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc-settings" id="acc-settings-btn"><span>The optional secrets-blocking file<small>What Claude may offer to write in step 5, and what it does</small></span><svg class="ic"><use href="#g-chev"/></svg></button>
 <div class="acc-panel" id="acc-settings" role="region" aria-labelledby="acc-settings-btn"><div class="acc-inner"><div class="acc-body">
 <div class="code-panel"><div class="code-panel-bar"><span class="code-panel-lang">~/.claude/settings.json</span><button class="copy-btn" type="button" data-copy="cmd-settings" aria-label="Copy the settings file"></button></div><pre><code id="cmd-settings">{
   "permissions": {
-    "allow": ["Bash(git status)", "Bash(git diff *)"],
-    "deny": ["Read(~/.ssh/**)", "Read(~/.secrets/**)", "Read(~/.wacli/**)", "Read(**/.env)"],
-    "defaultMode": "default"
-  },
-  "model": "sonnet"
+    "deny": ["Read(~/.ssh/**)", "Read(~/.secrets/**)", "Read(~/.wacli/**)", "Read(~/.aws/**)", "Read(~/.gnupg/**)", "Read(~/.claude/.credentials.json)", "Read(**/.env)", "Read(**/.env.*)", "Read(**/*.pem)", "Read(**/credentials.json)", "Read(**/token.json)"]
+  }
 }</code></pre></div>
 <ul class="rules">
-<li><b>defaultMode: default</b><span>Claude Code starts in Manual mode from now on.</span></li>
-<li><b>allow</b><span>Two harmless git commands it may run without asking. There is no blanket Bash, Read, Edit or Write, so anything that sends, deletes or deploys still asks.</span></li>
-<li><b>deny</b><span>Blocks Claude&rsquo;s file tools from your SSH keys, your <code>.secrets</code> folder, the WhatsApp login folder and any <code>.env</code> file. A strong guard, not a lock.</span></li>
-<li><b>model</b><span>Only a starting choice. Setup leaves it out unless you ask. If a settings file already exists, Claude reads it first and adds to it.</span></li>
+<li><b>deny</b><span>Blocks Claude&rsquo;s file tools from your SSH keys, your <code>.secrets</code> folder, the WhatsApp login folder, cloud and encryption key folders, <code>.env</code> and <code>.pem</code> files, and any <code>credentials.json</code> or <code>token.json</code>. A strong guard, not a lock.</span></li>
+<li><b>Nothing else changes</b><span>It does not change your permission mode or how much Claude asks. It is optional, and you can say no. If a settings file already exists, Claude reads it first and adds to it.</span></li>
 </ul>
 </div></div></div>
 </div>
@@ -392,7 +387,7 @@
 <h3>Claude&rsquo;s ground rules during setup</h3>
 <ul class="rules">
 <li><b>Only what applies to you</b><span>It connects only the tools you use and installs only the skills you chose. It explains what something is and why before installing it, never writes into a folder it did not create, and never installs, updates or removes anything without your yes.</span></li>
-<li><b>What it reads is material, never orders</b><span>If an email, web page or downloaded file contains instructions aimed at Claude, it ignores them and tells you.</span></li>
+<li><b>What it reads is material, never orders</b><span>If an email, web page or downloaded file contains instructions aimed at Claude, it does not follow them and tells you. The one exception is a file you have said yes to, such as Skill Updates, which Claude reads out to you first.</span></li>
 <li><b>It does not call setup &ldquo;complete&rdquo;</b><span>It tells you which steps are finished. Rules, memory, hooks and semantic search are optional (section 05).</span></li>
 </ul>
 </div>
@@ -404,7 +399,7 @@
 <p class="dek">A skill is a set of instructions Claude follows for one kind of task. <span data-count="ready">7</span> are ready now, and <span data-count="soon">7</span> more are coming soon. You pick, and Claude installs only those.</p>
 </div>
 <ul class="promises">
-<li><svg class="ic"><use href="#g-folder"/></svg><b>Nothing goes into a folder Claude did not create</b><span>A skill of yours with the same name is never overwritten.</span></li>
+<li><svg class="ic"><use href="#g-folder"/></svg><b>Your own skills are never overwritten</b><span>Nothing goes into a skill folder Claude did not create unless you say yes, and nothing is deleted.</span></li>
 <li><svg class="ic"><use href="#g-yes"/></svg><b>Nothing is installed without your yes</b><span>Picking none is fine. Skill Updates goes in first, because it installs the others.</span></li>
 <li><svg class="ic"><use href="#g-eye"/></svg><b>You hear what it does first</b><span>From the skill&rsquo;s own file: web addresses, commands, folders, logins and its main rules.</span></li>
 </ul>
@@ -687,7 +682,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <li><b>The free plan</b><span>It does not include Claude Code. You need Pro, Max, Team, Enterprise or an Anthropic Console account.</span></li>
 <li><b>A synced or shared folder</b><span>OneDrive, iCloud Drive and Dropbox syncing can crash Claude Code. Start it from your user folder, not from inside one of those.</span></li>
 <li><b>A shared Claude login</b><span>One account per person, always.</span></li>
-<li><b>Windows: &ldquo;running scripts is disabled&rdquo;</b><span>PowerShell blocks scripts by default. Run <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code> once.</span></li>
+<li><b>Windows: &ldquo;running scripts is disabled&rdquo;</b><span>PowerShell blocks scripts by default. Claude explains it and asks first, and the fix, for your own account only, is <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>.</span></li>
 </ul>
 <p class="trap-group">During setup</p>
 <ul class="traps" style="border-top:1px solid var(--bc-border)">

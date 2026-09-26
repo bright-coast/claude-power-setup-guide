@@ -1,7 +1,7 @@
 ---
 name: process-recordings
 description: Use when someone says "process my recording", "process my recordings", "what's new from my meetings", "write up that call", "turn this meeting into notes", "here's a transcript", or points at a specific call. Works on transcripts and notes (from a recording app's export, a connector, an online document or pasted text), not on audio files. Turns them into decisions, action items, open questions and follow-ups, and files the notes where the person can find them again.
-version: 1.0.0
+version: 1.0.1
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -14,7 +14,12 @@ version: 1.0.0
 
 ## What this does
 
-It works on transcripts and notes, not on audio. It cannot listen to a sound or video file, so if all you have is a recording, you first need a transcript from your recording app (see "What you need"). It reads a meeting transcript (from a recording app's export or connector, an online document, or text you paste) and the recording app's own summary or notes, if there are any, and gives you a structured write-up in chat: who was there, what was decided, who owes what, what is still open, and what to do next. Meetings with clients are analysed differently from internal ones. It keeps a small log of which recordings it has already seen, so "what's new" only shows new ones. It never sends, deletes, pays or publishes anything. Emails are written as drafts only, and notes, memory entries and records are saved only after you say yes.
+It works on transcripts and notes, not on audio. It cannot listen to a sound or video file, so if all you have is a recording, you first need a transcript from your recording app (see "What you need"). It reads a meeting transcript (from a recording app's export or connector, an online document, or text you paste) and the recording app's own summary or notes, if there are any, and gives you a structured write-up in chat: who was there, what was decided, who owes what, what is still open, and what to do next. Meetings with clients are analysed differently from internal ones. It keeps a small log of which recordings it has already seen, so "what's new" only shows new ones (it asks you once before it starts that log, see "Where the log lives"). It never sends, deletes, pays or publishes anything. Emails are written as drafts only, and notes, memory entries and records are saved only after you say yes.
+
+**What it saves on this computer.**
+- `local.md` next to this file: where your recordings come from, which names are your side, and where your notes go.
+- The log of recordings already seen, `~/.claude/state/recordings_log.json`: each recording's title, date and whether it has been processed, and nothing from inside the recording.
+- Only after you say yes: the notes files and memory entries described in Step 5.
 
 ## What you need
 
@@ -37,14 +42,14 @@ Ask these, at most three in one message, and wait for the answers:
 
 Then work out how you will actually get a transcript for this person, and explain it in plain words before doing anything:
 
-- **A connector exists for their app:** explain what it is and what it can see, then walk them through adding it one step at a time. Say what they will see happening, then confirm it worked by listing one recording.
+- **A connector exists for their app:** explain what it is and what it can see. Say plainly that the words of everyone on a call, not just theirs, pass through Anthropic (who run Claude) and through the connector's company, so the other people on their calls may need to be told. Then ask for a clear yes before you add anything. Only after that, walk them through adding it one step at a time. Say what they will see happening, then confirm it worked by listing one recording.
 - **The app only offers exports:** agree where the exported files will go (a folder path), and check you can read one.
 - **It is an online document:** check the connection to that account works by reading one.
 - **Nothing else works:** agree that they will paste transcripts.
 
-Never install or connect anything without saying what it is and why first. Do not claim an integration is available until you have checked that it is.
+Never install or connect anything without saying what it is and why first, and getting a clear yes. Do not claim an integration is available until you have checked that it is.
 
-Write the answers to `local.md` under these headings, then confirm back what you saved:
+Then write the answers to `local.md` under these headings, and confirm back what you saved:
 
 ```markdown
 ## Source
@@ -65,7 +70,7 @@ The log of recordings already seen is `~/.claude/state/recordings_log.json` (on 
 {"name": "...", "created_at": "...", "status": "processed", "processed_at": "<now, ISO>"}
 ```
 
-Create the folder and file if they do not exist yet. Updating this log after a recording has been analysed is the one thing this skill does without asking, and you should say so the first time.
+Create the folder and file if they do not exist yet. The log is listed in what this skill writes, which the person heard when they installed it, so it needs no extra question. Updating it after a recording has been analysed is the one thing this skill does without asking, and you should say so in one line the first time: "I keep a small log on this computer of which recordings I have processed. It holds only each recording's title, date and whether it is done, nothing from inside the recording." If they ask you not to keep one, keep none, and when they ask what is new, ask which recordings to look at.
 
 ## Step 1: Find the recording or recordings
 
@@ -126,7 +131,7 @@ Same structure as Step 4, with one difference. Name the outside consultant or su
 Until now this has all been text in chat. Do not send emails, create records, save memory or write notes files without approval. Show the proposals and wait.
 
 - **`[EMAIL DRAFT]`:** if an email tool is connected, create a draft only, never send it. If not, write the draft text in chat for the person to copy. Never add anyone to the To, Cc or Bcc lines they did not name.
-- **`[MEMORY]`:** if the person has a Claude Code memory folder, save approved entries there, one note per client or project. If they do not have one, offer to add them to the notes file instead and say that is what you did.
+- **`[MEMORY]`:** if the person has a Claude Code memory folder, save approved entries there, one note per client or project. Before you save, show the exact wording you will write and wait for a yes. Write each entry in your own words as a short fact, never copied word for word from a transcript. If they do not have one, offer to add them to the notes file instead and say that is what you did.
 - **`[SAVE NOTES]`:** save the write-up as a plain text or markdown file in the notes folder from `local.md`, named with the date and a short title (for example `2026-09-24 client call, project kickoff.md`). Say the full path when you have saved it. Always ask first: a setting in `local.md` never replaces that yes. When you have processed several recordings in one go, one yes can cover saving the notes for all of them, as long as you said which ones. If the setting is "chat only", skip this.
 - **`[TASK]`:** only if the tool is connected and the person approves that specific item.
 

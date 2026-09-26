@@ -1,7 +1,7 @@
 ---
 name: health-check
 description: Use when someone says "run a health check", "/health-check", "check my setup", "is my Claude setup okay", "is everything working", or "anything I should tidy up". Runs a quick check-up of the Claude Code setup (instructions file, memory, git, disk space, tools, saved logins, stray files, startup routine and skill updates) and offers plain-English fixes one at a time.
-version: 1.0.0
+version: 1.0.1
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -14,7 +14,13 @@ version: 1.0.0
 
 ## What this does
 
-It looks around this computer's Claude Code setup and reports what is healthy, what needs attention and what is missing. It only reads file names, sizes, dates and the headings of your instructions file. It never opens your saved logins or tokens, and it never sends anything anywhere. It changes something only after you say yes to that one specific fix.
+It looks around this computer's Claude Code setup and reports what is healthy, what needs attention and what is missing.
+
+**What it reads.** Check 1 reads your instructions file (`CLAUDE.md`): it counts the lines, and reads the headings and any lines about the six basics it looks for. Check 2 counts the lines in `MEMORY.md` and looks at the memory files' names and dates, without opening the notes themselves. The other checks look only at file names, sizes and dates, and run read-only commands such as `git status` and version checks. It never opens your saved logins or tokens.
+
+**What it sends.** It sends none of your files or data anywhere. The one request it makes is check 9, a read-only download of GitHub's public catalog of the guide's skills, with nothing of yours attached. What Claude reads while checking, such as your instructions file, is part of your conversation with Claude, as with anything else it reads for you.
+
+**What it changes.** Something only after you say yes to that one specific fix. The one small exception is that check 9 can add to the short list of skills the Skill Updates skill has already told you about.
 
 ## How to run it
 
@@ -70,7 +76,7 @@ Git is the tool that keeps a history of changes to a folder and lets you back it
 - First run `git --version`. If git is not installed, say so plainly (ℹ️), say it only matters if the person wants version history or online backups, and skip the rest of this check.
 - Find git projects by looking for `.git` folders up to 3 levels below the working folder. If none turn up, say "No git projects found here, which is fine if you have not started using git yet."
 - For each project found: clean or has changes, the number of new (untracked) files, and the number of uncommitted changes.
-- **Fixes:** offer to commit, or to add files to `.gitignore`. Always confirm before committing. Never push anything.
+- **Fixes:** offer to add files to `.gitignore`, or to commit. Never commit a file of the kind check 6 lists as holding logins or keys (`token.json`, `credentials.json`, `.env` files, anything in a `.secrets` folder). If a project has one, offer the `.gitignore` first, before any commit. Show the list of files that would go into a commit and get a yes before you commit. Never push anything.
 
 ### 4. Disk space
 
