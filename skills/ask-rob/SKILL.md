@@ -1,7 +1,7 @@
 ---
 name: ask-rob
 description: Use when you (the person working) are stuck on something about Claude Code, Claude itself, or the AI setup, can't figure it out from your shared instructions and knowledge files (if you have a team folder) or the common issues below, and genuinely need Rob's input. NOT for client questions, pricing, or business judgment calls about how your own business operates; those go straight to the portal directly, not through this skill.
-version: 1.0.1
+version: 1.1.0
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -21,7 +21,7 @@ This skill comes from the Claude Power Setup Guide repo (github.com/bright-coast
 
 The first time you use this skill, Claude will ask where you saved the token file. Tell it in plain English, e.g. "it's in my Downloads folder, called my-token.txt."
 
-**Here is exactly what happens to that file.** The first time something is sent, the skill copies the token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then deletes the original file you saved. The copy is a plain, unencrypted file. The script saves it with your computer's default permissions and does not lock it down any further, so on a shared Mac or Linux computer other accounts on that computer may be able to read it, and on a normal single-user computer it is readable only by your own account. Nothing else is deleted. Before it asks for your yes, Claude tells you the full path of the file it will delete and how big that file is. It asks for that yes before the first send runs (see step 4), and once it has happened Claude tells you plainly what it did. After that the skill finds the copy on its own, so you are not asked again. If Claude ever asks about your token after that first time, it's only ever asking where the file is, never the value itself. Don't paste the token straight into a chat. If it ever does end up pasted into one, say so plainly, regenerate it in Settings, and treat it as exposed.
+**Here is exactly what happens to that file.** The first time something is sent, the skill checks the token file before it touches anything. It must be a regular file (not a folder), no bigger than 2048 bytes, and hold a single line of 16 to 512 characters made only of letters, digits and these characters: `. _ ~ + / = -`. If it doesn't pass, the skill stops and tells you why, and it moves nothing, deletes nothing and sends nothing. If it passes, the skill copies the token into a folder in your home folder (`~/.secrets/ask-rob/`), reads the copy back to make sure it matches, and only then deletes the original file you saved. If that delete doesn't work, the skill says so plainly, the token still works, and you can delete the original yourself. The copy is a plain, unencrypted file. On Mac and Linux the script makes the folder and the file owner-only (permissions 700 and 600), so other accounts on a shared computer cannot read it. On Windows those settings don't apply, and none are needed, because your Windows profile folder is already private to your own account. Nothing else is deleted. Before it asks for your yes, Claude tells you the full path of the file it will delete and how big that file is. It asks for that yes before the first send runs (see step 4), and once it has happened Claude tells you plainly what it did. After that the skill finds the copy on its own, so you are not asked again. If Claude ever asks about your token after that first time, it's only ever asking where the file is, never the value itself. Don't paste the token straight into a chat. If it ever does end up pasted into one, say so plainly, regenerate it in Settings, and treat it as exposed.
 
 ## When to use this
 
@@ -51,7 +51,7 @@ One shot: read the session, draft the question, confirm it with the person, send
 
 ### 0. Quick check for replies first
 
-If `send-to-rob.js` or `send-to-rob.ps1` already exists in this folder (neither will on the very first ever use, that's fine, skip this step then), first compare it with the matching text in this skill file (the `send-to-rob.js` block or the `send-to-rob.ps1` block below), ignoring only differences in line endings. Do this before every run of a saved script, here and everywhere else this skill runs one. If it is the same, run whichever one is there with its check-pending flag at the start of each use, before starting on what the person asked for (`node send-to-rob.js --check-pending` or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -CheckPending`; the Bypass flag is only for when Windows would block the script, see the PowerShell note in step 4). If it differs in any other way, do not run it. Say so plainly, and ask whether they want you to replace it with the text in this skill file. Only replace it if they say yes. If they say no, skip the check and carry on with what they asked.
+If `send-to-rob.js` or `send-to-rob.ps1` already exists in this folder (neither will on the very first ever use, that's fine, skip this step then), first compare it with the matching text in this skill file (the `send-to-rob.js` block or the `send-to-rob.ps1` block below), ignoring only differences in line endings. Do this before every run of a saved script, here and everywhere else this skill runs one. If it is the same, run whichever one is there with its check-pending flag at the start of each use, before starting on what the person asked for (`node send-to-rob.js --check-pending` or `powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -CheckPending`; the `-ExecutionPolicy RemoteSigned` flag is only for when Windows would block the script, see the PowerShell note in step 4). If it differs in any other way, do not run it. Say so plainly, and ask whether they want you to replace it with the text in this skill file. Only replace it if they say yes. If they say no, skip the check and carry on with what they asked.
 
 Here is what this does, and you should say so. It makes a read-only request to app.brightcoast.ai, using the person's token, to see whether Rob has replied to anything they sent earlier. It sends nothing and changes nothing on the portal. It also updates the small list of pending questions kept in the same folder as the token, so a finished reply is shown automatically only once (step 6 shows how to look at it again). Tell the person "checking for Rob's reply" when you run it.
 
@@ -91,7 +91,7 @@ This skill sends by running a small helper script in the same folder as this fil
 - **If `node` is missing and this is Windows:** use `send-to-rob.ps1` below instead. It's built entirely on PowerShell's own built-in tools (`Invoke-RestMethod`, `ConvertTo-Json`), so there is nothing else to install, and every Windows machine already has PowerShell. Run it yourself through your own tool calls, the way you'd run any other command in this session. Read the PowerShell note below before you run it.
 - **If `node` is missing and this is Mac/Linux:** there's no zero-install fallback for this case yet. Tell the person plainly that this skill needs Node.js, which is a free, widely used program that runs small scripts like this one on their computer, and that it isn't installed yet. Installing it is a normal one-time step (the same kind of thing installing Claude Code itself was), but ask for their yes before installing anything. If they say yes, walk them through it (nodejs.org, or `brew install node` if they have Homebrew), following the "Installing Python or another library" guidance above, before continuing. If they say no, don't install anything, and tell them plainly that nothing has been sent. Don't push them to a separate terminal.
 
-**PowerShell note (Windows, `send-to-rob.ps1` only).** Run `Get-ExecutionPolicy` first. If it reports `Restricted` or `AllSigned`, Windows will refuse to run the script without the `-ExecutionPolicy Bypass` flag that appears in the commands below. Use the flag only in that case, and tell the person plainly: "Windows is set to block scripts, so I'm running this one script with a bypass that applies to this single run only and changes no Windows setting." If the policy already allows local scripts, leave the flag off. Whenever Node is available, use the Node version instead and skip all of this.
+**PowerShell note (Windows, `send-to-rob.ps1` only).** Run `Get-ExecutionPolicy` first. If it reports `Restricted` or `AllSigned`, Windows will refuse to run the script without the `-ExecutionPolicy RemoteSigned` flag that appears in the commands below. Use the flag only in that case, and tell the person plainly: "Windows is set to block scripts, so I'm running this one script with a setting that applies to this single run only and changes no Windows setting. It lets a script written on this computer run, and it still blocks unsigned scripts downloaded from the internet." If the policy already allows local scripts, leave the flag off. If Windows still refuses (for example a company rule controls it), say so plainly and stop, don't look for a way around it. Whenever Node is available, use the Node version instead and skip all of this.
 
 **Before writing either script, check the address:** the script sends to `https://app.brightcoast.ai`. That must be the exact same domain as the portal this person is already logged into, the one where they just generated their token in Settings. The step 3 confirm message already shows them the address you expect (`app.brightcoast.ai`) and asks them to compare it with their browser's address bar, so don't ask it again as a separate question. Only if they say it looks different, or that they aren't sure, stop here, don't write or run anything, and flag it plainly instead of proceeding.
 
@@ -122,22 +122,94 @@ This step uses the person's own token to send the question they just confirmed t
 // Where the token actually lives, permanently: ~/.secrets/ask-rob/token.
 // The person never needs to know this path or create it themselves. The
 // first time they tell Claude where they saved their token (anywhere,
-// Desktop or Downloads is fine), pass that as --token-file once: this script
-// copies its contents into the canonical location, deletes the original, and
-// uses the canonical file itself from every run after that, no flag needed.
-// The token is moved out of a folder like Desktop or Downloads, which may be
-// synced or shared, into a folder in the home folder. The file is saved with
-// the computer's default permissions. On a shared Mac or Linux computer other
-// accounts may be able to read it; on a normal single-user computer it is
-// readable only by that person's account. The person is asked first, and is
-// told the full path and size of the file that will be deleted.
+// Desktop or Downloads is fine), pass that as --token-file once. This script
+// checks that file first. It must be a regular file of at most 2048 bytes
+// holding a single line of 16 to 512 characters, made only of letters,
+// digits and these characters: . _ ~ + / = -
+// If it is not, the script says so and moves nothing, deletes nothing and
+// sends nothing. If it is, the script copies the token into the canonical
+// location, reads the copy back to check it matches, and only then deletes
+// the original. If that delete fails it says so plainly and carries on,
+// because the token still works. Every run after that uses the canonical
+// file itself, no flag needed. The token is moved out of a folder like
+// Desktop or Downloads, which may be synced or shared, into a folder in the
+// home folder.
+//
+// Permissions: on Mac and Linux the folder is created owner-only (mode 0o700)
+// and the token file is written owner-only (mode 0o600), so other accounts on
+// a shared computer cannot read it. On Windows those mode arguments are
+// ignored, and that is fine: the Windows profile folder is already private to
+// the person's own account, so nothing extra is needed there.
+//
+// The person is asked first, and is told the full path and size of the file
+// that will be deleted.
 
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const CANONICAL_TOKEN_FILE = path.join(os.homedir(), '.secrets', 'ask-rob', 'token');
-const PENDING_FILE = path.join(os.homedir(), '.secrets', 'ask-rob', 'pending.json');
+const TOKEN_DIR = path.join(os.homedir(), '.secrets', 'ask-rob');
+const CANONICAL_TOKEN_FILE = path.join(TOKEN_DIR, 'token');
+const PENDING_FILE = path.join(TOKEN_DIR, 'pending.json');
+
+// A token file is only accepted if it is a regular file of at most 2048 bytes
+// whose trimmed contents are one line of 16 to 512 characters, made only of
+// letters, digits and . _ ~ + / = -
+const TOKEN_MAX_BYTES = 2048;
+const TOKEN_PATTERN = /^[A-Za-z0-9._~+\/=-]{16,512}$/;
+
+// Makes sure the private folder exists and is owner-only. It runs on later
+// runs too, so a folder made by an older version gets locked down as well.
+function ensurePrivateDir() {
+  fs.mkdirSync(TOKEN_DIR, { recursive: true, mode: 0o700 });
+  fs.chmodSync(TOKEN_DIR, 0o700); // in case the folder already existed
+}
+
+// Looks at a token file without changing anything. Returns { token } when it
+// is fine, or { problem } with a short plain reason when it is not. The
+// contents are never printed.
+function checkTokenFile(filePath) {
+  let info;
+  try {
+    info = fs.lstatSync(filePath);
+  } catch (err) {
+    const missing = err.code === 'ENOENT' || err.code === 'ENOTDIR';
+    return { problem: missing ? 'no file was found there' : 'that file could not be opened' };
+  }
+  if (!info.isFile()) {
+    return { problem: 'that is not a regular file (a folder or a link will not do)' };
+  }
+  const tooBig = { problem: `the file is bigger than ${TOKEN_MAX_BYTES} bytes, so it is not a token file` };
+  if (info.size > TOKEN_MAX_BYTES) return tooBig;
+
+  let text;
+  try {
+    const bytes = fs.readFileSync(filePath);
+    if (bytes.length > TOKEN_MAX_BYTES) return tooBig;
+    text = bytes.toString('utf8').trim();
+  } catch {
+    return { problem: 'that file could not be read' };
+  }
+  if (text.length === 0) return { problem: 'the file is empty' };
+  if (/[\r\n]/.test(text)) return { problem: 'the file has more than one line' };
+  if (!TOKEN_PATTERN.test(text)) {
+    return { problem: 'the contents do not look like a token (one line of 16 to 512 letters, digits or . _ ~ + / = -)' };
+  }
+  return { token: text };
+}
+
+// True when both paths are the same file, even if one was typed with
+// different capital letters or is another name for it.
+function isSameFile(a, b) {
+  if (path.resolve(a) === path.resolve(b)) return true;
+  try {
+    const x = fs.statSync(a, { bigint: true });
+    const y = fs.statSync(b, { bigint: true });
+    return x.ino !== 0n && x.ino === y.ino && x.dev === y.dev;
+  } catch {
+    return false;
+  }
+}
 
 function loadPending() {
   try {
@@ -148,8 +220,9 @@ function loadPending() {
 }
 
 function savePending(list) {
-  fs.mkdirSync(path.dirname(PENDING_FILE), { recursive: true });
-  fs.writeFileSync(PENDING_FILE, JSON.stringify(list, null, 2));
+  ensurePrivateDir();
+  fs.writeFileSync(PENDING_FILE, JSON.stringify(list, null, 2), { mode: 0o600 });
+  fs.chmodSync(PENDING_FILE, 0o600); // in case the file already existed
 }
 
 function addPending(id, question) {
@@ -204,20 +277,42 @@ async function checkPending(token) {
   if (!sawUpdate) console.log('NO_UPDATES');
 }
 
+// Moves the token from where the person saved it into the private folder.
+// Returns true when it is safe to carry on, and false when it stopped. When
+// it stops, nothing has been deleted and nothing will be sent. The original
+// is deleted only after the private copy has been written, read back and
+// found to match.
 function migrateTokenFile(sourcePath) {
-  const resolvedSource = path.resolve(sourcePath);
-  const resolvedDest = path.resolve(CANONICAL_TOKEN_FILE);
-  if (resolvedSource === resolvedDest) return;
+  const source = checkTokenFile(sourcePath);
+  if (source.problem) {
+    console.error(`REFUSED: ${source.problem} (${sourcePath}). Nothing was moved, deleted or sent.`);
+    process.exitCode = 1;
+    return false;
+  }
 
-  fs.mkdirSync(path.dirname(CANONICAL_TOKEN_FILE), { recursive: true });
-  const content = fs.readFileSync(sourcePath, 'utf8');
-  fs.writeFileSync(CANONICAL_TOKEN_FILE, content);
+  // Already the private copy, however the path was typed. Never delete it.
+  if (isSameFile(sourcePath, CANONICAL_TOKEN_FILE)) return true;
+
+  try {
+    ensurePrivateDir();
+    fs.writeFileSync(CANONICAL_TOKEN_FILE, source.token, { mode: 0o600 });
+    fs.chmodSync(CANONICAL_TOKEN_FILE, 0o600); // in case the file already existed
+    const copy = fs.readFileSync(CANONICAL_TOKEN_FILE, 'utf8').trim();
+    if (copy !== source.token) throw new Error('the saved copy did not match the original');
+  } catch (err) {
+    console.error(`REFUSED: could not save a private copy (${err.message}). Your original file was left where it is. Nothing was deleted or sent.`);
+    process.exitCode = 1;
+    return false;
+  }
+
   try {
     fs.unlinkSync(sourcePath);
-  } catch {
-    // Best effort - copy already succeeded, a leftover original isn't fatal.
+    console.log(`MIGRATED token to ${CANONICAL_TOKEN_FILE}`);
+  } catch (err) {
+    // The copy already succeeded and works, so say so plainly and carry on.
+    console.log(`NOT_DELETED the copy is saved at ${CANONICAL_TOKEN_FILE}, but the original at ${sourcePath} could not be deleted (${err.message}). The token still works. Please delete that original yourself.`);
   }
-  console.log(`MIGRATED token to ${CANONICAL_TOKEN_FILE}`);
+  return true;
 }
 
 function parseArgs(argv) {
@@ -353,35 +448,22 @@ async function run() {
   }
 
   if (!fs.existsSync(CANONICAL_TOKEN_FILE) && !explicitTokenFile) {
-    console.error("No token file known yet for this person. Ask where they saved their token, then pass it once with --token-file - it's moved into place automatically after that, no flag needed again.");
+    console.error("No token file known yet for this person. Ask where they saved their token, then pass it once with --token-file. It is moved into place automatically after that, so no flag is needed again.");
     process.exitCode = 1;
     return;
   }
 
-  if (explicitTokenFile && fs.existsSync(explicitTokenFile)) {
-    try {
-      migrateTokenFile(explicitTokenFile);
-    } catch (err) {
-      console.error(`Could not move the token file from ${explicitTokenFile}: ${err.message}`);
-      process.exitCode = 1;
-      return;
-    }
-  }
+  // Check the file, copy it, verify the copy, and only then delete the
+  // original. If anything is wrong this stops here and sends nothing.
+  if (explicitTokenFile && !migrateTokenFile(explicitTokenFile)) return;
 
-  let token;
-  try {
-    token = fs.readFileSync(CANONICAL_TOKEN_FILE, 'utf8').trim();
-  } catch (err) {
-    console.error(`Could not read the token file at ${CANONICAL_TOKEN_FILE}. Check the path the person gave you was right.`);
+  const saved = checkTokenFile(CANONICAL_TOKEN_FILE);
+  if (saved.problem) {
+    console.error(`The saved token cannot be used: ${saved.problem} (${CANONICAL_TOKEN_FILE}). Nothing was sent. Generate a new token in Settings -> Personal API Token, save it as a plain text file, and pass its path once with --token-file.`);
     process.exitCode = 1;
     return;
   }
-
-  if (!token) {
-    console.error(`Token file at ${CANONICAL_TOKEN_FILE} is empty. Generate a token in Settings -> Personal API Token and save it there.`);
-    process.exitCode = 1;
-    return;
-  }
+  const token = saved.token;
 
   if (raw.list) { await list(token); return; }
   if (checkId) { await checkOne(checkId, token); return; }
@@ -452,36 +534,49 @@ node send-to-rob.js --question "<the question, from step 2>" --context "<the ful
 ```powershell
 #!/usr/bin/env pwsh
 # Sends a question to Rob via the Bright Coast AI client-requests API.
-# Windows-native fallback for send-to-rob.js - built entirely on PowerShell's
+# Windows-native fallback for send-to-rob.js, built entirely on PowerShell's
 # own built-in tools (Invoke-RestMethod, ConvertTo-Json), nothing to install.
 # Written to work on plain Windows PowerShell 5.1, not just PowerShell 7+.
 #
 # First time for a given person:
-#   powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -TokenFile "<wherever they saved their token>" -Question "<text>" [-Context "<text>"] [-Emergency] [-Attach <path>]
+#   powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -TokenFile "<wherever they saved their token>" -Question "<text>" [-Context "<text>"] [-Emergency] [-Attach <path>]
 #
 # Every time after that, the path doesn't need to be passed again:
-#   powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Question "<text>" [-Context "<text>"] [-Emergency] [-Attach <path>]
+#   powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -Question "<text>" [-Context "<text>"] [-Emergency] [-Attach <path>]
 #
 # Retry just the attachment on an already-sent question:
-#   powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -RequestId <id> -Attach <path>
+#   powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -RequestId <id> -Attach <path>
 #
 # Check on a reply, or list everything (org-wide, not just your own):
-#   powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Check <id>
-#   powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -List
+#   powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -Check <id>
+#   powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -List
 #
-# -ExecutionPolicy Bypass applies to this one process only. It skips
-# PowerShell's script check for this script, and it does not change any
-# setting on the computer. Prefer the Node version when Node is available.
+# -ExecutionPolicy RemoteSigned applies to this one process only, and it does
+# not change any setting on the computer. It only matters when Windows is set
+# to Restricted or AllSigned. RemoteSigned lets a script written on this
+# computer run, and it still blocks unsigned scripts downloaded from the
+# internet. Leave the flag off when Get-ExecutionPolicy already allows local
+# scripts. Prefer the Node version when Node is available.
 #
 # Where the token actually lives, permanently: ~/.secrets/ask-rob/token.
 # The person never needs to know this path or create it themselves. The
 # first time they tell Claude where they saved their token, pass that as
-# -TokenFile once: this script copies its contents into the canonical
-# location, deletes the original, and uses the canonical file itself from
-# every run after that, no flag needed. The file is saved with the computer's
-# default permissions, so on a normal single-user computer it is readable only
-# by that person's account. The person is asked first, and is told the full
-# path and size of the file that will be deleted.
+# -TokenFile once. This script checks that file first. It must be a regular
+# file of at most 2048 bytes holding a single line of 16 to 512 characters,
+# made only of letters, digits and these characters: . _ ~ + / = -
+# If it is not, the script says so and moves nothing, deletes nothing and
+# sends nothing. If it is, the script copies the token into the canonical
+# location, reads the copy back to check it matches, and only then deletes
+# the original. If that delete fails it says so plainly and carries on,
+# because the token still works. Every run after that uses the canonical
+# file itself, no flag needed.
+#
+# Permissions: nothing extra is needed on Windows. The token folder sits
+# inside the person's Windows profile folder, which is already private to
+# their own account, and Windows does not use Mac or Linux style permission
+# bits, so this script deliberately changes no permissions. The person is
+# asked first, and is told the full path and size of the file that will be
+# deleted.
 
 param(
   [string]$Question,
@@ -566,17 +661,81 @@ function Invoke-CheckPending($token) {
   if (-not $sawUpdate) { Write-Host "NO_UPDATES" }
 }
 
-function Migrate-TokenFile($sourcePath) {
-  $resolvedSource = (Resolve-Path $sourcePath).Path
-  if ($resolvedSource -eq $CanonicalTokenFile) { return }
-  $dir = Split-Path $CanonicalTokenFile -Parent
-  if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
-  $content = Get-Content $sourcePath -Raw
-  Set-Content -Path $CanonicalTokenFile -Value $content -NoNewline -Encoding UTF8
-  try { Remove-Item $sourcePath -Force } catch {
-    # Best effort - copy already succeeded, a leftover original isn't fatal.
+# A token file is only accepted if it is a regular file of at most 2048 bytes
+# whose trimmed contents are one line of 16 to 512 characters, made only of
+# letters, digits and . _ ~ + / = -
+$TokenMaxBytes = 2048
+
+# Looks at a token file without changing anything. Returns an object with a
+# Token when it is fine, or a Problem (a short plain reason) when it is not.
+# The contents are never printed. The character check uses -cnotmatch, which
+# is case sensitive on purpose.
+function Get-TokenFileCheck($path) {
+  try {
+    $item = Get-Item -LiteralPath $path -Force
+  } catch {
+    return [PSCustomObject]@{ Token = $null; Problem = "no file was found there" }
   }
-  Write-Host "MIGRATED token to $CanonicalTokenFile"
+  if (-not ($item -is [System.IO.FileInfo]) -or $item.LinkType -eq 'SymbolicLink') {
+    return [PSCustomObject]@{ Token = $null; Problem = "that is not a regular file (a folder or a link will not do)" }
+  }
+  $tooBig = [PSCustomObject]@{ Token = $null; Problem = "the file is bigger than $TokenMaxBytes bytes, so it is not a token file" }
+  if ($item.Length -gt $TokenMaxBytes) { return $tooBig }
+  try {
+    $bytes = [System.IO.File]::ReadAllBytes($item.FullName)
+    if ($bytes.Length -gt $TokenMaxBytes) { return $tooBig }
+    $start = 0
+    if ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) { $start = 3 }
+    $strictUtf8 = New-Object System.Text.UTF8Encoding($false, $true)
+    $text = $strictUtf8.GetString($bytes, $start, $bytes.Length - $start).Trim()
+  } catch {
+    return [PSCustomObject]@{ Token = $null; Problem = "that file could not be read as plain text" }
+  }
+  if ($text.Length -eq 0) { return [PSCustomObject]@{ Token = $null; Problem = "the file is empty" } }
+  if ($text -match '[\r\n]') { return [PSCustomObject]@{ Token = $null; Problem = "the file has more than one line" } }
+  if ($text -cnotmatch '\A[A-Za-z0-9._~+/=-]{16,512}\z') {
+    return [PSCustomObject]@{ Token = $null; Problem = "the contents do not look like a token (one line of 16 to 512 letters, digits or . _ ~ + / = -)" }
+  }
+  return [PSCustomObject]@{ Token = $text; Problem = $null }
+}
+
+# Moves the token from where the person saved it into the private folder. If
+# anything is wrong it stops the whole script here, with nothing deleted and
+# nothing sent. The original is deleted only after the private copy has been
+# written, read back and found to match. On Windows no permission change is
+# needed, see the note at the top of this file.
+function Migrate-TokenFile($sourcePath) {
+  $source = Get-TokenFileCheck $sourcePath
+  if ($source.Problem) {
+    Write-Host "REFUSED: $($source.Problem) ($sourcePath). Nothing was moved, deleted or sent."
+    exit 1
+  }
+
+  # Already the private copy, however the path was typed. Never delete it.
+  $fullSource = [System.IO.Path]::GetFullPath((Get-Item -LiteralPath $sourcePath -Force).FullName)
+  $fullDest = [System.IO.Path]::GetFullPath($CanonicalTokenFile)
+  if ($fullSource -ieq $fullDest) { return }
+
+  try {
+    $dir = Split-Path $CanonicalTokenFile -Parent
+    if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+    # Plain UTF-8 with no byte order mark, so the Node version reads it too.
+    [System.IO.File]::WriteAllText($CanonicalTokenFile, $source.Token, (New-Object System.Text.UTF8Encoding($false)))
+    $copy = Get-TokenFileCheck $CanonicalTokenFile
+    # -cne, not -ne: PowerShell's -ne ignores capital letters, and tokens have them.
+    if ($copy.Problem -or ($copy.Token -cne $source.Token)) { throw "the saved copy did not match the original" }
+  } catch {
+    Write-Host "REFUSED: could not save a private copy ($($_.Exception.Message)). Your original file was left where it is. Nothing was deleted or sent."
+    exit 1
+  }
+
+  try {
+    Remove-Item -LiteralPath $sourcePath -Force
+    Write-Host "MIGRATED token to $CanonicalTokenFile"
+  } catch {
+    # The copy already succeeded and works, so say so plainly and carry on.
+    Write-Host "NOT_DELETED the copy is saved at $CanonicalTokenFile, but the original at $sourcePath could not be deleted ($($_.Exception.Message)). The token still works. Please delete that original yourself."
+  }
 }
 
 # Full detail on one request. Note the 'waiting_on_you' case: the API has no
@@ -683,31 +842,28 @@ if (-not $Question -and -not $RequestId -and -not $Check -and -not $List -and -n
   exit 1
 }
 
-if (-not (Test-Path $CanonicalTokenFile) -and -not $TokenFile) {
-  Write-Error "No token file known yet for this person. Ask where they saved their token, then pass it once with -TokenFile - it's moved into place automatically after that, no flag needed again."
+if (-not (Test-Path -LiteralPath $CanonicalTokenFile) -and -not $TokenFile) {
+  Write-Error "No token file known yet for this person. Ask where they saved their token, then pass it once with -TokenFile. It is moved into place automatically after that, so no flag is needed again."
   exit 1
 }
 
-if ($TokenFile -and (Test-Path $TokenFile)) {
+# Check the file, copy it, verify the copy, and only then delete the original.
+# If anything is wrong this stops here and sends nothing.
+if ($TokenFile) {
   try {
     Migrate-TokenFile $TokenFile
   } catch {
-    Write-Error "Could not move the token file from $TokenFile - $($_.Exception.Message)"
+    Write-Host "REFUSED: could not move the token file ($($_.Exception.Message)). Nothing was deleted or sent."
     exit 1
   }
 }
 
-try {
-  $token = (Get-Content $CanonicalTokenFile -Raw).Trim()
-} catch {
-  Write-Error "Could not read the token file at $CanonicalTokenFile. Check the path the person gave you was right."
+$saved = Get-TokenFileCheck $CanonicalTokenFile
+if ($saved.Problem) {
+  Write-Host "The saved token cannot be used: $($saved.Problem) ($CanonicalTokenFile). Nothing was sent. Generate a new token in Settings -> Personal API Token, save it as a plain text file, and pass its path once with -TokenFile."
   exit 1
 }
-
-if (-not $token) {
-  Write-Error "Token file at $CanonicalTokenFile is empty. Generate a token in Settings -> Personal API Token and save it there."
-  exit 1
-}
+$token = $saved.Token
 
 if ($List) { Show-List $token; exit 0 }
 if ($Check) { Show-CheckOne $Check $token; exit 0 }
@@ -748,23 +904,23 @@ if ($Attach) {
 
 </details>
 
-Run it (`send-to-rob.ps1`, when `node` isn't available; Windows only, and see the PowerShell note above about the Bypass flag):
+Run it (`send-to-rob.ps1`, when `node` isn't available; Windows only, and see the PowerShell note above about the `-ExecutionPolicy RemoteSigned` flag):
 
 ```
-powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Question "<the question, from step 2>" -Context "<the fuller context, from step 2>" [-Attach "<file path, if there is one>"] [-Emergency]
+powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -Question "<the question, from step 2>" -Context "<the fuller context, from step 2>" [-Attach "<file path, if there is one>"] [-Emergency]
 ```
 
-**If this is the first time for this person** (either script says it doesn't know a token file yet): ask them where they saved it in plain English, the path only, never the value, and add `--token-file "<the path they gave you>"` (`.js`) or `-TokenFile "<the path they gave you>"` (`.ps1`) to the command above, matching whichever one you're using. On that one call the script copies the token file into a folder in their home folder (`~/.secrets/ask-rob/`) and then deletes the original file they saved (you'll see a `MIGRATED` line). Never ask again after the first time, just run the plain command with no token-file flag from here on.
+**If this is the first time for this person** (either script says it doesn't know a token file yet): ask them where they saved it in plain English, the path only, never the value, and add `--token-file "<the path they gave you>"` (`.js`) or `-TokenFile "<the path they gave you>"` (`.ps1`) to the command above, matching whichever one you're using. On that one call the script first checks the token file, then copies it into a folder in their home folder (`~/.secrets/ask-rob/`), reads the copy back to make sure it matches, and only then deletes the original file they saved (you'll see a `MIGRATED` line). If the check fails you'll see a `REFUSED` line instead. That means nothing was moved, deleted or sent. Tell the person plainly what the message says, don't open the token file to look inside it, and ask them to download or save the token file again as a plain text file with only the token on one line, then try again. If the copy worked but the original couldn't be deleted, you'll see a `NOT_DELETED` line, and the token still works. Never ask again after the first time, just run the plain command with no token-file flag from here on.
 
-**Before that first send runs, tell the person plainly what it will do to their token file, and get a yes.** First work out the full path of the token file they saved (the path they gave you, written out in full) and its size. You can read the size from a file listing without opening the file or looking at what is in it. Then say something like: "The first time I send something, I'll also copy your token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then delete the file you originally saved. That file is `<the full path>` and it is `<its size>`. The copy is saved with your computer's default permissions. Nothing else is deleted. Is that OK?" Only run the first send after they say yes. If they say no, do not run it, and tell them plainly that this skill cannot send without doing that, so nothing is sent and their file stays where it is.
+**Before that first send runs, tell the person plainly what it will do to their token file, and get a yes.** First work out the full path of the token file they saved (the path they gave you, written out in full) and its size. You can read the size from a file listing without opening the file or looking at what is in it. If the size is over 2048 bytes, tell them plainly that it is too big to be a token file and ask them to check they picked the right file, before going any further. Otherwise say something like: "The first time I send something, I'll first check your token file looks right. Then I'll copy it into a folder in your home folder (`~/.secrets/ask-rob/`), check the copy matches, and only then delete the file you originally saved. That file is `<the full path>` and it is `<its size>`. On a Mac or Linux computer only your own account can open that folder and file, and on Windows your profile folder is already private to your account. Nothing else is deleted. Is that OK?" Only run the first send after they say yes. If they say no, do not run it, and tell them plainly that this skill cannot send without doing that, so nothing is sent and their file stays where it is.
 
-**After it has run, say plainly what was done:** "I copied your token file into `~/.secrets/ask-rob/` and deleted the file you saved." If the original file is still there afterwards (the delete is best effort and can fail), tell them so and suggest they delete it themselves.
+**After it has run, say plainly what was done:** "I checked your token file, copied it into `~/.secrets/ask-rob/`, checked the copy matched, and then deleted the file you saved." If you saw a `NOT_DELETED` line, or the original file is still there afterwards, tell them so plainly: the token works, but the original is still on their computer at the path shown, and they should delete it themselves. If you saw a `REFUSED` line, tell them nothing was moved, deleted or sent.
 
 You never need to see, type, or repeat the token's value at any point, only its file path, and only on that first ask. Only add `--emergency`/`-Emergency` if it genuinely can't wait, such as a live client-facing issue or something breaking right now. Most things aren't urgent. Don't set it out of habit.
 
 Department is filled in automatically from their own portal settings, so there is nothing to ask them for here.
 
-The script prints `SENT id=<id>` on success, and `ATTACHED` too if a file was included. If attaching failed but the question still went through, it prints the id and a plain error for the attachment only. Don't treat the whole thing as failed, the question already sent. Tell them plainly: the question went through, but the file didn't attach, and let them try attaching it again (`node send-to-rob.js --request-id <id> --attach "<path>"` or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -RequestId <id> -Attach "<path>"`) or drop the file detail into a follow-up message instead. The same file they already saw in step 3 is the one to retry.
+The script prints `SENT id=<id>` on success, and `ATTACHED` too if a file was included. If attaching failed but the question still went through, it prints the id and a plain error for the attachment only. Don't treat the whole thing as failed, the question already sent. Tell them plainly: the question went through, but the file didn't attach, and let them try attaching it again (`node send-to-rob.js --request-id <id> --attach "<path>"` or `powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -RequestId <id> -Attach "<path>"`) or drop the file detail into a follow-up message instead. The same file they already saw in step 3 is the one to retry.
 
 Attachments are not shown to the rest of your team in the portal: only the person who sent it and Rob can open it, even though the question itself is visible org-wide. Say this plainly if they ask, and don't claim more than that. Bright Coast AI still receives the file, which is why step 3 warns about passwords and other people's private data.
 
@@ -780,7 +936,7 @@ At the start of each use, this skill already checks for replies (step 0, and it 
 
 Whenever someone asks "did Rob get back to me" / "check the response from Rob" / "any reply yet" / similar, about something sent through this skill, this session or an earlier one:
 
-- If you still know the id from when it was sent (this session, step 5): `node send-to-rob.js --check <id>` (or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Check <id>`) and read the result back to them plainly.
+- If you still know the id from when it was sent (this session, step 5): `node send-to-rob.js --check <id>` (or `powershell -ExecutionPolicy RemoteSigned -File send-to-rob.ps1 -Check <id>`) and read the result back to them plainly.
 - If you don't (a new session, or it was sent a while ago and nobody wrote the id down): `--list`/`-List` first, match the right one by the question text, then `--check <id>`/`-Check <id>` for the full detail. Use whichever script is actually in the folder (after the same comparison as in step 0), and don't write the other one just to check a reply. The list shows teammates' questions as well as the person's own, so match on the wording of the question.
 
 Both commands are read-only requests to app.brightcoast.ai using the person's token. Tell the person you're checking before you run them.

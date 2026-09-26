@@ -1,7 +1,7 @@
 ---
 name: health-check
 description: Use when someone says "run a health check", "/health-check", "check my setup", "is my Claude setup okay", "is everything working", or "anything I should tidy up". Runs a quick check-up of the Claude Code setup (instructions file, memory, git, disk space, tools, saved logins, stray files, startup routine and skill updates) and offers plain-English fixes one at a time.
-version: 1.0.1
+version: 1.0.2
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -20,7 +20,7 @@ It looks around this computer's Claude Code setup and reports what is healthy, w
 
 **What it sends.** It sends none of your files or data anywhere. The one request it makes is check 9, a read-only download of GitHub's public catalog of the guide's skills, with nothing of yours attached. What Claude reads while checking, such as your instructions file, is part of your conversation with Claude, as with anything else it reads for you.
 
-**What it changes.** Something only after you say yes to that one specific fix. The one small exception is that check 9 can add to the short list of skills the Skill Updates skill has already told you about.
+**What it changes.** Something only after you say yes to that one specific fix. The one small exception is that check 9 can make or add to the short list of skills the Skill Updates skill has already told you about, and can save the date of its last check.
 
 ## How to run it
 
@@ -102,7 +102,7 @@ Git is the tool that keeps a history of changes to a folder and lets you back it
 
 - Look at the top level of the working folder for `*.tmp`, `*.bak`, `*.log`, `*~` and `*.swp` files.
 - Report the count and total size, if any.
-- Do not flag `SKILL.md.bak-*` files inside `~/.claude/skills/`, the hidden `.upstream/` folders, `.upstream.json` and `.seen.json` files, or anything in `~/.claude/skills-backup/`. Those are made by skill updates and moves, and the person may want them.
+- Do not flag `SKILL.md.bak-*` files inside `~/.claude/skills/`, the hidden `.upstream/` folders, the `.upstream.json`, `.seen.json`, `.skipped.json` and `.lastcheck` files, or anything in `~/.claude/skills-backup/`. Those are made by skill updates and moves, and the person may want them.
 - **Fix:** offer to delete. Show the list first and confirm before deleting anything.
 
 ### 8. Startup routine
@@ -115,7 +115,7 @@ Git is the tool that keeps a history of changes to a folder and lets you back it
 
 Run the `skill-updates` check (it is a separate skill, in the same catalog as this one).
 
-- If `skill-updates` is installed: run it in quiet mode, then show the result here. Everything current is ✅. If some skills have updates, show ⚠️ with a small table: skill, version you have, new version, what changed. Add any new skills or a newer guide as ℹ️.
+- If `skill-updates` is installed: run it in quiet mode, then show the result here. Run it every time, whether or not its once-a-week check is due, because you were asked for a health check. Everything current is ✅. If some skills have updates, show ⚠️ with a small table: skill, version you have, new version, what changed. Add any new skills or a newer guide as ℹ️. The very first check only notes which skills already exist, so it reports no new skills; after that, a skill that becomes ready later is reported once.
 - If `skill-updates` is not installed: say so (ℹ️) and offer to install it from the Claude Power Setup Guide. Do not try to work out versions yourself.
 - If nothing on this computer came from the guide yet (no `.upstream.json` files under `~/.claude/skills/`): say so (ℹ️) and offer to show what is available.
 - If the repo cannot be reached (no internet, or the fetch fails): say "Could not check for updates: could not reach the guide's repo" and move on. Do not guess.

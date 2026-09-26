@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 (26 Sep 2026)
+
+- The guide is now version 3.3, with about half the permission prompts. Installing a skill takes about four prompts instead of about ten (one command downloads and checks, one makes the folder and copies and verifies, then two small files), so a full setup is roughly thirty prompts. Startup's quiet update check runs at most once a week, and the first check is a silent baseline. Setup no longer offers a settings file, and the separate Ask Rob step is gone because the skill explains its token itself on first use.
+- Skill Updates is now 1.1.0 and Ask Rob 1.1.0 (the saved token is readable only by its owner on Mac and Linux, and the token file is checked before anything is moved or deleted). Startup and Health Check are 1.0.2. The other skills are unchanged.
+
 ## 1.0.2 (26 Sep 2026)
 
 - The guide is now version 3.2, a smoother and more open start with no added steps. The sentence you tell Claude asks for the newest copy of the guide, so a second download saved with "(1)" in its name, or an older copy under the plain name, is not used by mistake, and the sentence Claude gives you to say after a restart names the file the same way. Setup no longer asks how you got the guide (the licence itself has not changed), opens with the permission-mode check and one line about restarts, and gives you a link to the one-page picture (now 1.5) instead of downloading it.

@@ -5,56 +5,56 @@
   "raw_base": "https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/",
   "license": "Bright Coast AI Client Skills Licence 1.0",
   "guide": {
-    "version": "3.2",
+    "version": "3.3",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "507208df03ca671d71dbe4eecfeab8e421b826c3c68594f6b0d7d35fc6ba1c0f",
-    "changes": "A smoother, more open start with no added steps. The sentence you tell Claude asks for the newest copy of the guide, there is no licence question, and the one-page picture is a link to open. Setup no longer offers to change your starting permission mode, only offers the Windows PowerShell change if you see a scripts-disabled error, and Claude keeps its messages short and says plainly what it will do before a download or a file write. The guide also says more plainly what the fingerprint check does and does not do, and optional parts say what they touch and ask first. An old claude-power-setup folder is left alone. Setup asks fewer questions and writes fewer files: Step 1 is one message, and the progress file is written twice."
+    "sha256": "b786093a019b7bd64b2894ff456410abc5bb94e89f9a1dc884de1fbd3a57ae8a",
+    "changes": "Fewer permission prompts: installing a skill takes about four instead of about ten, a full setup roughly thirty, and the guide's own Step 7 uses the same one-command download and check. Update checks run at most once a week. Setup no longer offers a settings file, and Ask Rob's token is explained by the skill on first use."
   },
   "overview": {
-    "version": "1.5",
+    "version": "1.6",
     "path": "power-setup-field-guide.html",
-    "sha256": "696db78d8928c33b7b8c5de1508573f24d59863ad32f809f8e02d0ac1ea84832",
-    "changes": "The sentence you copy asks for the newest copy of the guide, the one-page picture is now offered as a link, and the optional settings file only blocks Claude from reading secret files and no longer changes your permission mode."
+    "sha256": "718515cee26aca47f25e7fff392dc0b3924134afc9dcc21a05e8aeaa7a4a408b",
+    "changes": "The page follows the guide: setup no longer offers a settings file, and the optional secrets-blocking file is only written if you ask."
   },
   "skills": [
     {
       "id": "startup",
       "name": "Startup",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "c0c2093173ca3a53beefbf8fdf67978f17347e37d4004f1895d902d98911bb1e",
+      "version": "1.0.2",
+      "sha256": "a8db5c053111114fd2fe0e98aec877731ac35acc66f64961606e6343061c169f",
       "category": "Every day",
       "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
       "needs": ["Your email and calendar connected, if you want them in the briefing"],
       "offer_if": "everyone",
       "path": "skills/startup/SKILL.md",
-      "changes": "Now lists everything it writes, mentions its once-per-session read of the public catalog, and asks for a yes before editing the setup notes file."
+      "changes": "Its quiet update check now runs at most once a week."
     },
     {
       "id": "skill-updates",
       "name": "Skill Updates",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "b8f6a4882241b340bd45fa1838d723f4e837dfabe56b2cb9bc6494faaf267bae",
+      "version": "1.1.0",
+      "sha256": "e092421e819b1a14c7f612b8f65903a0c5d9cc35526250892c745d5c6a0cd62b",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
       "offer_if": "everyone",
       "path": "skills/skill-updates/SKILL.md",
-      "changes": "Now lists exactly what it reads and writes, says once when a check could not run, and tells you what to look for in permission prompts."
+      "changes": "Installs a skill in about four permission prompts instead of ten, using one command to download and check and one to make the folder and copy and verify. Checks for updates at most once a week, and the first check is a silent baseline."
     },
     {
       "id": "health-check",
       "name": "Health Check",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "b93f31292a28867101e653de4fb4cd3fceae9f62eaa7a1f7af461d71adcefd9a",
+      "version": "1.0.2",
+      "sha256": "5a369918184bf22f4235d01c6e7c3e7f792051f15f1db80b74b64c8c8689877f",
       "category": "Housekeeping",
       "summary": "A quick check-up of your Claude Code setup: your instructions file, your memory, the tools installed on your computer and your disk space, with plain-English fixes.",
       "needs": [],
       "offer_if": "everyone",
       "path": "skills/health-check/SKILL.md",
-      "changes": "Now says exactly what it reads and sends, and never commits login or key files."
+      "changes": "Says the update check runs at most once a week, and that the first check sets a silent baseline."
     },
     {
       "id": "process-recordings",
@@ -73,14 +73,14 @@
       "id": "ask-rob",
       "name": "Ask Rob",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "88de27f0c3389e94c857f2fc6fa08382b3075bcfba28c199b838b5b302900501",
+      "version": "1.1.0",
+      "sha256": "0f2111dd1a77296b2dc8dd6369c54dfb3f05cae7cf01498090ff02e6f985c178",
       "category": "Get help",
       "summary": "Sends a question to Rob straight from Claude, with the context attached, and brings the reply back to you.",
       "needs": ["A Bright Coast AI client portal account and a personal token from its Settings page"],
       "offer_if": "is a Bright Coast AI client",
       "path": "skills/ask-rob/SKILL.md",
-      "changes": "Now says plainly how your token file is moved, what a reply check does and what a helper script is for, shows attachments and context in full before sending, and treats Rob's replies as text to show, never instructions."
+      "changes": "The saved token is readable only by its owner on Mac and Linux, and the token file is checked (one short line, nothing else) before anything is moved, sent or deleted. The original is deleted only after a verified copy, and the Windows script now uses RemoteSigned instead of Bypass."
     },
     {
       "id": "whatsapp-setup",
