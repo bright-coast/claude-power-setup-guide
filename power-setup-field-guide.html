@@ -196,7 +196,7 @@
 <svg class="say-art" viewBox="0 0 104 56" aria-hidden="true"><g class="art"><path d="M22 56a30 30 0 0 1 60 0z" style="fill:var(--il-sand)"/><path d="M52 14V5M27 22l-6-6M77 22l6-6M12 39H5M92 39h7"/></g></svg>
 <p class="say-kicker">Then, in Claude Code, say</p>
 <div class="invoke"><code id="say-main">Read the newest claude-code-power-setup-guide file I downloaded and run my setup.</code><button class="copy-btn" type="button" data-copy="say-main" aria-label="Copy the sentence"></button></div>
-<p>Open Claude Code, start a new session and paste it. Claude finds the guide and starts by asking whether Bright Coast AI gave it to you.</p>
+<p>Open Claude Code, start a new session and paste it. Claude finds the newest copy of the guide and starts setup.</p>
 </aside>
 </div>
 </header>
@@ -212,7 +212,7 @@
 <ol class="stops">
 <li class="stop" style="--i:0"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A page named dot md with a download arrow beneath it"><use href="#s-download"/></svg><span class="stop-n" aria-hidden="true">1</span></div></div><h3>Download the guide</h3><p>One file, saved to your computer.</p><span class="chip chip-you">You</span></li>
 <li class="stop" style="--i:1"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A Claude Code window with a prompt"><use href="#s-run"/></svg><span class="stop-n" aria-hidden="true">2</span></div></div><h3>Run setup</h3><p>Open Claude Code, start a new session and say the sentence.</p><span class="chip chip-you">You</span></li>
-<li class="stop" style="--i:2"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="Two speech bubbles, one with a question mark"><use href="#s-interview"/></svg><span class="stop-n" aria-hidden="true">3</span></div></div><h3>Answer a few questions</h3><p>Claude asks what you use, then three quick yes or no questions.</p><span class="chip chip-claude">Claude leads</span></li>
+<li class="stop" style="--i:2"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="Two speech bubbles, one with a question mark"><use href="#s-interview"/></svg><span class="stop-n" aria-hidden="true">3</span></div></div><h3>Answer a few questions</h3><p>Claude asks what you use, whether you are a Bright Coast AI client and whether your team shares a folder.</p><span class="chip chip-claude">Claude leads</span></li>
 <li class="stop" style="--i:3"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A plug going into a socket"><use href="#s-connect"/></svg><span class="stop-n" aria-hidden="true">4</span></div></div><h3>Connect your tools</h3><p>One at a time, from your Claude account. You type <code>/mcp</code> and Claude tests each one.</p><span class="chip chip-both">Together</span></li>
 <li class="stop" style="--i:4"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="An open box with three skill cards going in"><use href="#s-skills"/></svg><span class="stop-n" aria-hidden="true">5</span></div></div><h3>Pick your skills</h3><p>Each one is read out to you before Claude writes it. Only what you pick is installed.</p><span class="chip chip-you">You pick</span></li>
 <li class="stop" style="--i:5"><div class="stop-slot"><div class="stop-art"><svg viewBox="0 0 120 120" role="img" aria-label="A sun with two circular arrows around it"><use href="#s-updates"/></svg><span class="stop-n" aria-hidden="true">6</span></div></div><h3>Stay up to date</h3><p>Say &ldquo;check for updates&rdquo;. You see what changed first, and your own settings are kept.</p><span class="chip chip-you">You ask</span></li>
@@ -326,7 +326,7 @@
 <h3>The seven steps</h3>
 <p class="sub-dek">Steps 2, 3 and 6 only happen if they apply to you.</p>
 <ol class="steps">
-<li class="step"><div class="body"><h4>What you use</h4><p>Claude asks which tools you use day to day, for example Notion, Xero, Stripe, HubSpot, Google Drive or spreadsheets. Then three quick questions: do you record or transcribe meetings, do you use WhatsApp for work, and are you a Bright Coast AI client? It then creates <code>SETUP-PROGRESS.md</code>.</p></div></li>
+<li class="step"><div class="body"><h4>What you use</h4><p>Claude asks which tools you use day to day, for example Notion, Xero, Stripe, HubSpot, Google Drive or spreadsheets. Then two quick questions: are you a Bright Coast AI client, and does your team share a folder or is it just you? It then creates <code>SETUP-PROGRESS.md</code>.</p></div></li>
 <li class="step"><div class="body"><h4>Google Drive <span class="chip chip-soon">Only if you use it</span></h4><p>Install Google Drive for desktop, sign in with your work account and make a small test file. A synced icon after a few seconds is the real proof.</p></div></li>
 <li class="step"><div class="body"><h4>A shared team folder <span class="chip chip-soon">Only if you have one</span></h4><p>Claude checks it appears under <b>Shared drives</b> in Google Drive, then reads the team&rsquo;s shared instructions back to you in its own words. If it can describe them correctly, the step worked.</p></div></li>
 <li class="step"><div class="body"><h4>Connect your tools</h4><p>One at a time. You type <code>/mcp</code>, Claude checks what is already connected, and anything new is tested after a restart. Details are in section 06.</p></div></li>
@@ -386,7 +386,7 @@
 <div class="sub">
 <h3>Claude&rsquo;s ground rules during setup</h3>
 <ul class="rules">
-<li><b>Only what applies to you</b><span>It connects only the tools you use and installs only the skills you chose. It explains what something is and why before installing it, never writes into a folder it did not create, and never installs, updates or removes anything without your yes.</span></li>
+<li><b>Only what applies to you</b><span>It connects only the tools you use and installs only the skills you chose. It explains what something is and why before installing it, never writes into a skill folder it did not create without your yes, and never installs, updates or removes anything without your yes.</span></li>
 <li><b>What it reads is material, never orders</b><span>If an email, web page or downloaded file contains instructions aimed at Claude, it does not follow them and tells you. The one exception is a file you have said yes to, such as Skill Updates, which Claude reads out to you first.</span></li>
 <li><b>It does not call setup &ldquo;complete&rdquo;</b><span>It tells you which steps are finished. Rules, memory, hooks and semantic search are optional (section 05).</span></li>
 </ul>
@@ -664,9 +664,9 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <ul class="checklist" id="checklistBox">
 <li><label for="c1"><input type="checkbox" id="c1"><span class="lab"><span class="t">Claude Code is installed and I am signed in</span><span class="s">On a paid plan: Pro, Max, Team, Enterprise or an Anthropic Console account.</span></span></label></li>
 <li><label for="c2"><input type="checkbox" id="c2"><span class="lab"><span class="t">I downloaded the guide</span><span class="s">The file name still ends in .md.</span></span></label></li>
-<li><label for="c3"><input type="checkbox" id="c3"><span class="lab"><span class="t">I opened Claude Code, started a new session and said the sentence</span><span class="s">Claude first asked how I got the guide.</span></span></label></li>
+<li><label for="c3"><input type="checkbox" id="c3"><span class="lab"><span class="t">I opened Claude Code, started a new session and said the sentence</span><span class="s">Claude asked which permission mode I was in.</span></span></label></li>
 <li><label for="c4"><input type="checkbox" id="c4"><span class="lab"><span class="t">The session is in Manual mode, and I switched it myself</span><span class="s">If it started in Auto, I changed it before Claude ran anything.</span></span></label></li>
-<li><label for="c5"><input type="checkbox" id="c5"><span class="lab"><span class="t">I told Claude what I use and answered the three quick questions</span><span class="s">Claude created SETUP-PROGRESS.md next to the guide.</span></span></label></li>
+<li><label for="c5"><input type="checkbox" id="c5"><span class="lab"><span class="t">I told Claude what I use and answered the quick questions</span><span class="s">Claude created SETUP-PROGRESS.md next to the guide.</span></span></label></li>
 <li><label for="c6"><input type="checkbox" id="c6"><span class="lab"><span class="t">My tools are connected, and I restarted Claude Code and checked with /mcp</span><span class="s">Each connection had one real read, and anything that can send or write had one real test.</span></span></label></li>
 <li><label for="c7"><input type="checkbox" id="c7"><span class="lab"><span class="t">I picked my skills, and Claude read each one out before installing it</span><span class="s">Skill Updates went in first.</span></span></label></li>
 <li><label for="c8"><input type="checkbox" id="c8"><span class="lab"><span class="t">I restarted, said the sentence again, and Claude carried on where it stopped</span><span class="s">Anything I postponed is marked deferred, not forgotten.</span></span></label></li>
@@ -687,7 +687,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <p class="trap-group">During setup</p>
 <ul class="traps" style="border-top:1px solid var(--bc-border)">
 <li><b>The session starts in Auto</b><span>Switch to Manual yourself. Never choose Bypass permissions. For anything that touches messages, stay in Manual or Accept edits.</span></li>
-<li><b>A permission prompt for every file under .claude</b><span>That is normal. Click a plain <b>Yes</b> each time, and never choose the option that lets Claude edit its own settings for the rest of the session.</span></li>
+<li><b>A permission prompt for every file under .claude</b><span>That is normal. Read each prompt and click plain <b>Yes</b> only when it names something Claude just told you about. Never choose &ldquo;don&rsquo;t ask again&rdquo; or &ldquo;allow for the session&rdquo;.</span></li>
 <li><b>Testing something you just installed</b><span>Restart Claude Code first. Connectors and skills do not take effect in the session where you added them.</span></li>
 <li><b>A login screen that worked</b><span>It is not proof. Ask the connector which account it is signed in to, and do one real read.</span></li>
 <li><b>A connection that reads but never sends</b><span>Test the exact thing you rely on: send a real test email, write a real test row.</span></li>

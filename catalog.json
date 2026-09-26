@@ -7,13 +7,13 @@
   "guide": {
     "version": "3.2",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "89f943d520cdc78fdd9a1616db614dfe5b979d408321342df45c1cb934a2ae3a",
+    "sha256": "507208df03ca671d71dbe4eecfeab8e421b826c3c68594f6b0d7d35fc6ba1c0f",
     "changes": "A smoother, more open start with no added steps. The sentence you tell Claude asks for the newest copy of the guide, there is no licence question, and the one-page picture is a link to open. Setup no longer offers to change your starting permission mode, only offers the Windows PowerShell change if you see a scripts-disabled error, and Claude keeps its messages short and says plainly what it will do before a download or a file write. The guide also says more plainly what the fingerprint check does and does not do, and optional parts say what they touch and ask first. An old claude-power-setup folder is left alone. Setup asks fewer questions and writes fewer files: Step 1 is one message, and the progress file is written twice."
   },
   "overview": {
     "version": "1.5",
     "path": "power-setup-field-guide.html",
-    "sha256": "ebd90cc56f9de38c1d957baaf45a2d445e1468ab71833dffaa9b33908bb45415",
+    "sha256": "696db78d8928c33b7b8c5de1508573f24d59863ad32f809f8e02d0ac1ea84832",
     "changes": "The sentence you copy asks for the newest copy of the guide, the one-page picture is now offered as a link, and the optional settings file only blocks Claude from reading secret files and no longer changes your permission mode."
   },
   "skills": [
@@ -22,7 +22,7 @@
       "name": "Startup",
       "status": "ready",
       "version": "1.0.1",
-      "sha256": "b4844dd27d152caaeeaef8f84dae7678432c820c83fb3b468e8bebdd74d3e598",
+      "sha256": "c0c2093173ca3a53beefbf8fdf67978f17347e37d4004f1895d902d98911bb1e",
       "category": "Every day",
       "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
       "needs": ["Your email and calendar connected, if you want them in the briefing"],
@@ -35,7 +35,7 @@
       "name": "Skill Updates",
       "status": "ready",
       "version": "1.0.1",
-      "sha256": "c58ec9e4df84eb096466575579aace70811e1e44a53a07c3b791b9e6c959d62d",
+      "sha256": "b8f6a4882241b340bd45fa1838d723f4e837dfabe56b2cb9bc6494faaf267bae",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
@@ -87,7 +87,7 @@
       "name": "WhatsApp",
       "status": "ready",
       "version": "1.0.1",
-      "sha256": "fceea135722770e9f1084f3448e751a3d2dda599f11b1438c90bca2daaf7f552",
+      "sha256": "e4f0aedd9285f5beaaa894f2920038b668228ce99d887094fcddb0d17bd904b9",
       "category": "Messages",
       "summary": "Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice, and it only sends when you say so. This is unofficial, and WhatsApp can restrict or ban an account that uses it. It is an early version, and its full setup has not been run end to end yet.",
       "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app, kept in Manual or Accept edits mode, never Auto or Bypass", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
