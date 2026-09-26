@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 (26 Sep 2026)
+
+- The guide is now version 3.2. The sentence you tell Claude now says to read the newest copy of the guide, so a second download saved with "(1)" in its name, or an older copy under the plain name, is not used by mistake. The one-page picture (now 1.5) shows the same sentence.
+- The licence question is asked when you run the setup, in the same message as the permission-mode check, so reading the guide or asking what is new in it no longer runs into it. Setup opens with a short message and goes straight to Step 1.
+- An old `claude-power-setup` folder left over from the earlier setup tool is ignored.
+
 ## 1.0.1 (25 Sep 2026)
 
 - The guide is now version 3.1. There is no setup folder any more: download the guide, open Claude Code, start a new session and tell it to read the file you just downloaded. The one-page picture (now 1.4) says the same, and its Download buttons show a "Your guide has been downloaded" note with copy-and-paste sentences (on a phone or tablet it asks you to download at your computer instead).

@@ -5,16 +5,16 @@
   "raw_base": "https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/",
   "license": "Bright Coast AI Client Skills Licence 1.0",
   "guide": {
-    "version": "3.1",
+    "version": "3.2",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "f9baaa4a3287deec17868b3d93908e094b8f0f50948517b0d80fac282d021722",
-    "changes": "No more setup folder: download the guide, open Claude Code, start a new session and tell it to read the file you just downloaded."
+    "sha256": "2d38f3e4e021dc2775f0e926c12e1e23edfdc010cdd839a02b198a82fc1ded0f",
+    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. The licence question is asked when you run the setup, together with the permission-mode check, and setup opens with a short message and goes straight to Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
   },
   "overview": {
-    "version": "1.4",
+    "version": "1.5",
     "path": "power-setup-field-guide.html",
-    "sha256": "8bc20430e04e7a6544daf17fc312d435a8f88015ac12982371e584767d540072",
-    "changes": "A one-page picture of what you are setting up, shown to you at the start of setup. Its Download button saves the guide in one click, and opening it from a Download Guide button, or pressing either Download button on the page, saves the guide and tells you where to find it (on a phone or tablet it asks you to download at your computer instead). The contents outline now lines up, and long code lines fade out at the edge instead of widening the page on a phone."
+    "sha256": "14ebc83b19fb2f13149e9faf2f0b52f12b279c8cc1dfcd73d8f7fa4adc36f657",
+    "changes": "The sentence you copy and tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake."
   },
   "skills": [
     {

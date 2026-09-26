@@ -10,7 +10,7 @@ A guide and a library of skills that take Claude Code from "just installed" to p
 
 1. Install Claude Code on your own computer. The first sections of the guide show the exact steps for Mac and Windows. You need a paid Claude plan (Pro, Max, Team or Enterprise), and note that `claude.ai/code` is the web version, which is not what this guide sets up.
 2. Download the guide: right-click **[claude-code-power-setup-guide.md](https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/claude-code-power-setup-guide.md)** and choose **Save link as** (in Safari: **Download Linked File As**), and keep the file name ending in `.md`.
-3. Open Claude Code, start a new session and say: **"Read the claude-code-power-setup-guide.md file I just downloaded and run my setup."**
+3. Open Claude Code, start a new session and say: **"Read the newest claude-code-power-setup-guide file I downloaded and run my setup."**
 
 At the start of setup Claude also shows you a one-page picture of what you are building, [power-setup-field-guide.html](power-setup-field-guide.html). It is a plain file saved on your own computer, and you can open it in any browser.
 
