@@ -7,8 +7,8 @@
   "guide": {
     "version": "3.2",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "536e8ca0baa0912c2503088a11f79e1475fe0d0c729039aaeb097ccc5f283c0f",
-    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. Setup no longer asks how you got the guide, and it opens with the permission-mode check and one line about restarts, then goes straight to Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
+    "sha256": "183447effab75d44d7dd287ef236edde49b9e152c8624a16656b88c0d75aa28c",
+    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. Setup no longer asks how you got the guide, and it opens with the permission-mode check and one line about restarts, then carries on with the picture and Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
   },
   "overview": {
     "version": "1.5",

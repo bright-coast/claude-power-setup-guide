@@ -3,7 +3,7 @@
 ## 1.0.2 (26 Sep 2026)
 
 - The guide is now version 3.2. The sentence you tell Claude now says to read the newest copy of the guide, so a second download saved with "(1)" in its name, or an older copy under the plain name, is not used by mistake. The sentence Claude gives you to say after a restart names the file the same way, and the one-page picture (now 1.5) shows the same sentence.
-- Setup no longer asks how you got the guide. The licence itself has not changed. Setup opens with the permission-mode check and one line about restarts, then goes straight to Step 1.
+- Setup no longer asks how you got the guide. The licence itself has not changed. Setup opens with the permission-mode check and one line about restarts, then carries on with the picture and Step 1.
 - An old `claude-power-setup` folder left over from the earlier setup tool is ignored.
 
 ## 1.0.1 (25 Sep 2026)
@@ -21,4 +21,4 @@ First release of the repo.
 - Every skill keeps your own settings in a separate `local.md` that updates never touch.
 - The guide's settings example starts in Manual mode and blocks Claude from reading secret folders (SSH keys, `.env` files and similar). The Google Workspace tool is registered read-only by default.
 - Optional parts of the guide (semantic memory search and plugins) are marked as optional, and the guide says plainly what "run my setup" does and what it leaves for later.
-- The guide and skills are licensed under the Bright Coast AI Client Skills Licence: for Bright Coast AI clients and anyone Bright Coast AI has given the guide, or a link to it, directly. Setup starts by asking how you got the guide.
+- The guide and skills are licensed under the Bright Coast AI Client Skills Licence: for Bright Coast AI clients and anyone Bright Coast AI has given the guide, or a link to it, directly. Setup starts by asking how you got the guide (removed in 1.0.2).
