@@ -94,9 +94,9 @@ Git is the tool that keeps a history of changes to a folder and lets you back it
 
 - Look for files called `token.json`, `credentials.json` or `.env` in the working folder (up to 2 levels down), and for a `.secrets` folder in the home folder.
 - Report file names, folders and last-modified dates only. **Do not open these files or print anything from inside them.**
-- Flag any older than 30 days (⚠️). Tokens often expire, so an old one may need signing in again.
+- Flag any older than 30 days as information only (ℹ️), not as a warning. Some logins are meant to be long-lived (for example a personal token for Ask Rob), so age alone is not a problem.
 - Flag any that sit inside a folder the person shares or syncs with other people, if you can tell (⚠️). Personal logins should not live in shared folders.
-- **Fix:** suggest signing in again for stale ones. Do not do it for them.
+- **Fix:** suggest signing in again only after a call has actually failed (for example a login that has been refused or has expired). Do not suggest it just because a file is old. Do not do it for them.
 
 ### 7. Stray files
 

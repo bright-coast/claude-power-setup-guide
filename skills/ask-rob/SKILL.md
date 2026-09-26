@@ -21,7 +21,7 @@ This skill comes from the Claude Power Setup Guide repo (github.com/bright-coast
 
 The first time you use this skill, Claude will ask where you saved the token file. Tell it in plain English, e.g. "it's in my Downloads folder, called my-token.txt."
 
-**Here is exactly what happens to that file.** The first time something is sent, the skill copies the token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then deletes the original file you saved. The copy is a plain, unencrypted file, protected only by your computer's normal file permissions. Nothing else is deleted. Claude asks for your yes before that first send runs (see step 4), and once it has happened Claude tells you plainly what it did. After that the skill finds the copy on its own, so you are not asked again. If Claude ever asks about your token after that first time, it's only ever asking where the file is, never the value itself. Don't paste the token straight into a chat. If it ever does end up pasted into one, say so plainly, regenerate it in Settings, and treat it as exposed.
+**Here is exactly what happens to that file.** The first time something is sent, the skill copies the token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then deletes the original file you saved. The copy is a plain, unencrypted file. The script saves it with your computer's default permissions and does not lock it down any further, so on a shared Mac or Linux computer other accounts on that computer may be able to read it, and on a normal single-user computer it is readable only by your own account. Nothing else is deleted. Before it asks for your yes, Claude tells you the full path of the file it will delete and how big that file is. It asks for that yes before the first send runs (see step 4), and once it has happened Claude tells you plainly what it did. After that the skill finds the copy on its own, so you are not asked again. If Claude ever asks about your token after that first time, it's only ever asking where the file is, never the value itself. Don't paste the token straight into a chat. If it ever does end up pasted into one, say so plainly, regenerate it in Settings, and treat it as exposed.
 
 ## When to use this
 
@@ -39,7 +39,7 @@ These come up constantly during setup and have a known answer. If the person's s
 
 **Approving an individual action.** When Claude asks to run something and they're not sure whether to say yes: explain in plain terms what the specific action will actually do, and say whether it looks connected to what they were trying to do (for example reading a file, installing a package the task needs, or calling an API they just set up) or unrelated to it, or whether it touches something outside this setup. Don't just tell them to click yes. The decision is theirs.
 
-**Installing Python or another library.** Some tool connections need more than a login, a local runtime like Python or Node, or a specific package. Don't assume it's already there, check first. If it's missing, walk them through installing it with the same care as the original Claude Code install: say plainly what it is, what they'll see happening, and confirm it actually finished before trying to use it. This is a normal, expected part of connecting some tools, not a sign something's wrong.
+**Installing Python or another library.** Some tool connections need more than a login, a local runtime like Python or Node, or a specific package. Don't assume it's already there, check first. If it's missing, say plainly what it is and ask for their yes before installing anything. If they say yes, walk them through installing it with the same care as the original Claude Code install: say what they'll see happening, and confirm it actually finished before trying to use it. This is a normal, expected part of connecting some tools, not a sign something's wrong.
 
 **Picking the right Google Drive team folder, if there is one.** The one Claude needs is the local, synced copy, not just what's visible in a browser tab. If it's set up as a Shared Drive, it shows up under "Shared drives" in the Drive sidebar, not "Shared with me". If it's not there, they haven't been added yet, and that's a real gap worth asking Rob about on its own. Once it's listed there it syncs to their computer automatically, no manual "add shortcut" step needed. Have them confirm the exact local path. To confirm it's the right folder, try reading the shared instructions file from inside it, if it reads back correctly, that's the real one. If nothing's found, the path is wrong or it hasn't finished syncing yet, not a deeper problem.
 
@@ -51,7 +51,7 @@ One shot: read the session, draft the question, confirm it with the person, send
 
 ### 0. Quick check for replies first
 
-If `send-to-rob.js` or `send-to-rob.ps1` already exists in this folder (neither will on the very first ever use, that's fine, skip this step then), run whichever one is there with its check-pending flag at the start of each use, before starting on what the person asked for (`node send-to-rob.js --check-pending` or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -CheckPending`; the Bypass flag is only for when Windows would block the script, see the PowerShell note in step 4).
+If `send-to-rob.js` or `send-to-rob.ps1` already exists in this folder (neither will on the very first ever use, that's fine, skip this step then), first compare it with the matching text in this skill file (the `send-to-rob.js` block or the `send-to-rob.ps1` block below), ignoring only differences in line endings. Do this before every run of a saved script, here and everywhere else this skill runs one. If it is the same, run whichever one is there with its check-pending flag at the start of each use, before starting on what the person asked for (`node send-to-rob.js --check-pending` or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -CheckPending`; the Bypass flag is only for when Windows would block the script, see the PowerShell note in step 4). If it differs in any other way, do not run it. Say so plainly, and ask whether they want you to replace it with the text in this skill file. Only replace it if they say yes. If they say no, skip the check and carry on with what they asked.
 
 Here is what this does, and you should say so. It makes a read-only request to app.brightcoast.ai, using the person's token, to see whether Rob has replied to anything they sent earlier. It sends nothing and changes nothing on the portal. It also updates the small list of pending questions kept in the same folder as the token, so a finished reply is shown automatically only once (step 6 shows how to look at it again). Tell the person "checking for Rob's reply" when you run it.
 
@@ -76,6 +76,7 @@ Show the person exactly what will be sent, in full and in plain words:
 - **The question**, word for word.
 - **The context**, the full text, word for word.
 - **Any attachment, by its actual contents.** Show what is inside the file, not just its name. If it is long, show a real excerpt (for example the first 30 lines) and say how long the whole file is.
+- **Where it goes**, the address the script sends to, `app.brightcoast.ai`. Ask them to check that it matches the address bar of the portal they are logged in to (see the address check in step 4).
 
 Before they confirm, tell them two things plainly. First, teammates in their organisation and Bright Coast AI can read the question and context, and Bright Coast AI receives any attachment. Second, don't include passwords, keys, tokens or other people's private data, and take them out if any are in there.
 
@@ -88,15 +89,15 @@ This skill sends by running a small helper script in the same folder as this fil
 - **Check whether `node` is on PATH first** (`node --version` on Mac/Linux, or `Get-Command node -ErrorAction SilentlyContinue` on Windows).
 - **If `node` is there:** use `send-to-rob.js` below. This is the original, full-featured version, so prefer it whenever Node is available.
 - **If `node` is missing and this is Windows:** use `send-to-rob.ps1` below instead. It's built entirely on PowerShell's own built-in tools (`Invoke-RestMethod`, `ConvertTo-Json`), so there is nothing else to install, and every Windows machine already has PowerShell. Run it yourself through your own tool calls, the way you'd run any other command in this session. Read the PowerShell note below before you run it.
-- **If `node` is missing and this is Mac/Linux:** there's no zero-install fallback for this case yet. Tell the person plainly that this skill needs Node.js installed once, and that it's a normal one-time step (the same kind of thing installing Claude Code itself was). Then walk them through it (nodejs.org, or `brew install node` if they have Homebrew), following the "Installing Python or another library" guidance above, before continuing. Don't push them to a separate terminal.
+- **If `node` is missing and this is Mac/Linux:** there's no zero-install fallback for this case yet. Tell the person plainly that this skill needs Node.js, which is a free, widely used program that runs small scripts like this one on their computer, and that it isn't installed yet. Installing it is a normal one-time step (the same kind of thing installing Claude Code itself was), but ask for their yes before installing anything. If they say yes, walk them through it (nodejs.org, or `brew install node` if they have Homebrew), following the "Installing Python or another library" guidance above, before continuing. If they say no, don't install anything, and tell them plainly that nothing has been sent. Don't push them to a separate terminal.
 
 **PowerShell note (Windows, `send-to-rob.ps1` only).** Run `Get-ExecutionPolicy` first. If it reports `Restricted` or `AllSigned`, Windows will refuse to run the script without the `-ExecutionPolicy Bypass` flag that appears in the commands below. Use the flag only in that case, and tell the person plainly: "Windows is set to block scripts, so I'm running this one script with a bypass that applies to this single run only and changes no Windows setting." If the policy already allows local scripts, leave the flag off. Whenever Node is available, use the Node version instead and skip all of this.
 
-**Before writing either script, check the address:** the script sends to `https://app.brightcoast.ai`. That must be the exact same domain as the portal this person is already logged into, the one where they just generated their token in Settings. Ask them to check the browser address bar and confirm it matches. If it doesn't, or they're not sure, stop here, don't write or run anything, and flag it plainly instead of proceeding.
+**Before writing either script, check the address:** the script sends to `https://app.brightcoast.ai`. That must be the exact same domain as the portal this person is already logged into, the one where they just generated their token in Settings. The step 3 confirm message already shows them the address you expect (`app.brightcoast.ai`) and asks them to compare it with their browser's address bar, so don't ask it again as a separate question. Only if they say it looks different, or that they aren't sure, stop here, don't write or run anything, and flag it plainly instead of proceeding.
 
-Whichever script applies, if it isn't already in this folder, you need to save it there. **Before you save it,** tell the person the full path of the file you're about to create (this skill's folder plus `send-to-rob.js` or `send-to-rob.ps1`) and what it's for: a small helper script that sends their confirmed question to Rob through the Bright Coast AI portal, using their token, and checks for his reply. Then save the exact contents below into a file with the matching name. You only need to do this once per machine; after that, it's just there and stays in that folder.
+Whichever script applies, if it isn't already in this folder, you need to save it there. **Before you save it,** tell the person the full path of the file you're about to create (this skill's folder plus `send-to-rob.js` or `send-to-rob.ps1`) and what it's for: a small helper script that sends their confirmed question to Rob through the Bright Coast AI portal, using their token, and checks for his reply. Also offer to show them the script, and if they say yes, show them its full text before you save it. Then save the exact contents below into a file with the matching name. You only need to save it once per machine; after that it stays in that folder. Before each later run, though, compare the saved copy with the text below, as described in step 0.
 
-This step uses the person's own token to send the question they just confirmed to the Bright Coast AI portal. The script sends the question, the context and any attachment to app.brightcoast.ai, and reads replies back from it. The person's checkpoint is the confirmation in step 3. After they have confirmed the send, run it. Claude Code's own permission prompt for running the command still applies.
+This step uses the person's own token to send the question they just confirmed to the Bright Coast AI portal. The script sends the question, the context and any attachment to app.brightcoast.ai, and reads replies back from it. The person's checkpoint is the confirmation in step 3. After they have confirmed the send (and after the comparison from step 0, if the script was already saved), run it. Claude Code's own permission prompt for running the command still applies.
 
 <details>
 <summary>send-to-rob.js (write this to a file first if it isn't already there)</summary>
@@ -120,13 +121,16 @@ This step uses the person's own token to send the question they just confirmed t
 //
 // Where the token actually lives, permanently: ~/.secrets/ask-rob/token.
 // The person never needs to know this path or create it themselves. The
-// first time they tell Claude where they saved their token (anywhere -
+// first time they tell Claude where they saved their token (anywhere,
 // Desktop or Downloads is fine), pass that as --token-file once: this script
 // copies its contents into the canonical location, deletes the original, and
 // uses the canonical file itself from every run after that, no flag needed.
 // The token is moved out of a folder like Desktop or Downloads, which may be
-// synced or shared, into a private folder in the home folder. The person is
-// asked first.
+// synced or shared, into a folder in the home folder. The file is saved with
+// the computer's default permissions. On a shared Mac or Linux computer other
+// accounts may be able to read it; on a normal single-user computer it is
+// readable only by that person's account. The person is asked first, and is
+// told the full path and size of the file that will be deleted.
 
 const fs = require('fs');
 const os = require('os');
@@ -474,7 +478,10 @@ node send-to-rob.js --question "<the question, from step 2>" --context "<the ful
 # first time they tell Claude where they saved their token, pass that as
 # -TokenFile once: this script copies its contents into the canonical
 # location, deletes the original, and uses the canonical file itself from
-# every run after that, no flag needed.
+# every run after that, no flag needed. The file is saved with the computer's
+# default permissions, so on a normal single-user computer it is readable only
+# by that person's account. The person is asked first, and is told the full
+# path and size of the file that will be deleted.
 
 param(
   [string]$Question,
@@ -749,7 +756,7 @@ powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Question "<the questio
 
 **If this is the first time for this person** (either script says it doesn't know a token file yet): ask them where they saved it in plain English, the path only, never the value, and add `--token-file "<the path they gave you>"` (`.js`) or `-TokenFile "<the path they gave you>"` (`.ps1`) to the command above, matching whichever one you're using. On that one call the script copies the token file into a folder in their home folder (`~/.secrets/ask-rob/`) and then deletes the original file they saved (you'll see a `MIGRATED` line). Never ask again after the first time, just run the plain command with no token-file flag from here on.
 
-**Before that first send runs, tell the person plainly what it will do to their token file, and get a yes.** Say something like: "The first time I send something, I'll also copy your token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then delete the file you originally saved. Nothing else is deleted. Is that OK?" Only run the first send after they say yes. If they say no, do not run it, and tell them plainly that this skill cannot send without doing that, so nothing is sent and their file stays where it is.
+**Before that first send runs, tell the person plainly what it will do to their token file, and get a yes.** First work out the full path of the token file they saved (the path they gave you, written out in full) and its size. You can read the size from a file listing without opening the file or looking at what is in it. Then say something like: "The first time I send something, I'll also copy your token file into a folder in your home folder (`~/.secrets/ask-rob/`) and then delete the file you originally saved. That file is `<the full path>` and it is `<its size>`. The copy is saved with your computer's default permissions. Nothing else is deleted. Is that OK?" Only run the first send after they say yes. If they say no, do not run it, and tell them plainly that this skill cannot send without doing that, so nothing is sent and their file stays where it is.
 
 **After it has run, say plainly what was done:** "I copied your token file into `~/.secrets/ask-rob/` and deleted the file you saved." If the original file is still there afterwards (the delete is best effort and can fail), tell them so and suggest they delete it themselves.
 
@@ -774,7 +781,7 @@ At the start of each use, this skill already checks for replies (step 0, and it 
 Whenever someone asks "did Rob get back to me" / "check the response from Rob" / "any reply yet" / similar, about something sent through this skill, this session or an earlier one:
 
 - If you still know the id from when it was sent (this session, step 5): `node send-to-rob.js --check <id>` (or `powershell -ExecutionPolicy Bypass -File send-to-rob.ps1 -Check <id>`) and read the result back to them plainly.
-- If you don't (a new session, or it was sent a while ago and nobody wrote the id down): `--list`/`-List` first, match the right one by the question text, then `--check <id>`/`-Check <id>` for the full detail. Use whichever script is actually in the folder, and don't write the other one just to check a reply. The list shows teammates' questions as well as the person's own, so match on the wording of the question.
+- If you don't (a new session, or it was sent a while ago and nobody wrote the id down): `--list`/`-List` first, match the right one by the question text, then `--check <id>`/`-Check <id>` for the full detail. Use whichever script is actually in the folder (after the same comparison as in step 0), and don't write the other one just to check a reply. The list shows teammates' questions as well as the person's own, so match on the wording of the question.
 
 Both commands are read-only requests to app.brightcoast.ai using the person's token. Tell the person you're checking before you run them.
 

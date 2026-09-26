@@ -14,7 +14,7 @@ version: 1.0.1
 
 ## What this does
 
-It works on transcripts and notes, not on audio. It cannot listen to a sound or video file, so if all you have is a recording, you first need a transcript from your recording app (see "What you need"). It reads a meeting transcript (from a recording app's export or connector, an online document, or text you paste) and the recording app's own summary or notes, if there are any, and gives you a structured write-up in chat: who was there, what was decided, who owes what, what is still open, and what to do next. Meetings with clients are analysed differently from internal ones. It keeps a small log of which recordings it has already seen, so "what's new" only shows new ones (it asks you once before it starts that log, see "Where the log lives"). It never sends, deletes, pays or publishes anything. Emails are written as drafts only, and notes, memory entries and records are saved only after you say yes.
+It works on transcripts and notes, not on audio. It cannot listen to a sound or video file, so if all you have is a recording, you first need a transcript from your recording app (see "What you need"). It reads a meeting transcript (from a recording app's export or connector, an online document, or text you paste) and the recording app's own summary or notes, if there are any, and gives you a structured write-up in chat: who was there, what was decided, who owes what, what is still open, and what to do next. Meetings with clients are analysed differently from internal ones. It keeps a small log of which recordings it has already seen, so "what's new" only shows new ones (it tells you in one line before it starts that log, see "Where the log lives"). It never sends, deletes, pays or publishes anything. Emails are written as drafts only, and notes, memory entries and records are saved only after you say yes.
 
 **What it saves on this computer.**
 - `local.md` next to this file: where your recordings come from, which names are your side, and where your notes go.
@@ -70,7 +70,7 @@ The log of recordings already seen is `~/.claude/state/recordings_log.json` (on 
 {"name": "...", "created_at": "...", "status": "processed", "processed_at": "<now, ISO>"}
 ```
 
-Create the folder and file if they do not exist yet. The log is listed in what this skill writes, which the person heard when they installed it, so it needs no extra question. Updating it after a recording has been analysed is the one thing this skill does without asking, and you should say so in one line the first time: "I keep a small log on this computer of which recordings I have processed. It holds only each recording's title, date and whether it is done, nothing from inside the recording." If they ask you not to keep one, keep none, and when they ask what is new, ask which recordings to look at.
+Do not create the folder or the file until you are about to make the first write to the log. The log is listed in what this skill writes. Before that first write, tell the person in one line, and create `~/.claude/state` only then. After that, updating it once a recording has been analysed is the one thing this skill does without asking again. The one line to say is: "I keep a small log on this computer of which recordings I have processed. It holds only each recording's title, date and whether it is done, nothing from inside the recording." If they ask you not to keep one, keep none, and when they ask what is new, ask which recordings to look at.
 
 ## Step 1: Find the recording or recordings
 
