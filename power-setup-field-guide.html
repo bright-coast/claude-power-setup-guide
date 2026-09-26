@@ -324,7 +324,7 @@
 </ul>
 <div class="sub">
 <h3>The seven steps</h3>
-<p class="sub-dek">Steps 2, 3 and 6 only happen if they apply to you.</p>
+<p class="sub-dek">Steps 2 and 3 only happen if they apply to you.</p>
 <ol class="steps">
 <li class="step"><div class="body"><h4>What you use</h4><p>Claude asks which tools you use day to day, for example Notion, Xero, Stripe, HubSpot, Google Drive or spreadsheets. Then two quick questions: are you a Bright Coast AI client, and does your team share a folder or is it just you? It then creates <code>SETUP-PROGRESS.md</code>.</p></div></li>
 <li class="step"><div class="body"><h4>Google Drive <span class="chip chip-soon">Only if you use it</span></h4><p>Install Google Drive for desktop, sign in with your work account and make a small test file. A synced icon after a few seconds is the real proof.</p></div></li>
@@ -350,7 +350,7 @@
 <span class="done">- [x] Step 3: shared team folder (skipped, solo setup)</span>
 <span class="todo">- [ ] Step 4: connections (Notion added, not yet tested, needs a restart)</span>
 <span class="todo">- [ ] Step 5: how much Claude asks first</span>
-<span class="todo">- [ ] Step 6: Ask Rob (deferred &lt;date&gt;, they will generate the token later)</span>
+<span class="todo">- [x] Step 6: Ask Rob (nothing to do here, the skill asks for the token on first use)</span>
 <span class="todo">- [ ] Step 7: skills</span></pre>
 </div>
 </div>
@@ -525,7 +525,7 @@
 <li><b>Your edits are merged, not overwritten</b><span>If you changed a skill directly, Claude applies every change that does not clash. Where the two overlap, it explains both sides and asks which to keep. If a merge is unclear, your version stays.</span></li>
 <li><b>Git does the comparing</b><span>Showing changes and merging use git. A fresh install works without it, but updates and merges need it. If git is missing, Claude says so and updates nothing.</span></li>
 <li><b>A backup every time</b><span>Before changing a skill, Claude saves a backup next to it and says where. Afterwards it shows what differs and reads the file back.</span></li>
-<li><b>Quiet by default</b><span>Startup runs the check once per session and only speaks up when something is newer.</span></li>
+<li><b>Quiet by default</b><span>Startup runs the check at most once a week and only speaks up when something is newer.</span></li>
 </ul>
 </div>
 <div class="callout sand" style="margin-top:36px"><svg class="ic"><use href="#g-lock"/></svg><div><b class="k">What the fingerprint check does and does not do</b><p>Every download is compared with a fingerprint listed in the catalog. That confirms the file arrived complete and is the one the catalog names. The catalog and the files live in the same repo, so it does not protect you if the repo itself were ever compromised.</p><p>What does protect you: Claude shows you what changes before anything is applied, risky changes need a second yes from you, and Bright Coast AI runs release checks before it moves the <code>stable</code> branch. In the end you are trusting Bright Coast AI&rsquo;s releases, the same way you trust any software you install.</p><p>If a fingerprint does not match, Claude stops and changes nothing. Please report it by opening an issue at <code>github.com/bright-coast/claude-power-setup-guide/issues</code>.</p></div></div>
