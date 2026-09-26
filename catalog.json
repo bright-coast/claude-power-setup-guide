@@ -7,13 +7,13 @@
   "guide": {
     "version": "3.2",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "2d38f3e4e021dc2775f0e926c12e1e23edfdc010cdd839a02b198a82fc1ded0f",
-    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. The licence question is asked when you run the setup, together with the permission-mode check, and setup opens with a short message and goes straight to Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
+    "sha256": "536e8ca0baa0912c2503088a11f79e1475fe0d0c729039aaeb097ccc5f283c0f",
+    "changes": "Setup starts more smoothly. The sentence you tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake. Setup no longer asks how you got the guide, and it opens with the permission-mode check and one line about restarts, then goes straight to Step 1. An old claude-power-setup folder from the earlier setup tool is left alone."
   },
   "overview": {
     "version": "1.5",
     "path": "power-setup-field-guide.html",
-    "sha256": "14ebc83b19fb2f13149e9faf2f0b52f12b279c8cc1dfcd73d8f7fa4adc36f657",
+    "sha256": "04b9f6256cd8e891eb36db2b4a3a1419b29cda4f55d918c9c440b614e391063e",
     "changes": "The sentence you copy and tell Claude now says to read the newest copy of the guide, so an older copy in your downloads is not used by mistake."
   },
   "skills": [

@@ -2,8 +2,8 @@
 
 ## 1.0.2 (26 Sep 2026)
 
-- The guide is now version 3.2. The sentence you tell Claude now says to read the newest copy of the guide, so a second download saved with "(1)" in its name, or an older copy under the plain name, is not used by mistake. The one-page picture (now 1.5) shows the same sentence.
-- The licence question is asked when you run the setup, in the same message as the permission-mode check, so reading the guide or asking what is new in it no longer runs into it. Setup opens with a short message and goes straight to Step 1.
+- The guide is now version 3.2. The sentence you tell Claude now says to read the newest copy of the guide, so a second download saved with "(1)" in its name, or an older copy under the plain name, is not used by mistake. The sentence Claude gives you to say after a restart names the file the same way, and the one-page picture (now 1.5) shows the same sentence.
+- Setup no longer asks how you got the guide. The licence itself has not changed. Setup opens with the permission-mode check and one line about restarts, then goes straight to Step 1.
 - An old `claude-power-setup` folder left over from the earlier setup tool is ignored.
 
 ## 1.0.1 (25 Sep 2026)

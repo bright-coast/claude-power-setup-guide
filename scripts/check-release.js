@@ -225,7 +225,6 @@ console.log('5. Licence');
   if (/^MIT\. See/m.test(readme)) fail('README still says the licence is MIT');
   if (!/## Licence/.test(readme) || !readme.includes('Client Skills Licence')) fail('README licence section is missing or out of date');
   const gd = fs.existsSync(path.join(ROOT, cat.guide.path)) ? fs.readFileSync(path.join(ROOT, cat.guide.path), 'utf8') : '';
-  if (!gd.includes('Did Bright Coast AI give you this guide')) fail('guide is missing the "how did you get this guide" question at the top');
   if (!gd.includes('**Licence:** Copyright 2026 Bright Coast AI')) fail('guide is missing its licence notice');
   if (cat.license !== 'Bright Coast AI Client Skills Licence 1.0') fail('catalog.json license field is missing or wrong');
 }
