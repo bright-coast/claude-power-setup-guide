@@ -179,8 +179,10 @@ else {
   const proto = fs.readFileSync(protoPath, 'utf8').toLowerCase();
   const su = fs.readFileSync(suPath, 'utf8').toLowerCase();
   const shared = [
-    "curl -fsS --proto '=https' --max-redirs 0 -o <file> <url>",
-    "curl.exe -fsS --proto '=https' --max-redirs 0 -o <file> <url>",
+    "curl -fsS --connect-timeout 20 --max-time 120 --proto '=https' --max-redirs 0 -o <file> <url>",
+    "curl.exe -fsS --connect-timeout 20 --max-time 120 --proto '=https' --max-redirs 0 -o <file> <url>",
+    'bcai-skill-download',
+    'skippedGuide',
     'Invoke-WebRequest -MaximumRedirection 0 -UseBasicParsing -OutFile <file> <url>',
     'shasum -a 256 <file>',
     'sha256sum <file>',

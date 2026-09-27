@@ -1,7 +1,7 @@
 ---
 name: health-check
 description: Use when someone says "run a health check", "/health-check", "check my setup", "is my Claude setup okay", "is everything working", or "anything I should tidy up". Runs a quick check-up of the Claude Code setup (instructions file, memory, git, disk space, tools, saved logins, stray files, startup routine and skill updates) and offers plain-English fixes one at a time.
-version: 1.0.2
+version: 1.0.3
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -115,7 +115,7 @@ Git is the tool that keeps a history of changes to a folder and lets you back it
 
 Run the `skill-updates` check (it is a separate skill, in the same catalog as this one).
 
-- If `skill-updates` is installed: run it in quiet mode, then show the result here. Run it every time, whether or not its once-a-week check is due, because you were asked for a health check. Everything current is ✅. If some skills have updates, show ⚠️ with a small table: skill, version you have, new version, what changed. Add any new skills or a newer guide as ℹ️. Setup records the skills you were shown as already seen, so only a skill that became ready since is reported, once (say "any new skills" any time to see the full list). If the Skill Updates seen list is missing because it was installed another way, this check records the skills that are ready right now as already seen without listing them.
+- If `skill-updates` is installed: run it in full mode, then show the result here. Run it every time, whether or not its once-a-week check is due, because you were asked for a health check. Everything current is ✅. If some skills have updates, show ⚠️ with a small table: skill, version you have, new version, what changed. Add any new skills or a newer guide as ℹ️, once, even if the person skipped that guide version before: a health check is something they asked for, so it is worth naming once here, but not more than once in this report. Setup records the skills you were shown as already seen, so only a skill that became ready since is reported, once (say "any new skills" any time to see the full list). If the Skill Updates seen list is missing because it was installed another way, this check records the skills that are ready right now as already seen without listing them.
 - If `skill-updates` is not installed: say so (ℹ️) and offer to install it from the Claude Power Setup Guide. Do not try to work out versions yourself.
 - If nothing on this computer came from the guide yet (no `.upstream.json` files under `~/.claude/skills/`): say so (ℹ️) and offer to show what is available.
 - If the repo cannot be reached (no internet, or the fetch fails): say "Could not check for updates: could not reach the guide's repo" and move on. Do not guess.

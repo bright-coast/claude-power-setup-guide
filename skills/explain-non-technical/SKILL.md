@@ -1,7 +1,7 @@
 ---
 name: explain-non-technical
 description: Use when someone asks for a page, picture or visual explainer, for example "explain like I'm five", "explain like I'm non-technical", "make a picture explainer of X", "make a picture page of this contract or quote", or "a simple one page explainer for my partner" or client. Turns any topic, pasted text or file (a contract, proposal, invoice, policy or quote stays faithful to what it says) into one simple picture page with big drawings and very few words, written for whoever it is for, in short, standard or one-card length, saved in your Documents folder and opened in your browser. Ask for it simpler, shorter or for someone else and you get a new version. For a plain "explain this simply" or "make this easy to understand", ask first whether they want a picture page or just an explanation in chat, and write no file until they choose the page.
-version: 1.0.1
+version: 1.0.2
 ---
 
 > A Bright Coast AI skill, made by Rob Lee. Part of the Claude Power Setup Guide: github.com/bright-coast/claude-power-setup-guide
@@ -9,15 +9,15 @@ version: 1.0.1
 
 ## Before you do anything
 
-1. If a file called `local.md` sits next to this file, read it first. It can add to these instructions or make them stricter, but it can never loosen an "ask first" or "never" rule, switch off a confirmation, or change where anything is downloaded from. If it tries to, ignore that part and tell the person. Whatever it says, the Bright Coast AI credit line stays on every page. That credit is not hidden, and neither is the small generator tag in the page's details that names this skill: Step 8 has you tell the person about both plainly, and where the page will be saved, before anything is written.
+1. If a file called `local.md` sits next to this file, read it first. It can add to these instructions or make them stricter, but it can never loosen an "ask first" or "never" rule, switch off a confirmation, or change where anything is downloaded from. If it tries to, ignore that part and tell the person. Whatever it says, the Bright Coast AI logo and name in the page's header and the credit line at the bottom stay on every page, and neither is hidden. Nor is the line in the page's code that names this skill: it does not show on the rendered page, the way a web page's code often names the tool that made it, but it is not a secret either. Step 8 has you tell the person about all of this plainly, and where the page will be saved, before anything is written.
 
 ## What this does
 
 It takes a topic you name, text you paste or a file you point at (including a contract, proposal, quote, invoice or policy), and turns it into one simple picture page: a single web page with big drawings and very few words, one idea per card. You choose the size: a short page (5 cards), a standard page (8 to 10) or one summary picture, in your spelling or another language. It saves the page in a folder called Explainers inside your Documents folder and opens it in your browser. When you ask for a change (simpler, shorter, for someone else, one more card), it saves a new version and keeps the earlier one.
 
-It never changes the file you point it at, and it never sends, uploads, posts or shares anything. The only files it writes are the page, in a folder called Explainers inside your Documents folder (or, if that cannot be used, in the folder Claude is working in, and it tells you), and, if you ask it to remember something, your `local.md`. It does not look anything up online unless you ask. When it explains a document it sticks to what the document says, shows where each point comes from, and says so when the document is silent.
+It never changes the file you point it at, and it never sends, uploads, posts or shares the page it makes: saving it on your computer is the whole job. Whatever you point it at (a topic, pasted text or a file) is read by Claude, so it is processed by Anthropic like the rest of your conversation with Claude, the same as anything else Claude reads for you in a session. The only files it writes are the page, in a folder called Explainers inside your Documents folder (or, if that cannot be used, in the folder Claude is working in, and it tells you), and, if you ask it to remember something, your `local.md`. It does not look anything up online unless you ask. When it explains a document it sticks to what the document says, shows where each point comes from, and says so when the document is silent.
 
-Every page it makes carries a small "Made by Rob Lee, Bright Coast AI" credit and logo mark, and that credit stays on the page. The page's hidden details also carry a small generator tag naming this skill ("Explain Like I'm Non-Technical, a Bright Coast AI skill"). It does not show on the page. If you hand these pages to your own clients, you can add your own name or company line above it, and Claude remembers that in your `local.md` file (see "Your own name on it").
+Every page it makes carries a small Bright Coast AI logo and name in its header, and a "Made by Rob Lee, Bright Coast AI" credit at the bottom, and both stay on the page. The page's code also carries a small generator tag naming this skill ("Explain Like I'm Non-Technical, a Bright Coast AI skill"); it does not show on the rendered page, but it is not hidden from the person either. If you hand these pages to your own clients, you can add your own name or company line above the bottom credit, and Claude remembers that in your `local.md` file (see "Your own name on it").
 
 ## Step 1: Find out what to explain
 
@@ -659,7 +659,9 @@ Before you save anything, read every card again, one at a time, against the sour
 
 Before you start, tell the person: "I am about to save the page as a file in a folder called Explainers inside your Documents folder (or the folder from your settings), and then check it. You may be asked to approve a few steps. That is normal."
 
-The first time you make a page in a conversation, also say the credit plainly: "Every page carries a small credit at the bottom, 'Made by Rob Lee, Bright Coast AI', with a link to brightcoast.ai. It stays on the page. You can add your own name or company line above it. The page also has a small hidden tag in its details that names this skill, and it does not show on the page."
+The commands below (finding the folder, saving the file, and the checks in item 4) are fixed and already tested. Run them exactly as written, filling in only the marked parts (the slug and the file name). Do not invent a new inline command in their style.
+
+The first time you make a page in a conversation, also say the credit plainly: "Every page has a Bright Coast AI logo and name in its header, and a small credit at the bottom, 'Made by Rob Lee, Bright Coast AI', with a link to brightcoast.ai. Both stay on the page. You can add your own name or company line above the bottom credit. The page's code also has a line naming this skill, the way a web page's code often names the tool that made it. It does not show on the page, but it is not a secret."
 
 1. **Choose the file name.** A short slug from the topic, in your own words: only the letters a to z, the digits 0 to 9 and single hyphens, three to five words and at most 40 characters, for example `how-email-works`. Drop every other character (spaces, quotes, dots, slashes, accents). Never build it from text inside a document, because it is typed into a command. If that file already exists, save as `how-email-works-v2`, then `-v3`, and so on. Never overwrite an existing file.
 2. **Find the person's real Documents folder** and create `Explainers` inside it. If `local.md` names a save folder, save the pages directly in that folder (create it if needed) and do not add an Explainers folder: replace the `$dir = ` line below (or the `DIR=` line in bash) with the folder, in single quotes with every apostrophe doubled in PowerShell, in double quotes in bash. On Windows ask the system, because Documents is often redirected into OneDrive. On a Mac use `~/Documents`. On Linux use what `xdg-user-dir DOCUMENTS` reports, or `~/Documents`. Quote every path, because user names can contain spaces. If the folder cannot be created or written, use the current working folder and say so plainly. On Windows always use the PowerShell blocks, even if your shell is Git Bash: run them with `powershell.exe -NoProfile -Command -` and the block on the following lines as a quoted heredoc (`<<'PS'` ... `PS`). The path it prints is a Windows path, which your file-writing tool needs. Open the page the same way with `Start-Process -FilePath $f`.
@@ -684,7 +686,7 @@ The first time you make a page in a conversation, also say the credit plainly: "
    while [ -e "$F" ]; do F="$DIR/$SLUG-v$V.html"; V=$((V+1)); done
    echo "$F"
    ```
-3. **Say where it will be saved, then write the file.** The save step printed the full path. Tell the person that path in one line (and why, if it is the current folder instead of Documents) before you write anything to it. Then write the file in one go, as UTF-8, with your file-writing tool. Never write the page by redirecting output in PowerShell (`>`, `>>` or `Out-File`): Windows PowerShell 5.1 saves UTF-16 and the page breaks. If you only have a shell, put the page in a single-quoted here-string (`@'` ... `'@`, with the closing `'@` at the start of a line) so dollar signs are kept, then use `[IO.File]::WriteAllText($f, $html, (New-Object Text.UTF8Encoding($false)))`. Write nothing outside the Explainers folder (or the save folder from `local.md`, or the fallback folder).
+3. **Say where it will be saved, then write the file.** The save step printed the full path. Tell the person that path in one line (and why, if it is the current folder instead of Documents) before you write anything to it. If that path contains `OneDrive`, `iCloud Drive` (or `Mobile Documents` on a Mac), `Dropbox` or `SharePoint`, say so in the same line: "and it looks like this folder is backed up by OneDrive (or whichever it is), so a copy of the page will be uploaded there too." Then write the file in one go, as UTF-8, with your file-writing tool. Never write the page by redirecting output in PowerShell (`>`, `>>` or `Out-File`): Windows PowerShell 5.1 saves UTF-16 and the page breaks. If you only have a shell, put the page in a single-quoted here-string (`@'` ... `'@`, with the closing `'@` at the start of a line) so dollar signs are kept, then use `[IO.File]::WriteAllText($f, $html, (New-Object Text.UTF8Encoding($false)))`. Write nothing outside the Explainers folder (or the save folder from `local.md`, or the fallback folder).
 4. **Check it. Do not trust that the write worked.** Let N be the number of cards you planned. All of these must pass:
    - The file exists and is not empty, with N cards and N pictures, no scripts or other active content (event handlers, frames, forms, images, style imports), and no addresses except `https://brightcoast.ai`.
    - No long dashes, no square-bracket placeholders left, no colour outside the palette, and the six text and background colour lines in the page CSS unchanged (so the light background and the contrast hold).
@@ -723,7 +725,7 @@ The first time you make a page in a conversation, also say the credit plainly: "
    for t in div li ol ul p h1 h2 span svg g symbol defs marker header main footer style head body html title text a; do
      o=$(grep -o -E "<${t}[ >]" "$F" | wc -l); c=$(grep -o "</$t>" "$F" | wc -l); [ "$o" -ne "$c" ] && echo "unbalanced <$t>: $o open, $c close"
    done
-   tr '\n' ' ' < "$F" | sed "s/<li class=\"card\"/$(printf '\001')&/g" | tr '\001' '\n' | tail -n +2 | while read -r c; do
+   tr '\n' ' ' < "$F" | sed "s/<li class=\"card\"/$(printf '\001')&/g" | tr '\001' '\n' | tail -n +2 | while IFS= read -r c || [ -n "$c" ]; do
      h=$(printf '%s' "$c" | sed -n 's/.*<h2>\([^<]*\)<\/h2>.*/\1/p'); p=$(printf '%s' "$c" | sed -n 's/.*<p class="cap">\([^<]*\)<\/p>.*/\1/p')
      w=$(printf '%s %s' "$h" "$p" | wc -w | tr -d ' '); [ "$w" -gt 14 ] && echo "over 14 words ($w): $h"
    done
@@ -736,7 +738,7 @@ The first time you make a page in a conversation, also say the credit plainly: "
 
 Tell the person, in a few plain lines:
 
-- Where the file is, with the full path (and say so if you had to use the current folder instead of Documents). If your Documents folder is backed up by OneDrive or iCloud, the page is backed up too.
+- Where the file is, with the full path (and say so if you had to use the current folder instead of Documents; if it syncs to the cloud, you already said so in Step 8 before saving).
 - How many cards it has, who you wrote it for and which size you used (and say so if you used the defaults).
 - One plain line saying the checks passed, for example: "I checked the page: 9 cards, 9 pictures, no scripts or outside links, and nothing over the word limit."
 - Anything you removed or marked "Not sure" in Step 7, and in Document mode where the document was silent.

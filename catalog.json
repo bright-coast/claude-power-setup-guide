@@ -7,54 +7,54 @@
   "guide": {
     "version": "3.4",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "68c0d50a00334785a65b832554a9986d118c141ef52b7e91adca80cbe41b999b",
-    "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more, so a full setup is about fourteen prompts (about thirty in 3.3). On a Mac the git check starts before the setup questions. The first section leads with what you need, and optional tools sit under their own headings."
+    "sha256": "b65bb20035b65e9180ed9b28b41d8c7dac05a31634a3feb43424b360590a2b38",
+    "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more. Nothing about a skill downloads until you have actually picked one, and every skill you're installing is read out together with one question, not one at a time. On a Mac the git check starts before the setup questions. Never tells you where to start Claude Code, only where a skill's own files go."
   },
   "overview": {
     "version": "1.7",
     "path": "power-setup-field-guide.html",
-    "sha256": "5eb3b27eccd4690144fc12e7e8260a334b5320e47d82429e490370484ea6b966",
-    "changes": "The Ask Rob and Install skills steps match the guide: nothing to do at Ask Rob, one batch install, and the git check on a Mac starts early."
+    "sha256": "85c8bc98253e1dd55576f468b1a60bc3a5929b8e443350e5d580fc1bac9a0484",
+    "changes": "Matches the guide's wording on installing (Claude asks first, then carries on) and drops every instruction about where to start Claude Code. Fixes overlapping art in the finale, missing spacing in the WhatsApp card, a cut-off table on phones, and low-contrast text."
   },
   "skills": [
     {
       "id": "startup",
       "name": "Startup",
       "status": "ready",
-      "version": "1.0.2",
-      "sha256": "1e79f0c1a9492f1e89623671a8a91c55930dd2ec52738b9de46204f363ac8394",
+      "version": "1.0.3",
+      "sha256": "96ecdde008431bff90c430928fce436fb7d2c188e63a8770d28487fe6326149b",
       "category": "Every day",
       "summary": "Asks you a few questions once (your email, calendars, where your information lives, what you want to know each morning), then gives you a short daily briefing built around your answers.",
       "needs": ["Your email and calendar connected, if you want them in the briefing"],
       "offer_if": "everyone",
       "path": "skills/startup/SKILL.md",
-      "changes": "Its quiet update check now runs at most once a week."
+      "changes": "Its quiet update check now says what it's about to do before any prompt, instead of staying quiet through one. Its first run after setup no longer re-fetches or re-checks what setup just did, and saves your answers once instead of after every question."
     },
     {
       "id": "skill-updates",
       "name": "Skill Updates",
       "status": "ready",
       "version": "1.2.0",
-      "sha256": "ee8381aa8ad413b9cf0b5c720b557fdb143aaffa6cfc9211b8d4bdc4e8fcd2fe",
+      "sha256": "323646f25319a827140ffbe4318169ec930bbdab0b7243c05f4e705b34d954ca",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
       "offer_if": "everyone",
       "path": "skills/skill-updates/SKILL.md",
-      "changes": "Installs any number of skills with two commands (one downloads and checks them all, one installs them all) and itself with one. The install command checks fingerprints first and refuses to overwrite anything, so installing several skills is about two prompts, not four each."
+      "changes": "Optional: skip it and nothing breaks, it only helps once you install two or more skills together. Installing several skills is two commands total (one downloads and checks them all, one installs them all) instead of one round each. Checking for updates is review first too now: one command shows the exact changes for every outdated skill, then one further command applies everything you approve, instead of a separate round per skill. Every id, name and version this skill handles is quoted safely before it reaches a command."
     },
     {
       "id": "health-check",
       "name": "Health Check",
       "status": "ready",
-      "version": "1.0.2",
-      "sha256": "b84f33a6fe5b80f914ec4d7b2e04ad05829e672dbe3969fc87e4e02f03e49134",
+      "version": "1.0.3",
+      "sha256": "3ac68372d12e1032b3100892e98569fcd749b9c6a78ebb8252c9f3970cd1c52c",
       "category": "Housekeeping",
       "summary": "A quick check-up of your Claude Code setup: your instructions file, your memory, the tools installed on your computer and your disk space, with plain-English fixes.",
       "needs": [],
       "offer_if": "everyone",
       "path": "skills/health-check/SKILL.md",
-      "changes": "Says the update check runs at most once a week, and that the first check sets a silent baseline."
+      "changes": "Now runs its skill check in full mode, so it also reports on skill and guide updates, not just new skills."
     },
     {
       "id": "process-recordings",
@@ -86,27 +86,27 @@
       "id": "whatsapp-setup",
       "name": "WhatsApp",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "e4f0aedd9285f5beaaa894f2920038b668228ce99d887094fcddb0d17bd904b9",
+      "version": "1.0.2",
+      "sha256": "3efa0b958e4cdb3e8ad8a9540c69a86b6a43303ec8e310e8d5017e2a680c072a",
       "category": "Messages",
       "summary": "Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice, and it only sends when you say so. This is unofficial, and WhatsApp can restrict or ban an account that uses it. It is an early version, and its full setup has not been run end to end yet.",
       "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app, kept in Manual or Accept edits mode, never Auto or Bypass", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
       "offer_if": "uses WhatsApp for work",
       "path": "skills/whatsapp-setup/SKILL.md",
-      "changes": "Now asks before opening media, stops on a failed fingerprint check, shows the kit's skill and settings before installing, and says plainly what the wacli tool can do."
+      "changes": "Its Windows scripts use the same check-then-RemoteSigned pattern as Ask Rob instead of Bypass. Says where its own files go, never where to start Claude Code."
     },
     {
       "id": "explain-non-technical",
       "name": "Explain Like I'm Non-Technical",
       "status": "ready",
-      "version": "1.0.1",
-      "sha256": "82146337934c1327cece8ba7aaf1c80ef4756ff468d8d87dcb15e8dcab6343b6",
+      "version": "1.0.2",
+      "sha256": "41bc6cf99dc04794d5d66c29a3f7194cc6297fc1e8ed4bad29f2d079c6660cb3",
       "category": "Communicate",
       "summary": "Explains anything to a non-technical person as a simple picture page: big visuals, very few words. Good for partners, clients and anyone who needs to understand something without the jargon. Every page carries a small Bright Coast AI credit, and you can add your own name above it.",
       "needs": [],
       "offer_if": "everyone",
       "path": "skills/explain-non-technical/SKILL.md",
-      "changes": "Now says the Bright Coast AI credit plainly and tells you where a page will be saved before writing it."
+      "changes": "Fixes a bug that could drop the last item from a long list. Warns about a synced folder before saving the page there, not after, and is plainer about what Anthropic processes and what the small credit tag does."
     },
     {
       "id": "email-drafting",
