@@ -5,16 +5,16 @@
   "raw_base": "https://raw.githubusercontent.com/bright-coast/claude-power-setup-guide/stable/",
   "license": "Bright Coast AI Client Skills Licence 1.0",
   "guide": {
-    "version": "3.3",
+    "version": "3.4",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "6c5492bc590ce4486e5acbd7dd41d45b188c65250d92c4485b43696a63e94240",
-    "changes": "Fewer permission prompts: installing a skill takes about four instead of about ten, a full setup roughly thirty, and the guide's own Step 7 uses the same one-command download and check. Update checks run at most once a week. Setup no longer offers a settings file, and Ask Rob's token is explained by the skill on first use."
+    "sha256": "5abebdd20a43c3479ad91fb7bff1de85f8c310fc9e3788c0bfec130205872755",
+    "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more, so a full setup is about fourteen prompts (about thirty in 3.3). On a Mac the git check starts before the setup questions. The first section leads with what you need, and optional tools sit under their own headings."
   },
   "overview": {
-    "version": "1.6",
+    "version": "1.7",
     "path": "power-setup-field-guide.html",
-    "sha256": "e917f05d1e44bbf44d9760db061ab8bc8d1ec524501943ac41f4781b9abe1c98",
-    "changes": "The page follows the guide: setup no longer offers a settings file, and the optional secrets-blocking file is only written if you ask."
+    "sha256": "5eb3b27eccd4690144fc12e7e8260a334b5320e47d82429e490370484ea6b966",
+    "changes": "The Ask Rob and Install skills steps match the guide: nothing to do at Ask Rob, one batch install, and the git check on a Mac starts early."
   },
   "skills": [
     {
@@ -34,14 +34,14 @@
       "id": "skill-updates",
       "name": "Skill Updates",
       "status": "ready",
-      "version": "1.1.0",
-      "sha256": "fc7ed623c9bffcf0dc034be76dfaa07601b5f9276dffde8abf7ed8312e884920",
+      "version": "1.2.0",
+      "sha256": "534acc905b38e93df1c9e833853a0892a7daa08e95254d8c8a097bf75dce676b",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
       "offer_if": "everyone",
       "path": "skills/skill-updates/SKILL.md",
-      "changes": "Installs a skill in about four permission prompts instead of ten, using one command to download and check and one to make the folder and copy and verify. Checks for updates at most once a week, saving its seen list and last-check date at install, and a check that finds no seen list sets a silent baseline."
+      "changes": "Installs any number of skills with two commands (one downloads and checks them all, one installs them all) and itself with one. The install command checks fingerprints first and refuses to overwrite anything, so installing several skills is about two prompts, not four each."
     },
     {
       "id": "health-check",

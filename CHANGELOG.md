@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4 (27 Sep 2026)
+
+- The guide is now version 3.4, with fewer prompts again and a clearer start. Skills install in one batch: Skill Updates 1.2 downloads and checks every skill you pick with one command and installs them all with one more, so a full setup is about fourteen prompts instead of about thirty. The install command refuses to overwrite anything and checks each download against the catalog's fingerprint before it writes a byte. On a Mac the git check now starts before the setup questions, so Apple's install runs while you answer. The first section leads with what you need, and optional tools are grouped under their own headings.
+- Skill Updates is now 1.2.0. The other skills are unchanged.
+
 ## 1.0.3 (26 Sep 2026)
 
 - The guide is now version 3.3, with about half the permission prompts. Installing a skill takes about four prompts instead of about ten (one command downloads and checks, one makes the folder and copies and verifies, then two small files), so a full setup is roughly thirty prompts. Startup's quiet update check runs at most once a week, and the first check is a silent baseline. Setup no longer offers a settings file, and the separate Ask Rob step is gone because the skill explains its token itself on first use.
