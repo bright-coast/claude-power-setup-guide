@@ -7,7 +7,7 @@
   "guide": {
     "version": "3.4",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "5abebdd20a43c3479ad91fb7bff1de85f8c310fc9e3788c0bfec130205872755",
+    "sha256": "68c0d50a00334785a65b832554a9986d118c141ef52b7e91adca80cbe41b999b",
     "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more, so a full setup is about fourteen prompts (about thirty in 3.3). On a Mac the git check starts before the setup questions. The first section leads with what you need, and optional tools sit under their own headings."
   },
   "overview": {
@@ -35,7 +35,7 @@
       "name": "Skill Updates",
       "status": "ready",
       "version": "1.2.0",
-      "sha256": "534acc905b38e93df1c9e833853a0892a7daa08e95254d8c8a097bf75dce676b",
+      "sha256": "ee8381aa8ad413b9cf0b5c720b557fdb143aaffa6cfc9211b8d4bdc4e8fcd2fe",
       "category": "Housekeeping",
       "summary": "Installs and removes skills from the guide, checks whether they or the guide have a newer version, shows exactly what changed, and updates only what you approve, keeping your own changes.",
       "needs": ["Internet access", "Git, for showing and merging updates (a fresh install does not need it)"],
