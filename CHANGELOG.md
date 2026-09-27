@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.0.4 (27 Sep 2026)
+## 3.4 (27 Sep 2026)
+
+From this entry on, this number matches the guide's own version instead of counting releases separately: the two numbers were always moving together anyway, so there is now only one to read.
+
 
 - The guide is now version 3.4, with fewer prompts and a clearer start. Skills install in one batch: Skill Updates 1.2 downloads and checks every skill you pick with one command and installs them all with one more. The install command refuses to overwrite anything and checks each download against the catalog's fingerprint before it writes a byte. Nothing about a skill downloads until you have actually picked one, and every skill you're installing is read out together with one question, not one at a time. On a Mac the git check now starts before the setup questions, so Apple's install runs while you answer. The first section leads with what you need, and optional tools are grouped under their own headings. Never tells you where to start Claude Code, only where a skill's own files go.
 - Checking for updates is review first too now: one command shows the exact changes for every outdated skill you have, then one further command applies everything you approve, instead of a separate round per skill.
