@@ -7,13 +7,13 @@
   "guide": {
     "version": "3.4",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "b65bb20035b65e9180ed9b28b41d8c7dac05a31634a3feb43424b360590a2b38",
+    "sha256": "48eedd7cdf3b265bf2cce7b1005a819f2387062ae923f00e323de450431f6c77",
     "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more. Nothing about a skill downloads until you have actually picked one, and every skill you're installing is read out together with one question, not one at a time. On a Mac the git check starts before the setup questions. Never tells you where to start Claude Code, only where a skill's own files go."
   },
   "overview": {
     "version": "1.7",
     "path": "power-setup-field-guide.html",
-    "sha256": "85c8bc98253e1dd55576f468b1a60bc3a5929b8e443350e5d580fc1bac9a0484",
+    "sha256": "69ff5a3cbd225a70ea65a40aa656c02804a4697f7b260cbb32b3dfa2d00a2e9d",
     "changes": "Matches the guide's wording on installing (Claude asks first, then carries on) and drops every instruction about where to start Claude Code. Fixes overlapping art in the finale, missing spacing in the WhatsApp card, a cut-off table on phones, and low-contrast text."
   },
   "skills": [

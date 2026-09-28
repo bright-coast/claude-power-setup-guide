@@ -320,7 +320,6 @@
 </div>
 <h3>Before step 1</h3>
 <ul class="rules">
-<li><b>The permission mode check</b><span>Before any command or file change, Claude asks which permission mode the session is in. If it says Auto or Bypass permissions, <b>you</b> switch to Manual yourself: Shift+Tab in a terminal, or the mode selector next to the send button in the desktop app. If it says Manual or Accept edits, Claude carries straight on. In Auto, a second model decides about writes to Claude&rsquo;s own folder and can refuse them halfway through setup. Claude never switches it for you and waits until you confirm.</span></li>
 <li><b>The one-page picture</b><span>Claude gives you a link to this page, <code>setup.brightcoast.ai</code>, to open in your browser. It is optional and you do not need it for setup. Claude downloads and saves nothing for it.</span></li>
 <li><b>On a Mac, a quick git check</b><span>Before the setup questions, Claude runs <code>git --version</code>. If your Mac has no git, Apple opens a window offering its developer tools: click Install and carry on with the questions, because it takes several minutes. You can cancel it, and nothing else depends on it.</span></li>
 <li><b>A look at what you already have</b><span>If you set up from an older guide or built skills of your own, Claude reads the folder names first and asks only for what is missing. It never overwrites a skill you built.</span></li>
@@ -333,7 +332,7 @@
 <li class="step"><div class="body"><h4>Google Drive <span class="chip chip-soon">Only if you use it</span></h4><p>Install Google Drive for desktop, sign in with your work account and make a small test file. A synced icon after a few seconds is the real proof.</p></div></li>
 <li class="step"><div class="body"><h4>A shared team folder <span class="chip chip-soon">Only if you have one</span></h4><p>Claude checks it appears under <b>Shared drives</b> in Google Drive, then reads the team&rsquo;s shared instructions back to you in its own words. If it can describe them correctly, the step worked.</p></div></li>
 <li class="step"><div class="body"><h4>Connect your tools</h4><p>One at a time. You type <code>/mcp</code>, Claude checks what is already connected, and anything new is tested after a restart. Details are in section 06.</p></div></li>
-<li class="step"><div class="body"><h4>How much Claude asks first</h4><p>Claude explains the permission modes in a few sentences. For setup you stay in Manual or Accept edits, and afterwards the mode is your choice. It does not change any of your settings.</p></div></li>
+<li class="step"><div class="body"><h4>How much Claude asks first</h4><p>Claude explains the permission modes in a few sentences. Any mode works for setup, and the mode is always your choice. It does not change any of your settings.</p></div></li>
 <li class="step"><div class="body"><h4>Ask Rob <span class="chip chip-soon">Optional, clients only</span></h4><p>Nothing to do here. If you are a Bright Coast AI client, Ask Rob is in the list at the last step, and if you pick it, the skill explains the portal token the first time you use it. It sends a question straight to Rob with the context attached and brings the reply back.</p></div></li>
 <li class="step"><div class="body"><h4>Install skills</h4><p>The closing step. You pick from the list in section 03, Claude tells you what each one does, and everything you pick installs in one go. Git is checked too: on a Mac that check starts near the beginning so Apple&rsquo;s install runs while you answer questions, and on Windows it is the last check. Then Claude asks you to restart.</p></div></li>
 </ol>
@@ -362,10 +361,10 @@
 <h3>How much Claude asks first</h3>
 <p class="sub-dek">These are the permission modes, by the names Anthropic uses. Shift+Tab cycles through them in a terminal. <code>/permissions</code> manages the individual rules.</p>
 <ul class="modes">
-<li class="mode start"><svg class="ic"><use href="#g-yes"/></svg><b>Manual <span class="chip chip-ready">Safest for setup</span></b><span class="d">Claude asks before it edits a file or runs a command. Slowest, and the most control.</span></li>
+<li class="mode"><svg class="ic"><use href="#g-yes"/></svg><b>Manual</b><span class="d">Claude asks before it edits a file or runs a command. Slowest, and the most control.</span></li>
 <li class="mode"><svg class="ic"><use href="#g-folder"/></svg><b>Accept edits</b><span class="d">Changes files in the working folder without asking each time, but still asks before most commands.</span></li>
 <li class="mode"><svg class="ic"><use href="#g-eye"/></svg><b>Plan</b><span class="d">Claude looks around and proposes a plan. It changes nothing.</span></li>
-<li class="mode avoid"><svg class="ic"><use href="#g-warn"/></svg><b>Auto <span class="chip chip-warn">Switch away for setup</span></b><span class="d">A second checking model decides what needs asking. Anthropic says it reduces prompts but does not guarantee safety.</span></li>
+<li class="mode"><svg class="ic"><use href="#g-auto"/></svg><b>Auto</b><span class="d">A second checking model decides what needs asking. Anthropic says it reduces prompts but does not guarantee safety. It is fine for setup: if it ever refuses a step, Claude tells you, and you can switch to Manual for that step and back again.</span></li>
 </ul>
 <div class="callouts two" style="margin-top:14px">
 <div class="callout trap"><svg class="ic"><use href="#g-warn"/></svg><div><b class="k">Anything that touches messages</b><p>WhatsApp, or sending email or chat messages: stay in Manual or Accept edits, never Auto.</p></div></div>
@@ -668,7 +667,6 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 <li><label for="c1"><input type="checkbox" id="c1"><span class="lab"><span class="t">Claude Code is installed and I am signed in</span><span class="s">On a paid plan: Pro, Max, Team, Enterprise or an Anthropic Console account.</span></span></label></li>
 <li><label for="c2"><input type="checkbox" id="c2"><span class="lab"><span class="t">I downloaded the guide</span><span class="s">The file name still ends in .md.</span></span></label></li>
 <li><label for="c3"><input type="checkbox" id="c3"><span class="lab"><span class="t">I opened Claude Code, started a new session and said the sentence</span><span class="s">Claude asked which permission mode I was in.</span></span></label></li>
-<li><label for="c4"><input type="checkbox" id="c4"><span class="lab"><span class="t">The session is in Manual mode, and I switched it myself</span><span class="s">If it started in Auto, I changed it before Claude ran anything.</span></span></label></li>
 <li><label for="c5"><input type="checkbox" id="c5"><span class="lab"><span class="t">I told Claude what I use and answered the quick questions</span><span class="s">Claude created SETUP-PROGRESS.md next to the guide.</span></span></label></li>
 <li><label for="c6"><input type="checkbox" id="c6"><span class="lab"><span class="t">My tools are connected, and I restarted Claude Code and checked with /mcp</span><span class="s">Each connection had one real read, and anything that can send or write had one real test.</span></span></label></li>
 <li><label for="c7"><input type="checkbox" id="c7"><span class="lab"><span class="t">I picked my skills, and Claude read each one out before installing it</span><span class="s">Skill Updates went in first.</span></span></label></li>
@@ -689,7 +687,7 @@ npx -y google-workspace-mcp@2.3.6 accounts list</code></pre></div>
 </ul>
 <p class="trap-group">During setup</p>
 <ul class="traps" style="border-top:1px solid var(--bc-border)">
-<li><b>The session starts in Auto</b><span>Switch to Manual yourself. Never choose Bypass permissions. For anything that touches messages, stay in Manual or Accept edits.</span></li>
+<li><b>A step is refused in Auto</b><span>Claude tells you. Switch to Manual yourself for that step, then switch back. Never choose Bypass permissions. For anything that touches messages, stay in Manual or Accept edits.</span></li>
 <li><b>A permission prompt for each command that writes under .claude</b><span>That is normal. Read each prompt and click plain <b>Yes</b> only when it names something Claude just told you about. Never choose &ldquo;don&rsquo;t ask again&rdquo; or &ldquo;allow for the session&rdquo;.</span></li>
 <li><b>Testing something you just installed</b><span>Restart Claude Code first. Connectors and skills do not take effect in the session where you added them.</span></li>
 <li><b>A login screen that worked</b><span>It is not proof. Ask the connector which account it is signed in to, and do one real read.</span></li>
