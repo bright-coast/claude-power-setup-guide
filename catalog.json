@@ -7,13 +7,13 @@
   "guide": {
     "version": "3.4",
     "path": "claude-code-power-setup-guide.md",
-    "sha256": "48eedd7cdf3b265bf2cce7b1005a819f2387062ae923f00e323de450431f6c77",
+    "sha256": "4903710344720e935276cf9feff2e3007c6aa086a9c8aaf126db0096e29d3588",
     "changes": "Skills install in one batch: Skill Updates 1.2 downloads and checks all your picked skills with one command and installs them with one more. Nothing about a skill downloads until you have actually picked one, and every skill you're installing is read out together with one question, not one at a time. On a Mac the git check starts before the setup questions. Never tells you where to start Claude Code, only where a skill's own files go."
   },
   "overview": {
     "version": "1.7",
     "path": "power-setup-field-guide.html",
-    "sha256": "69ff5a3cbd225a70ea65a40aa656c02804a4697f7b260cbb32b3dfa2d00a2e9d",
+    "sha256": "b4f09155cbb55997d622dbe4d7ddce89317f020c89588ad927ccd26ccc03e12d",
     "changes": "Matches the guide's wording on installing (Claude asks first, then carries on) and drops every instruction about where to start Claude Code. Fixes overlapping art in the finale, missing spacing in the WhatsApp card, a cut-off table on phones, and low-contrast text."
   },
   "skills": [
@@ -90,7 +90,7 @@
       "sha256": "28a7b2b84e6a04cd75848566998349b4b4bc3fb6b4961f774fdded234b603246",
       "category": "Messages",
       "summary": "Connects your own WhatsApp to Claude so it can read your chats, tell you what needs attention and draft replies in your voice, and it only sends when you say so. This is unofficial, and WhatsApp can restrict or ban an account that uses it. It is an early version, and its full setup has not been run end to end yet.",
-      "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app, kept in Manual or Accept edits mode, never Auto or Bypass", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
+      "needs": ["A phone with WhatsApp, on a number you can afford to risk having restricted", "The Claude Code Desktop app", "A one-off setup that includes a first copy of your messages and a 460 MB voice note tool, which can take several minutes each", "Early version (0.2): the complete setup has not been run end to end anywhere, and the Mac steps have never been run on a Mac"],
       "offer_if": "uses WhatsApp for work",
       "path": "skills/whatsapp-setup/SKILL.md",
       "changes": "Sets WhatsApp up in the folder you are already working in, in a folder called whatsapp inside it, instead of making you a WhatsAppAgent folder and moving you into it. It no longer asks you to change Claude Code's mode."
