@@ -199,6 +199,8 @@ winget install --id OpenJS.NodeJS.LTS -e
 ```
 (Recent versions of winget also accept several names in one command, but if yours complains, the one-per-line form above always works. `-e` means "match this exact ID only".) On Windows the Python command is `python`. On a Mac it is `python3` (see the note at the start of §6.1).
 
+The GitHub CLI (`gh`) signs in with a free GitHub account. If you do not have one yet, create it at github.com the first time you run `gh auth login`; §10 has the short steps.
+
 ### If something goes wrong
 
 **On a Mac,** two things can look like a problem when they are not.
