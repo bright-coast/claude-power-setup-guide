@@ -220,6 +220,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 > **On a locked-down or work-managed computer,** three things can get in the way. None of them is your fault, and each has a way through:
 > - **The PowerShell command above can be overridden by your organization's Group Policy.** If it is refused, ask your IT person to allow it (or to tell you what they allow instead).
 > - **`winget` and Git for Windows may need administrator rights.** If an install asks for them and you don't have them, ask your IT person to install it for you.
+> - **If your computer is managed by an IT provider,** send them this list before your setup session and ask them to approve it once: Claude desktop, Git for Windows, GitHub CLI, Python, Node.js. Approving each one as it comes up can take an hour of a session.
 > - **`curl.exe` or other downloads may be blocked.** On a work computer, ask your IT person before working around a block unless you are sure it is only a technical problem. If it is, the fallback is simple: open the address in your browser, save the file (right-click and choose **Save link as**; in Safari, **Download Linked File As**), and tell Claude the full path where you saved it. Claude runs the same fingerprint check on that file, so it is still checked against the catalog.
 
 ---
